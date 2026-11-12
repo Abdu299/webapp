@@ -1,0 +1,13 @@
+method,condition,hidden,n_located
+full_sigma20,png,0.9448275862068966,145
+full_sigma20,jpeg,0.9379310344827586,145
+full_sigma20,screenshot,0.9586206896551724,145
+heatmap_osv5m_0.1,png,0.7379310344827587,145
+heatmap_osv5m_0.1,jpeg,0.7724137931034483,145
+heatmap_osv5m_0.1,screenshot,0.7862068965517242,145
+network,png,0.9241379310344827,145
+network,jpeg,0.8413793103448276,145
+network,screenshot,0.8275862068965517,145
+optimised_0.1,png,0.9655172413793104,145
+optimised_0.1,jpeg,0.8068965517241379,145
+optimised_0.1,screenshot,0.8,145

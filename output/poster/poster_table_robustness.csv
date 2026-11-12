@@ -1,0 +1,11 @@
+Method,Guessed by,"Hidden as saved
+(PNG)","After JPEG
+(quality 75)","After screenshot
+(half size)"
+Full blur,OSV-5M,94%,94%,96%
+Heatmap blur (hottest 10% fully blurred),OSV-5M,74%,77%,79%
+Optimized blur (10% area target),OSV-5M,97%,81%,80%
+Privacy network ($\lambda_{area}$ = 3),OSV-5M,92%,84%,83%
+Full blur,GeoViT,81%,89%,85%
+Heatmap blur (hottest 10% fully blurred),GeoViT,76%,81%,76%
+Privacy network ($\lambda_{area}$ = 3),GeoViT,96%,85%,72%

@@ -1,0 +1,155 @@
+
+=== Occlusion heatmaps + the six heatmap figures: python src/segmenter/heatmaps.py
+device: cuda
+0/237  8 s
+50/237  381 s
+100/237  754 s
+150/237  1128 s
+200/237  1501 s
+saved 237 heatmaps to output/osv5m/heatmaps
+--- Occlusion heatmaps + the six heatmap figures: 29.6 min
+
+=== List the original photos, the full blur and the optimised blur: python src/list_blurred.py all
+--- List the original photos, the full blur and the optimised blur: 0.2 min
+
+=== Heatmap blur: python src/heatmap_blur.py
+1422 versions of 237 photos in blurred/heatmap.csv. Skipped: 0 without a heatmap, 0 with an all-0 heatmap
+--- Heatmap blur: 0.6 min
+
+=== Random blur of the same areas: python src/random_blur.py optimised
+--- Random blur of the same areas: 0.5 min
+
+=== Guesses of OSV-5M and GeoCLIP on every version: python src/evaluate.py none full_sigma20 optimised heatmap random_optimised
+--- Guesses of OSV-5M and GeoCLIP on every version: 17.8 min
+
+=== Mask overlap: python src/overlap.py heatmap optimised
+Mean IoU of heatmap and optimised masks per heatmap version:
+           iou  chance_iou
+version                   
+0.05     0.047       0.036
+0.1      0.069       0.068
+0.2      0.117       0.133
+0.4      0.242       0.278
+0.6      0.410       0.454
+0.8      0.664       0.680
+--- Mask overlap: 0.1 min
+
+=== Comparison table and plot: python src/compare.py none full_sigma20 optimised heatmap random_optimised
+Mean per method and version, 145 photos:
+          method version  photos  blurred_area  hidden  prob_true  prob_top  lpips  geoclip_hidden
+            none    none     145         0.000   0.000      0.840     0.506  0.000           0.000
+    full_sigma20    full     145         1.000   0.945      0.059     0.214  0.818           0.883
+       optimised    0.05     145         0.109   0.938      0.064     0.905  0.259           0.270
+       optimised     0.1     145         0.164   0.966      0.034     0.929  0.335           0.307
+       optimised     0.2     145         0.269   0.993      0.008     0.965  0.423           0.467
+       optimised     0.4     145         0.454   0.993      0.008     0.974  0.542           0.599
+       optimised     0.6     145         0.630   1.000      0.000     0.973  0.655           0.788
+       optimised     0.8     145         0.799   1.000      0.000     0.974  0.743           0.891
+         heatmap    0.05     145         0.109   0.421      0.553     0.425  0.100           0.073
+         heatmap     0.1     145         0.164   0.393      0.560     0.404  0.148           0.073
+         heatmap     0.2     145         0.269   0.490      0.502     0.378  0.235           0.131
+         heatmap     0.4     145         0.454   0.572      0.414     0.359  0.373           0.204
+         heatmap     0.6     145         0.630   0.683      0.311     0.359  0.498           0.263
+         heatmap     0.8     145         0.799   0.821      0.158     0.341  0.621           0.540
+random_optimised    0.05     145         0.109   0.269      0.673     0.426  0.075           0.058
+random_optimised     0.1     145         0.164   0.262      0.664     0.436  0.122           0.051
+random_optimised     0.2     145         0.269   0.303      0.641     0.397  0.202           0.044
+random_optimised     0.4     145         0.454   0.414      0.546     0.397  0.337           0.139
+random_optimised     0.6     145         0.630   0.476      0.475     0.403  0.451           0.182
+random_optimised     0.8     145         0.799   0.710      0.256     0.356  0.562           0.343
+
+Smallest version that hides each photo:
+          method     hidden  median_blurred_area  median_lpips
+    full_sigma20 137 of 145                1.000         0.843
+         heatmap 135 of 145                0.197         0.180
+       optimised 145 of 145                0.113         0.257
+random_optimised 121 of 145                0.274         0.205
+--- Comparison table and plot: 0.1 min
+
+=== 3-row figures of the six example photos: python src/heatmap_figures.py
+saved 6 figures to output/osv5m/examples/heatmap_vs_optimised
+--- 3-row figures of the six example photos: 0.1 min
+
+=== Plots and tables of all photos: python src/heatmap_plots.py
+
+OSV-5M, mean (median for km) per method and version:
+measure                   hidden        km  prob_true  prob_top  lpips
+method           version                                              
+none             none      0.000   145.340      0.840     0.506  0.000
+full_sigma20     full      0.945  7972.187      0.059     0.214  0.818
+optimised        0.05      0.938  5263.096      0.064     0.905  0.259
+                 0.1       0.966  7906.189      0.034     0.929  0.335
+                 0.2       0.993  7588.614      0.008     0.965  0.423
+                 0.4       0.993  7238.347      0.008     0.974  0.542
+                 0.6       1.000  8017.422      0.000     0.973  0.655
+                 0.8       1.000  7829.030      0.000     0.974  0.743
+heatmap          0.05      0.421   550.917      0.553     0.425  0.100
+                 0.1       0.393   490.572      0.560     0.404  0.148
+                 0.2       0.490   734.699      0.502     0.378  0.235
+                 0.4       0.572  1357.001      0.414     0.359  0.373
+                 0.6       0.683  2010.466      0.311     0.359  0.498
+                 0.8       0.821  4588.756      0.158     0.341  0.621
+random_optimised 0.05      0.269   322.811      0.673     0.426  0.075
+                 0.1       0.262   247.777      0.664     0.436  0.122
+                 0.2       0.303   248.009      0.641     0.397  0.202
+                 0.4       0.414   466.073      0.546     0.397  0.337
+                 0.6       0.476   616.341      0.475     0.403  0.451
+                 0.8       0.710  2366.907      0.256     0.356  0.562
+
+GeoCLIP, mean (median for km) per method and version:
+measure                   hidden        km  prob_true  prob_top  lpips
+method           version                                              
+none             none      0.000     6.307      0.922     0.052  0.000
+full_sigma20     full      0.883  7097.255      0.109     0.004  0.821
+optimised        0.05      0.270   158.159      0.677     0.037  0.258
+                 0.1       0.307   223.775      0.631     0.033  0.335
+                 0.2       0.467   591.103      0.490     0.024  0.427
+                 0.4       0.599  1033.111      0.338     0.016  0.547
+                 0.6       0.788  5057.571      0.177     0.008  0.657
+                 0.8       0.891  8065.371      0.095     0.006  0.746
+heatmap          0.05      0.073    13.505      0.868     0.051  0.100
+                 0.1       0.073    25.285      0.855     0.050  0.148
+                 0.2       0.131    80.432      0.813     0.045  0.235
+                 0.4       0.204    90.818      0.719     0.039  0.374
+                 0.6       0.263   267.520      0.584     0.024  0.499
+                 0.8       0.540   955.057      0.325     0.011  0.623
+random_optimised 0.05      0.058     5.804      0.889     0.048  0.075
+                 0.1       0.051    13.837      0.882     0.048  0.121
+                 0.2       0.044     8.402      0.890     0.048  0.202
+                 0.4       0.139    32.066      0.807     0.042  0.337
+                 0.6       0.182    80.427      0.736     0.035  0.451
+                 0.8       0.343   382.838      0.513     0.019  0.564
+
+heatmap - optimised, photo by photo, mean and 95% interval (an interval without 0 is a clear difference):
+model                     OSV-5M                                                                    GeoCLIP                                                  
+measure                   hidden                prob_true                    lpips                   hidden                prob_true                    lpips
+version                                                                                                                                                      
+0.05     -0.517 [-0.593, -0.434]  +0.489 [+0.430, +0.547]  -0.158 [-0.175, -0.144]  -0.197 [-0.263, -0.124]  +0.191 [+0.147, +0.236]  -0.158 [-0.175, -0.141]
+0.1      -0.572 [-0.648, -0.490]  +0.526 [+0.469, +0.586]  -0.186 [-0.203, -0.170]  -0.234 [-0.314, -0.153]  +0.224 [+0.172, +0.272]  -0.187 [-0.202, -0.170]
+0.2      -0.503 [-0.586, -0.421]  +0.494 [+0.437, +0.552]  -0.189 [-0.204, -0.174]  -0.336 [-0.416, -0.241]  +0.323 [+0.266, +0.382]  -0.192 [-0.206, -0.177]
+0.4      -0.421 [-0.497, -0.345]  +0.406 [+0.350, +0.459]  -0.169 [-0.185, -0.152]  -0.394 [-0.482, -0.307]  +0.381 [+0.322, +0.441]  -0.173 [-0.189, -0.157]
+0.6      -0.317 [-0.400, -0.248]  +0.311 [+0.253, +0.367]  -0.156 [-0.170, -0.140]  -0.526 [-0.613, -0.438]  +0.407 [+0.352, +0.460]  -0.158 [-0.174, -0.143]
+0.8      -0.179 [-0.241, -0.124]  +0.157 [+0.123, +0.197]  -0.122 [-0.135, -0.108]  -0.350 [-0.445, -0.255]  +0.230 [+0.183, +0.279]  -0.123 [-0.136, -0.110]
+
+heatmap - random_optimised, photo by photo, mean and 95% interval (an interval without 0 is a clear difference):
+model                     OSV-5M                                                                    GeoCLIP                                                  
+measure                   hidden                prob_true                    lpips                   hidden                prob_true                    lpips
+version                                                                                                                                                      
+0.05     +0.152 [+0.069, +0.228]  -0.120 [-0.159, -0.085]  +0.025 [+0.020, +0.031]  +0.015 [-0.022, +0.058]  -0.021 [-0.044, -0.002]  +0.025 [+0.020, +0.031]
+0.1      +0.131 [+0.048, +0.207]  -0.104 [-0.145, -0.062]  +0.027 [+0.020, +0.034]  +0.022 [-0.029, +0.073]  -0.027 [-0.058, +0.001]  +0.027 [+0.020, +0.034]
+0.2      +0.186 [+0.097, +0.269]  -0.139 [-0.184, -0.093]  +0.033 [+0.024, +0.042]  +0.088 [+0.029, +0.146]  -0.077 [-0.112, -0.044]  +0.033 [+0.024, +0.043]
+0.4      +0.159 [+0.076, +0.255]  -0.131 [-0.183, -0.083]  +0.036 [+0.025, +0.047]  +0.066 [-0.007, +0.131]  -0.088 [-0.132, -0.044]  +0.037 [+0.026, +0.048]
+0.6      +0.207 [+0.117, +0.297]  -0.164 [-0.227, -0.103]  +0.048 [+0.036, +0.059]  +0.080 [-0.000, +0.168]  -0.152 [-0.209, -0.096]  +0.048 [+0.036, +0.060]
+0.8      +0.110 [+0.028, +0.200]  -0.099 [-0.145, -0.054]  +0.059 [+0.049, +0.069]  +0.197 [+0.102, +0.292]  -0.188 [-0.251, -0.128]  +0.059 [+0.048, +0.070]
+
+IoU of the heatmap and optimised masks, and chance:
+version  blurred_area   iou  chance_iou
+   0.05         0.109 0.045       0.036
+    0.1         0.164 0.069       0.068
+    0.2         0.269 0.114       0.134
+    0.4         0.454 0.234       0.277
+    0.6         0.630 0.407       0.454
+    0.8         0.799 0.663       0.680
+
+saved heatmap_models.png, heatmap_cost.png, heatmap_comparison.csv and heatmap_paired.csv in output/osv5m
+--- Plots and tables of all photos: 0.1 min

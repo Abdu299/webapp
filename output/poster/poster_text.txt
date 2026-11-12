@@ -1,0 +1,220 @@
+POSTER TEXT: PRIVACY NETWORK (Victoria)
+All numbers come from the files in output/ (made by src/privacy_network/visualization.ipynb).
+"Hidden" = the model's top guess is more than 750 km from where the photo was taken
+(GeoViT: it names the wrong country). It is always counted on the photos that model
+locates without blur.
+
+
+TITLE (pick one)
+----------------
+Question: Can one forward pass hide where a photo was taken?
+Finding:  One forward pass hides photos from a geolocator 14,000x faster than per-photo optimization
+
+
+MOTIVATION (two lines)
+----------------------
+Platforms strip GPS metadata, but the pixels still give the location away: the OSV-5M model
+places 61% (145 of 237) of everyday Im2GPS photos within 750 km.
+We look for the smallest blur that stops this, fast enough to run when a photo is uploaded.
+
+
+CONTRIBUTIONS (the rubric grades these, so list them)
+-----------------------------------------------------
+1. A privacy network that blurs a photo in one forward pass so a geolocation model can no
+   longer place it within 750 km. It adapts Dabkowski & Gal's real-time saliency network to
+   privacy and is trained without labels: a frozen geolocator is the teacher.
+2. A comparison with full blur, heatmap blur (where William's occlusion heatmaps are hottest)
+   and per-photo optimized blur (Fong et al.) on privacy, image quality (LPIPS, SSIM), speed,
+   and whether the protection survives JPEG compression and screenshots, on everyday photos
+   (Im2GPS) and street photos (OSV-5M).
+3. The same network trained against our own geolocator (GeoViT), and a transfer test of every
+   blur on models it was not made for, including GeoCLIP, which no method was trained against.
+
+
+RELATED WORK AND HOW WE DIFFER (shared section, but these are the works behind your part)
+-----------------------------------------------------------------------------------------
+- PlaNet [1] and OSV-5M [12]: geolocation as classification into cells of the Earth. We use the
+  published OSV-5M model as the model to fool. PlaNet's occlusion analysis is the idea behind
+  the heatmaps used by our heatmap blur baseline.
+- Fong et al. [6]: optimizes, for each image, the smallest smooth mask that changes a
+  classifier's answer, to explain it. We use it as a privacy baseline (the target becomes
+  "move the guess beyond 750 km"). It takes 252 s per photo.
+- Dabkowski & Gal [7]: train a network that predicts such a mask in one pass, in real time, to
+  explain a classifier. We adapt it to privacy: only the "destroy" goal is kept (lower the
+  probability of every cell within 750 km of the truth), the mask sets a blur strength per
+  pixel, and the frozen geolocator's own ViT is the encoder.
+- GeoCLIP [16]: a geolocator that matches photos to GPS coordinates. Used only to test transfer.
+- SSIM [14] and LPIPS [15]: how much the photo changed.
+New reference: [16] V. Vivanco Cepeda, G. K. Nayak, M. Shah, "GeoCLIP: Clip-inspired alignment
+between locations and images for effective worldwide geo-localization", NeurIPS 2023.
+
+
+METHOD (one diagram: poster_method.png)
+---------------------------------------
+- The privacy network: the frozen ViT encoder of the geolocator (16x16 patch tokens) and a
+  small convolutional decoder (trained) that outputs a blur mask m, one value 0-1 per pixel.
+- Each pixel is blurred by its value in m, using Fong et al.'s blur pyramid (up to sigma 20).
+- Training only: the frozen geolocator guesses on the blurred photo, and the loss is
+      loss = log P_near + lambda_area * mean(m) + lambda_tv * smoothness(m)
+  P_near = the probability the geolocator gives the cells within 750 km of the true location.
+  The first term hides the photo, the second pays for every blurred pixel, the third prefers
+  smooth masks. Photos that are already hidden get a floor on log P_near (0.01), so they are
+  not blurred further for no gain.
+- No labels are needed: the frozen geolocator is the teacher. Only the decoder is trained.
+- lambda_area sets the trade-off between privacy and image damage (3 = main setting).
+- Protecting a photo is one forward pass: 0.018 s with the OSV-5M encoder, 0.008 s with GeoViT.
+
+
+SETUP (small table)
+-------------------
+Data          Train / validation: 42,236 / 4,596 OSV-5M street photos from its test split (unseen
+              by the OSV-5M model), split by sequence. Validation was used to choose lambda_area.
+              Test: Im2GPS, 237 everyday photos, and 1,233 OSV-5M street photos.
+Models        OSV-5M baseline (CLIP ViT-L/14, frozen): trained against, main model.
+              GeoViT (Abdulrahman, DINOv2-small, 214 countries, frozen): trained against, second model.
+              GeoCLIP: only for transfer.
+Located       Im2GPS: OSV-5M 145, GeoViT 54, GeoCLIP 182 of 237. Street test: 812, 770, 531 of 1,233.
+Metrics       Hidden (%), blurred area (mean mask), LPIPS (lower = less damage), SSIM (higher =
+              more similar), seconds per photo (RTX 5070).
+Baselines     Full blur (Gaussian sigma 20); heatmap blur (hottest 10% of the occlusion heatmap
+              fully blurred, the rest in proportion to heat); optimized blur (Fong et al., 1,600
+              steps, 5-80% area targets).
+Training      5 epochs, AdamW (lr 3e-4), batch 16, lambda_area 3, lambda_tv 1.
+              69 min (OSV-5M) and 33 min (GeoViT) on an RTX 5070. 3 seeds for the main network.
+
+Experiments and their goals:
+E1  Against OSV-5M: how many photos does each method hide, how much does it damage the photo,
+    and how long does it take? (poster_table_osv5m.png, poster_tradeoff_osv5m.png)
+E2  Against our own GeoViT: does the same method work for a different geolocator?
+    (poster_tradeoff_geovit.png, poster_table_geovit.png)
+E3  Transfer: does a blur made against one model also fool models it was not made for,
+    including GeoCLIP, which no method saw? (poster_plot_transfer.png, poster_table_transfer.png)
+E4  Where and why it fails: example photos, overlap with the heatmaps, seeds, street photos
+    against everyday photos. (poster_examples.png, overlap_ratio.csv)
+E5  Robustness: is the photo still hidden after it is saved as a JPEG (quality 75) or
+    screenshotted at half size? (poster_plot_robustness.png, poster_table_robustness.png)
+
+
+RESULTS (main figure: poster_tradeoff_osv5m.png; the same numbers in poster_table_osv5m.png)
+--------------------------------------------------------------------------------------------
+Against OSV-5M on Im2GPS (145 photos):
+  Full blur                 100% blurred   95% hidden   LPIPS 0.82   0.0001 s
+  Heatmap blur              48%            76%          0.56         7.5 s
+  Optimized blur, 5%        11%            94%          0.25         252 s
+  Optimized blur, 10%       16%            98%          0.33         252 s
+  Privacy network, lambda 3 16 +- 3%       92 +- 6%     0.39 +- 0.03 0.018 s   (3 seeds)
+  Privacy network, lambda 10 7%            81%          0.18         0.018 s
+Against GeoViT on Im2GPS (54 photos):
+  Full blur 81% hidden; heatmap blur (GeoViT's heatmap, 39% blurred) 76%, 0.72 s;
+  privacy network 96% with 7% blurred, LPIPS 0.18, 0.008 s.
+
+Takeaway (one sentence):
+One forward pass hides 92% of photos from OSV-5M in 0.02 s, about 14,000x faster than
+per-photo optimization (252 s), which still damages the photo less for the same privacy.
+
+
+ANALYSIS (failure cases and what drives the difference)
+-------------------------------------------------------
+Failure cases (poster_examples.png):
+- Full blur still finds the Sydney Opera House (399 km): its shape and colours survive heavy blur.
+  Full blur also hides only 81% from GeoViT, while destroying the photo (LPIPS 0.82).
+- Heatmap blur leaves Sydney at 2 km: blurring where the model looks is not enough.
+- The network trained against GeoViT barely blurs Sydney, and OSV-5M finds it (21 km).
+What drives the differences:
+- Per-photo search against one pass: optimized blur searches each photo for 1,600 steps, so it
+  fits that photo better (94% hidden at LPIPS 0.25, against 92% at 0.39 for the network), but it
+  takes 252 s. The network learned one general rule from 42k photos, so it runs in 0.018 s.
+  This is the trade Dabkowski & Gal made for real-time saliency, now measured for privacy.
+- Heatmaps do not say what to blur: heatmap blur needs 39-48% of the photo and still hides only
+  76%, from both models. The network's blur overlaps the heatmaps only 1.2x more than chance
+  (GeoViT: 1.17x). Occlusion heatmaps (as in PlaNet) cover one window at a time, while the
+  models seem to use several cues at once.
+- Blurs specialise to their model (poster_table_transfer.png): each blur works best on the model
+  it was made against. Among the blurs made against OSV-5M, the network blurs the least (13%)
+  yet hides the most from GeoViT (80%) and GeoCLIP (62%); optimized blur gets 56% and 35%,
+  heatmap blur 65% and 54% with 48% blurred. The GeoViT network's light 7% blur hides only 57%
+  from OSV-5M and 27% from GeoCLIP.
+- The masks are textures and stripes, not objects, and two seeds overlap only 1.3x more than
+  chance: many different blurs work, which looks like model-specific (adversarial) patterns.
+- Compression and screenshots (poster_table_robustness.png): the two targeted blurs lose
+  protection. Against OSV-5M, optimized blur drops from 97% to 81% (JPEG) and 80% (screenshot),
+  the network from 92% to 84% and 83%. The broad blurs do not drop (full blur 94-96%, heatmap
+  blur 74-79%). After compression the network is about as private as optimized blur, with far
+  less blur than heatmap blur. The GeoViT network's light 7% blur drops most on a screenshot
+  (96% to 72%). This fits fine, model-specific patterns that compression and resizing smooth away.
+- Domain: on OSV-5M street photos, like the training photos, the network hides 98 +- 2% at
+  LPIPS 0.21 (3 seeds; full blur 97%). On everyday Im2GPS photos it hides less (92%) and blurs more.
+- Too high an area cost collapses the network to no blur (lambda_area 30 hides 1% on validation).
+
+
+LIMITATIONS AND NEXT STEPS
+--------------------------
+Limitations:
+- The protection is tuned to the model it was trained against; other models are fooled less
+  (e.g. 52% for GeoViT on street photos), so an unknown attacker may not be fooled.
+- Small samples: 54 Im2GPS photos for GeoViT (about +-11 points), 145 for OSV-5M (about +-4).
+  Saving as PNG adds about 1 point of noise.
+- Only the main network has 3 seeds; other settings and all transfer numbers are one seed.
+- Optimized blur was only run against OSV-5M, and the baselines only on Im2GPS (full blur on both).
+- Compression tested at one setting only (JPEG quality 75), and a screenshot is simulated as a
+  half-size copy, not a real screen capture.
+- 224x224 centre crop only. LPIPS and SSIM stand in for what people see; no user study.
+Next steps:
+- Train against several geolocators at once (OSV-5M and GeoViT) for blurs that transfer.
+- Make the blur survive compression: apply JPEG and resizing to the blurred photo during training.
+- More seeds, and optimized blur against GeoViT.
+- Use the network in the demo: it is fast enough to protect a photo live.
+
+
+CAPTIONS
+--------
+poster_method.png
+  The privacy network (top) blurs a photo in one pass. During training only (dashed box), the
+  frozen geolocator guesses on the blurred photo, and the loss updates the decoder. The mask is
+  scaled for visibility.
+
+poster_table_osv5m.png
+  Against OSV-5M on Im2GPS. Hidden: the guess is more than 750 km away, out of the 145 photos
+  OSV-5M locates without blur. Blurred area: the mean blur mask. Time measured on an RTX 5070
+  (full blur and network in batches of 16, the others one photo at a time); optimized blur's
+  252 s gives all six area targets in one run; heatmap blur's time is building the heatmap
+  (729 guesses). +- = std over 3 seeds. Shaded: our method.
+
+poster_table_geovit.png
+  Against GeoViT on Im2GPS. Hidden: GeoViT names the wrong country, out of the 54 photos it
+  places in the right country without blur. Heatmap blur uses GeoViT's own heatmap. Optimized
+  blur was only run against OSV-5M.
+
+poster_table_transfer.png
+  Each blur shown to all three models. Bold: the model it was made against; the other cells test
+  transfer. GeoCLIP was used by no method. One seed, so the network blurs 13% here (16 +- 3% over
+  3 seeds in the OSV-5M table).
+
+poster_tradeoff_geovit.png
+  Im2GPS, against GeoViT (54 photos it places in the right country without blur). Heatmap blur
+  uses GeoViT's own heatmap at 5-80% hottest pixels. Optimized blur was only run against OSV-5M.
+
+poster_plot_transfer.png
+  Im2GPS. Each row is one blur; each dot is how many photos one model can no longer place.
+  The grey bar is the spread: a long bar means the blur mostly fools the model it was made
+  against. GeoCLIP was used by no method.
+
+poster_plot_robustness.png
+  Im2GPS. Each line follows one blur from the saved PNG to a JPEG (quality 75) and a half-size
+  screenshot, guessed on by the model the blur was made against. The two targeted blurs
+  (optimized blur, privacy network) lose protection; broad blurs do not.
+
+poster_table_robustness.png
+  Hidden on Im2GPS after saving the blurred photo as a JPEG (quality 75) or a half-size
+  screenshot, guessed on by the model each blur was made against (OSV-5M: 145 photos, GeoViT:
+  54). "As saved" is scored from the saved PNGs, so it can differ by 1-2 points from the other
+  tables. Shaded: our method.
+
+poster_examples.png
+  Found = OSV-5M guesses within 750 km of the true location; Hidden = farther away. Bottom rows:
+  OSV-5M's heatmap (orange) and where each method blurs (blue, darker = more).
+
+poster_tradeoff_osv5m.png
+  Im2GPS, against OSV-5M. Each point is one setting: lambda_area 1-10 for the network, 5-80% area
+  targets for optimized blur, 5-80% hottest pixels for heatmap blur. Left: up and to the left is
+  better. Right: the same points at each method's time per photo (log scale).

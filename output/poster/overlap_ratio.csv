@@ -1,0 +1,7 @@
+pair,ratio
+heatmap vs network,1.2075925
+heatmap vs optimised 0.1,1.0706434
+optimised 0.1 vs network,1.1444505
+network seed 1 vs seed 0,1.3070409
+GeoViT network vs network,1.3892647
+GeoViT heatmap vs GeoViT network,1.1718715

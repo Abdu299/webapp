@@ -1,0 +1,6 @@
+config,hidden,acc_750,area,ssim,lpips,ms_per_photo,n_located,seeds
+area1,0.972 ± nan,0.038 ± nan,0.203 ± nan,0.576 ± nan,0.510 ± nan,18.333 ± nan,145,1
+area10,0.814 ± nan,0.131 ± nan,0.073 ± nan,0.824 ± nan,0.180 ± nan,18.315 ± nan,145,1
+area2,0.938 ± nan,0.059 ± nan,0.158 ± nan,0.643 ± nan,0.347 ± nan,20.454 ± nan,145,1
+area7,0.855 ± nan,0.101 ± nan,0.091 ± nan,0.770 ± nan,0.234 ± nan,18.359 ± nan,145,1
+osv5m,0.917 ± 0.059,0.065 ± 0.030,0.157 ± 0.033,0.644 ± 0.036,0.392 ± 0.031,18.307 ± 0.058,145,3
