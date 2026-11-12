@@ -1,0 +1,11 @@
+config:
+  lr: 0.0003
+  weight_decay: 0.01
+  num_workers: 8
+  name: osv5m
+  batch_size: 16
+  area_weight: 3.0
+  smoothness_weight: 1.0
+  floor: 0.01
+  block: 4
+epochs: 5

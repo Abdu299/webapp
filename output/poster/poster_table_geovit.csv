@@ -1,0 +1,5 @@
+Method,Blurred area,"Hidden from GeoViT
+(of 54 it locates)",LPIPS ↓,SSIM ↑,Time per photo ↓
+Full blur,100%,81%,0.82,0.45,0.0001 s
+Heatmap blur (hottest 10% fully blurred),39%,76%,0.48,0.62,0.72 s
+Privacy network ($\lambda_{area}$ = 3),7%,96%,0.18,0.83,0.008 s

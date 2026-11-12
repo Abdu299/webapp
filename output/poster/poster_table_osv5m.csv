@@ -1,0 +1,8 @@
+Method,Blurred area,"Hidden from OSV-5M
+(of 145 it locates)",LPIPS ↓,SSIM ↑,Time per photo ↓
+Full blur,100%,95%,0.82,0.45,0.0001 s
+Heatmap blur (hottest 10% fully blurred),48%,76%,0.56,0.59,7.5 s
+Optimized blur (5% area target),11%,94%,0.25,0.83,252 s
+Optimized blur (10% area target),16%,98%,0.33,0.77,252 s
+"Privacy network ($\lambda_{area}$ = 3, 3 seeds)",16% ± 3%,92% ± 6%,0.39 ± 0.03,0.64 ± 0.04,0.018 s
+Privacy network ($\lambda_{area}$ = 10),7%,81%,0.18,0.82,0.018 s

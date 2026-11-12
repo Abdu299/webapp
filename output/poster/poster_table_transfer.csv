@@ -1,0 +1,10 @@
+Method,Made against,Blurred area,"Hidden from OSV-5M
+(of 145 it locates)","Hidden from GeoViT
+(of 54 it locates)","Hidden from GeoCLIP
+(of 182 it locates)"
+Full blur,-,100%,95%,81%,89%
+Heatmap blur (hottest 10% fully blurred),OSV-5M,48%,76%,65%,54%
+Optimized blur (10% area target),OSV-5M,16%,98%,56%,35%
+Privacy network ($\lambda_{area}$ = 3),OSV-5M,13%,92%,80%,62%
+Heatmap blur (hottest 10% fully blurred),GeoViT,39%,62%,76%,43%
+Privacy network ($\lambda_{area}$ = 3),GeoViT,7%,57%,96%,27%

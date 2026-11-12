@@ -1,0 +1,10 @@
+method,condition,hidden,n_located
+full_sigma20,png,0.8148148148148148,54
+full_sigma20,jpeg,0.8888888888888888,54
+full_sigma20,screenshot,0.8518518518518519,54
+heatmap_geovit_0.1,png,0.7592592592592593,54
+heatmap_geovit_0.1,jpeg,0.8148148148148148,54
+heatmap_geovit_0.1,screenshot,0.7592592592592593,54
+network,png,0.9629629629629629,54
+network,jpeg,0.8518518518518519,54
+network,screenshot,0.7222222222222222,54
