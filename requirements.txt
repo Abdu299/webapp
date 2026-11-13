@@ -1,35 +1,43 @@
-torch
-torchvision
+
+# PyTorch - compatible versions
+torch==2.6.0
+torchvision==0.21.0
+
+# Data processing
 pandas
 Pillow
 huggingface_hub
 numpy==1.26.4
+scipy==1.13.1
 matplotlib
 scikit-learn
-transformers
-
-
-torchmetrics
-numpy
-
 tqdm
-
-
-ipykernel
-jupyter
-
 joblib
-wandb
-hydra-core
-scipy
-pytorch-lightning
 
+# AI models - GeoViT / DINOv2
+transformers==4.49.0
 accelerate
 peft
-geos
+
+# Privacy and segmentation
+torchmetrics
+lightning>=2.2,<3.0
+geoclip==1.2.3
 reverse_geocoder
-geoclip
-lightning>=2.2
+geos
+
+# Backend - FastAPI
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Training and experiments
+wandb
+hydra-core
 tensorboard
+
+# Jupyter
+ipykernel
+jupyter
 
 # git+https://github.uio.no/xpt/quix.git
