@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 60",
+  "truth": {
+    "lat": 25.114046,
+    "lng": -77.126255,
+    "country": "BS"
+  },
+  "model": {
+    "lat": -27.0,
+    "lng": 133.0,
+    "country": "AU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AU",
+      "probability_pct": 45.18
+    },
+    {
+      "country": "NZ",
+      "probability_pct": 30.74
+    },
+    {
+      "country": "US",
+      "probability_pct": 7.11
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 69.16
+      },
+      {
+        "country": "AU",
+        "probability_pct": 6.2
+      },
+      {
+        "country": "US",
+        "probability_pct": 3.65
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.93141,
+    "lpips": 0.07234,
+    "blurred_area": 0.04075,
+    "quality_metric": "SSIM",
+    "quality_score": 0.93141
+  },
+  "prediction_type": "country",
+  "source_id": "Bahamas_00006_343059190_9c31e29446_134_39595541@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

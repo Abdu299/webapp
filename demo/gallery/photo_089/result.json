@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 89",
+  "truth": {
+    "lat": 24.938747,
+    "lng": -80.650634,
+    "country": "US"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 44.23
+    },
+    {
+      "country": "IN",
+      "probability_pct": 13.87
+    },
+    {
+      "country": "US",
+      "probability_pct": 7.17
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 74.6
+      },
+      {
+        "country": "AE",
+        "probability_pct": 8.25
+      },
+      {
+        "country": "JP",
+        "probability_pct": 4.26
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.91806,
+    "lpips": 0.07867,
+    "blurred_area": 0.04928,
+    "quality_metric": "SSIM",
+    "quality_score": 0.91806
+  },
+  "prediction_type": "country",
+  "source_id": "Florida_00015_180339543_001a933e62_70_43935788@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

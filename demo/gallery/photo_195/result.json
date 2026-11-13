@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 195",
+  "truth": {
+    "lat": 53.229056,
+    "lng": -0.547943,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 75.0
+    },
+    {
+      "country": "JE",
+      "probability_pct": 11.48
+    },
+    {
+      "country": "IE",
+      "probability_pct": 9.17
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 54.0,
+      "lng": -2.0,
+      "country": "GB",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "GB",
+        "probability_pct": 80.58
+      },
+      {
+        "country": "RU",
+        "probability_pct": 13.7
+      },
+      {
+        "country": "GE",
+        "probability_pct": 1.54
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79328,
+    "lpips": 0.19328,
+    "blurred_area": 0.10315,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79328
+  },
+  "prediction_type": "country",
+  "source_id": "england_00047_273334374_b9447e5806_94_57749403@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

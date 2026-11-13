@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 161",
+  "truth": {
+    "lat": 22.565354,
+    "lng": 114.073448,
+    "country": "CN"
+  },
+  "model": {
+    "lat": 35.0,
+    "lng": 105.0,
+    "country": "CN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CN",
+      "probability_pct": 78.27
+    },
+    {
+      "country": "TW",
+      "probability_pct": 5.42
+    },
+    {
+      "country": "MX",
+      "probability_pct": 5.1
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 36.0,
+      "lng": 138.0,
+      "country": "JP",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "JP",
+        "probability_pct": 33.59
+      },
+      {
+        "country": "CN",
+        "probability_pct": 22.05
+      },
+      {
+        "country": "RU",
+        "probability_pct": 15.83
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.84374,
+    "lpips": 0.12679,
+    "blurred_area": 0.06927,
+    "quality_metric": "SSIM",
+    "quality_score": 0.84374
+  },
+  "prediction_type": "country",
+  "source_id": "Shenzhen_00003_954656461_a90fe556dc_1111_32377115@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 163",
+  "truth": {
+    "lat": 43.323538,
+    "lng": -1.98522,
+    "country": "ES"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 81.61
+    },
+    {
+      "country": "ES",
+      "probability_pct": 13.5
+    },
+    {
+      "country": "FR",
+      "probability_pct": 4.67
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 40.0,
+      "lng": -4.0,
+      "country": "ES",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "ES",
+        "probability_pct": 27.17
+      },
+      {
+        "country": "GE",
+        "probability_pct": 24.64
+      },
+      {
+        "country": "TR",
+        "probability_pct": 9.37
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.61154,
+    "lpips": 0.31805,
+    "blurred_area": 0.14219,
+    "quality_metric": "SSIM",
+    "quality_score": 0.61154
+  },
+  "prediction_type": "country",
+  "source_id": "Spain_00063_379578856_a608d0b600_146_75653366@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 112",
+  "truth": {
+    "lat": -1.293015,
+    "lng": 36.815357,
+    "country": "KE"
+  },
+  "model": {
+    "lat": -15.0,
+    "lng": 30.0,
+    "country": "ZM",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "ZM",
+      "probability_pct": 34.33
+    },
+    {
+      "country": "UG",
+      "probability_pct": 32.08
+    },
+    {
+      "country": "NG",
+      "probability_pct": 11.05
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 38.0,
+      "lng": -97.0,
+      "country": "US",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "US",
+        "probability_pct": 25.42
+      },
+      {
+        "country": "RU",
+        "probability_pct": 24.52
+      },
+      {
+        "country": "GB",
+        "probability_pct": 20.11
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.83442,
+    "lpips": 0.1805,
+    "blurred_area": 0.08976,
+    "quality_metric": "SSIM",
+    "quality_score": 0.83442
+  },
+  "prediction_type": "country",
+  "source_id": "Kenya_00017_1061753413_0861543f7e_1267_17351226@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

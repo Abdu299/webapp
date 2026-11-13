@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 127",
+  "truth": {
+    "lat": 48.973343,
+    "lng": 89.959659,
+    "country": "MN"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 68.23
+    },
+    {
+      "country": "TR",
+      "probability_pct": 12.94
+    },
+    {
+      "country": "AL",
+      "probability_pct": 5.6
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.31
+      },
+      {
+        "country": "SE",
+        "probability_pct": 0.57
+      },
+      {
+        "country": "DK",
+        "probability_pct": 0.25
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.935,
+    "lpips": 0.06453,
+    "blurred_area": 0.03087,
+    "quality_metric": "SSIM",
+    "quality_score": 0.935
+  },
+  "prediction_type": "country",
+  "source_id": "Mongolia_00002_207032483_20095af4a6_60_14542551@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

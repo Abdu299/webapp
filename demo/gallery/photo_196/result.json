@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 196",
+  "truth": {
+    "lat": 53.190613,
+    "lng": -2.894822,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 97.78
+    },
+    {
+      "country": "JE",
+      "probability_pct": 0.69
+    },
+    {
+      "country": "IE",
+      "probability_pct": 0.43
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 89.79
+      },
+      {
+        "country": "GE",
+        "probability_pct": 2.02
+      },
+      {
+        "country": "TR",
+        "probability_pct": 1.57
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.67397,
+    "lpips": 0.35613,
+    "blurred_area": 0.12148,
+    "quality_metric": "SSIM",
+    "quality_score": 0.67397
+  },
+  "prediction_type": "country",
+  "source_id": "england_00090_496632589_c83b7bb9e9_226_91548597@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

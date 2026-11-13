@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 176",
+  "truth": {
+    "lat": 35.690428,
+    "lng": 139.704803,
+    "country": "JP"
+  },
+  "model": {
+    "lat": 15.0,
+    "lng": 100.0,
+    "country": "TH",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TH",
+      "probability_pct": 64.91
+    },
+    {
+      "country": "JP",
+      "probability_pct": 9.03
+    },
+    {
+      "country": "US",
+      "probability_pct": 6.02
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 36.0,
+      "lng": 138.0,
+      "country": "JP",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "JP",
+        "probability_pct": 63.65
+      },
+      {
+        "country": "TH",
+        "probability_pct": 9.74
+      },
+      {
+        "country": "US",
+        "probability_pct": 4.85
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.94097,
+    "lpips": 0.05584,
+    "blurred_area": 0.03058,
+    "quality_metric": "SSIM",
+    "quality_score": 0.94097
+  },
+  "prediction_type": "country",
+  "source_id": "Tokyo_00070_439717934_3d0fd200f1_180_97324495@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

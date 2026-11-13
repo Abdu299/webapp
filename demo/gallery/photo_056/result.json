@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 56",
+  "truth": {
+    "lat": 16.998628,
+    "lng": -61.755861,
+    "country": "AG"
+  },
+  "model": {
+    "lat": -41.0,
+    "lng": 174.0,
+    "country": "NZ",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NZ",
+      "probability_pct": 84.76
+    },
+    {
+      "country": "PT",
+      "probability_pct": 3.99
+    },
+    {
+      "country": "US",
+      "probability_pct": 2.21
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 56.0,
+      "lng": 10.0,
+      "country": "DK",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "DK",
+        "probability_pct": 27.27
+      },
+      {
+        "country": "RU",
+        "probability_pct": 23.91
+      },
+      {
+        "country": "SE",
+        "probability_pct": 8.53
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.84989,
+    "lpips": 0.10635,
+    "blurred_area": 0.05521,
+    "quality_metric": "SSIM",
+    "quality_score": 0.84989
+  },
+  "prediction_type": "country",
+  "source_id": "Antigua_00003_483035669_21c8bdeb2d_185_61417564@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 104",
+  "truth": {
+    "lat": 53.360182,
+    "lng": -6.188049,
+    "country": "IE"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 58.62
+    },
+    {
+      "country": "NZ",
+      "probability_pct": 17.4
+    },
+    {
+      "country": "JP",
+      "probability_pct": 5.4
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 89.87
+      },
+      {
+        "country": "GE",
+        "probability_pct": 4.67
+      },
+      {
+        "country": "RO",
+        "probability_pct": 0.87
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.84362,
+    "lpips": 0.20116,
+    "blurred_area": 0.06555,
+    "quality_metric": "SSIM",
+    "quality_score": 0.84362
+  },
+  "prediction_type": "country",
+  "source_id": "Ireland_00007_91942412_95795b8eb9_41_11398209@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

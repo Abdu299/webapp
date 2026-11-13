@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 150",
+  "truth": {
+    "lat": 38.693519,
+    "lng": -9.205673,
+    "country": "PT"
+  },
+  "model": {
+    "lat": 20.0,
+    "lng": 77.0,
+    "country": "IN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IN",
+      "probability_pct": 79.55
+    },
+    {
+      "country": "PK",
+      "probability_pct": 6.98
+    },
+    {
+      "country": "MM",
+      "probability_pct": 2.16
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 20.0,
+      "lng": 77.0,
+      "country": "IN",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "IN",
+        "probability_pct": 49.21
+      },
+      {
+        "country": "JO",
+        "probability_pct": 13.35
+      },
+      {
+        "country": "PK",
+        "probability_pct": 8.7
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.92082,
+    "lpips": 0.11473,
+    "blurred_area": 0.05837,
+    "quality_metric": "SSIM",
+    "quality_score": 0.92082
+  },
+  "prediction_type": "country",
+  "source_id": "Portugal_00028_288609860_5f01b18ba2_108_82981539@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

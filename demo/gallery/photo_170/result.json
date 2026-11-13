@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 170",
+  "truth": {
+    "lat": 46.604579,
+    "lng": 7.935862,
+    "country": "CH"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": -95.0,
+    "country": "CA",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CA",
+      "probability_pct": 23.77
+    },
+    {
+      "country": "CH",
+      "probability_pct": 9.27
+    },
+    {
+      "country": "US",
+      "probability_pct": 7.89
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 54.0,
+      "lng": -2.0,
+      "country": "GB",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "GB",
+        "probability_pct": 90.41
+      },
+      {
+        "country": "PT",
+        "probability_pct": 1.46
+      },
+      {
+        "country": "JP",
+        "probability_pct": 1.26
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75661,
+    "lpips": 0.20585,
+    "blurred_area": 0.0711,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75661
+  },
+  "prediction_type": "country",
+  "source_id": "Switzerland_00086_1367058455_d58f03d50f_1136_9407621@N05",
+  "heatmap_available": true,
+  "clues_available": false
+}

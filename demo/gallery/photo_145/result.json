@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 145",
+  "truth": {
+    "lat": 48.805012,
+    "lng": 2.121015,
+    "country": "FR"
+  },
+  "model": {
+    "lat": 40.0,
+    "lng": -4.0,
+    "country": "ES",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "ES",
+      "probability_pct": 37.65
+    },
+    {
+      "country": "RU",
+      "probability_pct": 10.02
+    },
+    {
+      "country": "KH",
+      "probability_pct": 9.13
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.4
+      },
+      {
+        "country": "JP",
+        "probability_pct": 1.15
+      },
+      {
+        "country": "ES",
+        "probability_pct": 0.66
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.69034,
+    "lpips": 0.26292,
+    "blurred_area": 0.11326,
+    "quality_metric": "SSIM",
+    "quality_score": 0.69034
+  },
+  "prediction_type": "country",
+  "source_id": "Paris_00160_524943416_6cc4913ba0_249_80246871@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

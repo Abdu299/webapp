@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 193",
+  "truth": {
+    "lat": 40.557373,
+    "lng": 14.266262,
+    "country": "IT"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 24.71
+    },
+    {
+      "country": "HR",
+      "probability_pct": 22.68
+    },
+    {
+      "country": "GR",
+      "probability_pct": 12.1
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 64.53
+      },
+      {
+        "country": "AU",
+        "probability_pct": 6.91
+      },
+      {
+        "country": "OM",
+        "probability_pct": 5.48
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.98354,
+    "lpips": 0.07564,
+    "blurred_area": 0.02655,
+    "quality_metric": "SSIM",
+    "quality_score": 0.98354
+  },
+  "prediction_type": "country",
+  "source_id": "capri_00004_483725210_cb68b00ed5_174_40425693@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

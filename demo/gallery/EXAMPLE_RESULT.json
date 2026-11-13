@@ -1,0 +1,8 @@
+{
+  "title": "Mystery location",
+  "truth": {"lat": 59.9139, "lng": 10.7522, "country": "Norway", "label": "Oslo"},
+  "model": {"lat": 60.472, "lng": 8.4689, "country": "Norway", "label": "Country representative point"},
+  "top3": [{"country":"Norway","probability_pct":61.2},{"country":"Sweden","probability_pct":23.4},{"country":"Finland","probability_pct":8.1}],
+  "clues": [{"name":"Road", "color":"#f59e0b", "share_pct":32.1},{"name":"Building", "color":"#3b82f6", "share_pct":18.7}],
+  "privacy": {"available":true,"model":{"lat":59.3293,"lng":18.0686,"country":"Sweden"},"quality_metric":"SSIM","quality_score":0.91}
+}

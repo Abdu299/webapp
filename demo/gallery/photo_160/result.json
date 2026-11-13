@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 160",
+  "truth": {
+    "lat": 37.583085,
+    "lng": 126.992683,
+    "country": "KR"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 95.6
+    },
+    {
+      "country": "ID",
+      "probability_pct": 1.55
+    },
+    {
+      "country": "MM",
+      "probability_pct": 0.9
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 90.41
+      },
+      {
+        "country": "AU",
+        "probability_pct": 4.17
+      },
+      {
+        "country": "GB",
+        "probability_pct": 3.32
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.74672,
+    "lpips": 0.21347,
+    "blurred_area": 0.08468,
+    "quality_metric": "SSIM",
+    "quality_score": 0.74672
+  },
+  "prediction_type": "country",
+  "source_id": "Seoul_00010_367998508_f0e90c701b_107_87409164@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

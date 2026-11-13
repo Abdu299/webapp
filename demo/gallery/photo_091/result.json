@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 91",
+  "truth": {
+    "lat": 48.575755,
+    "lng": 7.744073,
+    "country": "FR"
+  },
+  "model": {
+    "lat": 46.0,
+    "lng": 25.0,
+    "country": "RO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RO",
+      "probability_pct": 24.07
+    },
+    {
+      "country": "RU",
+      "probability_pct": 18.56
+    },
+    {
+      "country": "IT",
+      "probability_pct": 15.08
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.05
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 0.37
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.34
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.88739,
+    "lpips": 0.09449,
+    "blurred_area": 0.04592,
+    "quality_metric": "SSIM",
+    "quality_score": 0.88739
+  },
+  "prediction_type": "country",
+  "source_id": "France_00143_633617121_9d719c65ba_1223_7591003@N03",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 183",
+  "truth": {
+    "lat": 38.773023,
+    "lng": -109.324779,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 61.42
+    },
+    {
+      "country": "LS",
+      "probability_pct": 21.8
+    },
+    {
+      "country": "CA",
+      "probability_pct": 10.53
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 49.51
+      },
+      {
+        "country": "BR",
+        "probability_pct": 14.02
+      },
+      {
+        "country": "ES",
+        "probability_pct": 6.75
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75153,
+    "lpips": 0.25656,
+    "blurred_area": 0.11225,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75153
+  },
+  "prediction_type": "country",
+  "source_id": "Utah_00026_474986001_181d71a40d_218_53364390@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

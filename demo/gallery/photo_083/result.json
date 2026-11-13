@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 83",
+  "truth": {
+    "lat": 55.684655,
+    "lng": 12.589323,
+    "country": "DK"
+  },
+  "model": {
+    "lat": 46.0,
+    "lng": 2.0,
+    "country": "FR",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "FR",
+      "probability_pct": 29.8
+    },
+    {
+      "country": "IT",
+      "probability_pct": 12.47
+    },
+    {
+      "country": "RU",
+      "probability_pct": 8.94
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 76.6
+      },
+      {
+        "country": "AU",
+        "probability_pct": 14.48
+      },
+      {
+        "country": "NO",
+        "probability_pct": 1.75
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.8435,
+    "lpips": 0.12277,
+    "blurred_area": 0.05998,
+    "quality_metric": "SSIM",
+    "quality_score": 0.8435
+  },
+  "prediction_type": "country",
+  "source_id": "Denmark_00009_258337247_96db5706ff_95_70402049@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

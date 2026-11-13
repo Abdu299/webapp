@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 200",
+  "truth": {
+    "lat": 40.455307,
+    "lng": -75.300292,
+    "country": "US"
+  },
+  "model": {
+    "lat": 40.0,
+    "lng": -4.0,
+    "country": "ES",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "ES",
+      "probability_pct": 29.46
+    },
+    {
+      "country": "US",
+      "probability_pct": 16.81
+    },
+    {
+      "country": "RU",
+      "probability_pct": 11.47
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 75.92
+      },
+      {
+        "country": "AU",
+        "probability_pct": 7.91
+      },
+      {
+        "country": "CA",
+        "probability_pct": 5.54
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75354,
+    "lpips": 0.18569,
+    "blurred_area": 0.08056,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75354
+  },
+  "prediction_type": "country",
+  "source_id": "nyc_00037_195999660_2dba8fdba9_60_40829484@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

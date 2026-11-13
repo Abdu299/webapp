@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 109",
+  "truth": {
+    "lat": 43.348151,
+    "lng": 11.510925,
+    "country": "IT"
+  },
+  "model": {
+    "lat": 47.0,
+    "lng": 20.0,
+    "country": "HU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "HU",
+      "probability_pct": 81.59
+    },
+    {
+      "country": "PL",
+      "probability_pct": 5.34
+    },
+    {
+      "country": "CZ",
+      "probability_pct": 4.29
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 54.96
+      },
+      {
+        "country": "TR",
+        "probability_pct": 17.25
+      },
+      {
+        "country": "HU",
+        "probability_pct": 4.96
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81032,
+    "lpips": 0.18295,
+    "blurred_area": 0.08285,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81032
+  },
+  "prediction_type": "country",
+  "source_id": "Italy_00134_844603727_96b5c1d9bc_1229_76306992@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

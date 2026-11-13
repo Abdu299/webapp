@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 82",
+  "truth": {
+    "lat": 34.937874,
+    "lng": 32.86663,
+    "country": "CY"
+  },
+  "model": {
+    "lat": -27.0,
+    "lng": 133.0,
+    "country": "AU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AU",
+      "probability_pct": 30.61
+    },
+    {
+      "country": "AT",
+      "probability_pct": 16.37
+    },
+    {
+      "country": "SE",
+      "probability_pct": 11.83
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.93
+      },
+      {
+        "country": "NO",
+        "probability_pct": 0.33
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.29
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.85899,
+    "lpips": 0.1826,
+    "blurred_area": 0.0758,
+    "quality_metric": "SSIM",
+    "quality_score": 0.85899
+  },
+  "prediction_type": "country",
+  "source_id": "Cyprus_00009_504391595_088287d4f6_189_8255645@N03",
+  "heatmap_available": true,
+  "clues_available": false
+}

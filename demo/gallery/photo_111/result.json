@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 111",
+  "truth": {
+    "lat": 35.339774,
+    "lng": 139.526367,
+    "country": "JP"
+  },
+  "model": {
+    "lat": 23.7,
+    "lng": 121.0,
+    "country": "TW",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TW",
+      "probability_pct": 44.84
+    },
+    {
+      "country": "JP",
+      "probability_pct": 20.85
+    },
+    {
+      "country": "KR",
+      "probability_pct": 19.17
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 79.25
+      },
+      {
+        "country": "AU",
+        "probability_pct": 4.37
+      },
+      {
+        "country": "CA",
+        "probability_pct": 2.71
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.88291,
+    "lpips": 0.13643,
+    "blurred_area": 0.06607,
+    "quality_metric": "SSIM",
+    "quality_score": 0.88291
+  },
+  "prediction_type": "country",
+  "source_id": "Japan_00108_482880218_7f3a0383bc_175_8047699@N05",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 202",
+  "truth": {
+    "lat": 29.188135,
+    "lng": -81.226387,
+    "country": "US"
+  },
+  "model": {
+    "lat": -27.0,
+    "lng": 133.0,
+    "country": "AU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AU",
+      "probability_pct": 30.0
+    },
+    {
+      "country": "NZ",
+      "probability_pct": 14.85
+    },
+    {
+      "country": "GB",
+      "probability_pct": 13.19
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.67
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.1
+      },
+      {
+        "country": "DE",
+        "probability_pct": 0.05
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.86073,
+    "lpips": 0.18271,
+    "blurred_area": 0.08932,
+    "quality_metric": "SSIM",
+    "quality_score": 0.86073
+  },
+  "prediction_type": "country",
+  "source_id": "orlando_00010_295896083_bb881f9d62_110_29251780@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

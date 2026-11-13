@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 157",
+  "truth": {
+    "lat": 41.890393,
+    "lng": 12.49197,
+    "country": "IT"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 79.93
+    },
+    {
+      "country": "GR",
+      "probability_pct": 6.86
+    },
+    {
+      "country": "VA",
+      "probability_pct": 5.99
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.79
+      },
+      {
+        "country": "GE",
+        "probability_pct": 3.51
+      },
+      {
+        "country": "IR",
+        "probability_pct": 1.03
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82174,
+    "lpips": 0.24633,
+    "blurred_area": 0.07931,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82174
+  },
+  "prediction_type": "country",
+  "source_id": "Rome_00024_231521295_1a0e1b7fb5_91_55085284@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

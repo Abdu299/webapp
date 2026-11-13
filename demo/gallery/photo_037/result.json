@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 37",
+  "truth": {
+    "lat": 34.611453,
+    "lng": -111.841936,
+    "country": "US"
+  },
+  "model": {
+    "lat": 31.0,
+    "lng": 36.0,
+    "country": "JO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JO",
+      "probability_pct": 22.74
+    },
+    {
+      "country": "EG",
+      "probability_pct": 22.55
+    },
+    {
+      "country": "TN",
+      "probability_pct": 5.65
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 31.0,
+      "lng": 36.0,
+      "country": "JO",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "JO",
+        "probability_pct": 19.79
+      },
+      {
+        "country": "SA",
+        "probability_pct": 18.54
+      },
+      {
+        "country": "AE",
+        "probability_pct": 8.71
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75241,
+    "lpips": 0.23471,
+    "blurred_area": 0.10766,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75241
+  },
+  "prediction_type": "country",
+  "source_id": "453384102_723b8a8182_207_55126705@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

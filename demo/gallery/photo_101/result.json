@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 101",
+  "truth": {
+    "lat": 41.215716,
+    "lng": -88.501578,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 99.49
+    },
+    {
+      "country": "CA",
+      "probability_pct": 0.42
+    },
+    {
+      "country": "RU",
+      "probability_pct": 0.03
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 38.0,
+      "lng": -97.0,
+      "country": "US",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "US",
+        "probability_pct": 70.62
+      },
+      {
+        "country": "RU",
+        "probability_pct": 14.35
+      },
+      {
+        "country": "FR",
+        "probability_pct": 2.57
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82546,
+    "lpips": 0.14912,
+    "blurred_area": 0.06277,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82546
+  },
+  "prediction_type": "country",
+  "source_id": "Illinois_00010_372417850_1818b0405b_166_41315423@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

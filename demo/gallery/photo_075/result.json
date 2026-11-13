@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 75",
+  "truth": {
+    "lat": -4.219137,
+    "lng": -69.938964,
+    "country": "CO"
+  },
+  "model": {
+    "lat": -2.0,
+    "lng": -77.5,
+    "country": "EC",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "EC",
+      "probability_pct": 18.54
+    },
+    {
+      "country": "BO",
+      "probability_pct": 15.32
+    },
+    {
+      "country": "CO",
+      "probability_pct": 7.54
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.4
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.15
+      },
+      {
+        "country": "SE",
+        "probability_pct": 0.12
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.85968,
+    "lpips": 0.13478,
+    "blurred_area": 0.05752,
+    "quality_metric": "SSIM",
+    "quality_score": 0.85968
+  },
+  "prediction_type": "country",
+  "source_id": "Colombia_00009_487789777_0003ed5872_212_16836474@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

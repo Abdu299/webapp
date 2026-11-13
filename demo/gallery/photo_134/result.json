@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 134",
+  "truth": {
+    "lat": 60.377302,
+    "lng": 6.720371,
+    "country": "NO"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 10.0,
+    "country": "NO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NO",
+      "probability_pct": 70.93
+    },
+    {
+      "country": "SE",
+      "probability_pct": 24.59
+    },
+    {
+      "country": "CA",
+      "probability_pct": 2.06
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 95.42
+      },
+      {
+        "country": "NO",
+        "probability_pct": 1.78
+      },
+      {
+        "country": "FI",
+        "probability_pct": 0.49
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.74988,
+    "lpips": 0.22048,
+    "blurred_area": 0.11347,
+    "quality_metric": "SSIM",
+    "quality_score": 0.74988
+  },
+  "prediction_type": "country",
+  "source_id": "Norway_00012_216550665_58216eae8f_76_90833046@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

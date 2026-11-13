@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 78",
+  "truth": {
+    "lat": 9.976965,
+    "lng": -84.842176,
+    "country": "CR"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 10.0,
+    "country": "NO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NO",
+      "probability_pct": 15.67
+    },
+    {
+      "country": "US",
+      "probability_pct": 12.95
+    },
+    {
+      "country": "CA",
+      "probability_pct": 10.83
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 82.22
+      },
+      {
+        "country": "US",
+        "probability_pct": 7.14
+      },
+      {
+        "country": "IN",
+        "probability_pct": 1.5
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.96009,
+    "lpips": 0.03914,
+    "blurred_area": 0.02454,
+    "quality_metric": "SSIM",
+    "quality_score": 0.96009
+  },
+  "prediction_type": "country",
+  "source_id": "CostaRica_00017_500118634_993d0110b5_199_78225438@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 149",
+  "truth": {
+    "lat": 38.709039,
+    "lng": -9.136247,
+    "country": "PT"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 54.81
+    },
+    {
+      "country": "MT",
+      "probability_pct": 11.99
+    },
+    {
+      "country": "VA",
+      "probability_pct": 8.86
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": -95.0,
+      "country": "CA",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "CA",
+        "probability_pct": 29.44
+      },
+      {
+        "country": "AU",
+        "probability_pct": 28.94
+      },
+      {
+        "country": "RU",
+        "probability_pct": 9.38
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.71198,
+    "lpips": 0.2819,
+    "blurred_area": 0.11272,
+    "quality_metric": "SSIM",
+    "quality_score": 0.71198
+  },
+  "prediction_type": "country",
+  "source_id": "Portugal_00001_37087644_e25c1c4be1_31_41894197861@N01",
+  "heatmap_available": true,
+  "clues_available": false
+}

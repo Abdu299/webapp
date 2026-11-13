@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 158",
+  "truth": {
+    "lat": 59.94046,
+    "lng": 30.312223,
+    "country": "RU"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 93.03
+    },
+    {
+      "country": "IT",
+      "probability_pct": 3.53
+    },
+    {
+      "country": "BY",
+      "probability_pct": 1.93
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.76
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.97
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.07
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87337,
+    "lpips": 0.12448,
+    "blurred_area": 0.05077,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87337
+  },
+  "prediction_type": "country",
+  "source_id": "Russia_00019_985802242_5ad0b7dbeb_1190_23707253@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

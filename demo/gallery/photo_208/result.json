@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 208",
+  "truth": {
+    "lat": 32.845269,
+    "lng": -117.273988,
+    "country": "US"
+  },
+  "model": {
+    "lat": 39.5,
+    "lng": -8.0,
+    "country": "PT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "PT",
+      "probability_pct": 20.19
+    },
+    {
+      "country": "DK",
+      "probability_pct": 7.85
+    },
+    {
+      "country": "SE",
+      "probability_pct": 7.72
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 90.82
+      },
+      {
+        "country": "AU",
+        "probability_pct": 2.29
+      },
+      {
+        "country": "BR",
+        "probability_pct": 1.48
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.96547,
+    "lpips": 0.04054,
+    "blurred_area": 0.02023,
+    "quality_metric": "SSIM",
+    "quality_score": 0.96547
+  },
+  "prediction_type": "country",
+  "source_id": "venice_00016_265350847_0252df858c_118_44972214@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

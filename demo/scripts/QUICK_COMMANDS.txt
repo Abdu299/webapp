@@ -1,0 +1,6 @@
+# Run from the GitHub webapp repository root (not from demo/)
+source .venv/bin/activate
+python demo/scripts/build_from_repo.py --limit 20
+python -m uvicorn demo.backend.main:app --reload --port 8000
+# Another terminal:
+cd demo/frontend && npm run dev

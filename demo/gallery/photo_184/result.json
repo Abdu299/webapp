@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 184",
+  "truth": {
+    "lat": 43.043237,
+    "lng": -72.909822,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 76.38
+    },
+    {
+      "country": "SE",
+      "probability_pct": 12.73
+    },
+    {
+      "country": "CA",
+      "probability_pct": 5.66
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 84.38
+      },
+      {
+        "country": "SE",
+        "probability_pct": 7.65
+      },
+      {
+        "country": "BR",
+        "probability_pct": 4.38
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.59358,
+    "lpips": 0.37581,
+    "blurred_area": 0.14793,
+    "quality_metric": "SSIM",
+    "quality_score": 0.59358
+  },
+  "prediction_type": "country",
+  "source_id": "Vermont_00002_113886360_6cb9ab47bd_41_87434398@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

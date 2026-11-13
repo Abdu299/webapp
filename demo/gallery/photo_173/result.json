@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 173",
+  "truth": {
+    "lat": 24.514718,
+    "lng": 121.60818,
+    "country": "TW"
+  },
+  "model": {
+    "lat": 23.7,
+    "lng": 121.0,
+    "country": "TW",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TW",
+      "probability_pct": 24.67
+    },
+    {
+      "country": "US",
+      "probability_pct": 15.46
+    },
+    {
+      "country": "JP",
+      "probability_pct": 14.62
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.3
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.36
+      },
+      {
+        "country": "PT",
+        "probability_pct": 0.3
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82733,
+    "lpips": 0.24722,
+    "blurred_area": 0.07663,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82733
+  },
+  "prediction_type": "country",
+  "source_id": "Taiwan_00044_406785882_413e3bba60_158_81421684@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

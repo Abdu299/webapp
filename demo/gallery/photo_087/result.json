@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 87",
+  "truth": {
+    "lat": 24.032668,
+    "lng": 32.825775,
+    "country": "EG"
+  },
+  "model": {
+    "lat": 24.0,
+    "lng": 54.0,
+    "country": "AE",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AE",
+      "probability_pct": 15.41
+    },
+    {
+      "country": "IT",
+      "probability_pct": 15.21
+    },
+    {
+      "country": "FR",
+      "probability_pct": 11.56
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 78.17
+      },
+      {
+        "country": "AU",
+        "probability_pct": 6.74
+      },
+      {
+        "country": "QA",
+        "probability_pct": 3.04
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79832,
+    "lpips": 0.19934,
+    "blurred_area": 0.08323,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79832
+  },
+  "prediction_type": "country",
+  "source_id": "Egypt_00018_389284696_a6c0fa7e22_160_36948083@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

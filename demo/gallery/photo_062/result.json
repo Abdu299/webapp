@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 62",
+  "truth": {
+    "lat": 41.385245,
+    "lng": 2.169284,
+    "country": "ES"
+  },
+  "model": {
+    "lat": 35.0,
+    "lng": 105.0,
+    "country": "CN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CN",
+      "probability_pct": 35.93
+    },
+    {
+      "country": "TW",
+      "probability_pct": 10.14
+    },
+    {
+      "country": "BR",
+      "probability_pct": 7.18
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 58.21
+      },
+      {
+        "country": "GE",
+        "probability_pct": 8.45
+      },
+      {
+        "country": "MY",
+        "probability_pct": 6.94
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79647,
+    "lpips": 0.31023,
+    "blurred_area": 0.09619,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79647
+  },
+  "prediction_type": "country",
+  "source_id": "Barcelona_00014_144658910_7517982a97_46_49503208420@N01",
+  "heatmap_available": true,
+  "clues_available": false
+}

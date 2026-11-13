@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 114",
+  "truth": {
+    "lat": 51.522629,
+    "lng": -0.099563,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 52.5,
+    "lng": 5.75,
+    "country": "NL",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NL",
+      "probability_pct": 39.95
+    },
+    {
+      "country": "FR",
+      "probability_pct": 31.17
+    },
+    {
+      "country": "DE",
+      "probability_pct": 13.8
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 81.42
+      },
+      {
+        "country": "NL",
+        "probability_pct": 4.67
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 3.89
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.92812,
+    "lpips": 0.069,
+    "blurred_area": 0.03382,
+    "quality_metric": "SSIM",
+    "quality_score": 0.92812
+  },
+  "prediction_type": "country",
+  "source_id": "London_00020_82418356_e130a8793a_42_69567805@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

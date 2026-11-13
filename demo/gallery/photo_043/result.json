@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 43",
+  "truth": {
+    "lat": 13.724085,
+    "lng": 100.392208,
+    "country": "TH"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 65.81
+    },
+    {
+      "country": "TW",
+      "probability_pct": 15.7
+    },
+    {
+      "country": "US",
+      "probability_pct": 3.82
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.33
+      },
+      {
+        "country": "JP",
+        "probability_pct": 1.12
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.06
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.80183,
+    "lpips": 0.22561,
+    "blurred_area": 0.08381,
+    "quality_metric": "SSIM",
+    "quality_score": 0.80183
+  },
+  "prediction_type": "country",
+  "source_id": "510183020_3dec046e80_192_77392231@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

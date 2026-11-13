@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 206",
+  "truth": {
+    "lat": 47.645127,
+    "lng": -122.336257,
+    "country": "US"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 46.03
+    },
+    {
+      "country": "TW",
+      "probability_pct": 10.03
+    },
+    {
+      "country": "SE",
+      "probability_pct": 8.31
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.77
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.17
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.05
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.94885,
+    "lpips": 0.10534,
+    "blurred_area": 0.03545,
+    "quality_metric": "SSIM",
+    "quality_score": 0.94885
+  },
+  "prediction_type": "country",
+  "source_id": "seattle_00064_443151803_90c945e87c_191_74223826@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

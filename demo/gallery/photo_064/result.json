@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 64",
+  "truth": {
+    "lat": -19.116137,
+    "lng": 23.827285,
+    "country": "BW"
+  },
+  "model": {
+    "lat": -34.0,
+    "lng": -64.0,
+    "country": "AR",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AR",
+      "probability_pct": 49.66
+    },
+    {
+      "country": "BR",
+      "probability_pct": 16.76
+    },
+    {
+      "country": "SN",
+      "probability_pct": 8.62
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 97.97
+      },
+      {
+        "country": "CA",
+        "probability_pct": 0.58
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.23
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81242,
+    "lpips": 0.14372,
+    "blurred_area": 0.08153,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81242
+  },
+  "prediction_type": "country",
+  "source_id": "Botswana_00001_108331635_4dccd99e9d_52_73091266@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 165",
+  "truth": {
+    "lat": 6.590774,
+    "lng": 79.979095,
+    "country": "LK"
+  },
+  "model": {
+    "lat": 18.0,
+    "lng": 105.0,
+    "country": "LA",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "LA",
+      "probability_pct": 35.73
+    },
+    {
+      "country": "TH",
+      "probability_pct": 23.8
+    },
+    {
+      "country": "NG",
+      "probability_pct": 17.09
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 23.85
+      },
+      {
+        "country": "BY",
+        "probability_pct": 19.55
+      },
+      {
+        "country": "NE",
+        "probability_pct": 12.09
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81589,
+    "lpips": 0.21186,
+    "blurred_area": 0.07635,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81589
+  },
+  "prediction_type": "country",
+  "source_id": "SriLanka_00008_841500207_6eabfd01c6_1147_9900419@N06",
+  "heatmap_available": true,
+  "clues_available": false
+}

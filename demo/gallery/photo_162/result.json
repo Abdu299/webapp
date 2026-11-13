@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 162",
+  "truth": {
+    "lat": 43.542412,
+    "lng": -96.699922,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 19.23
+    },
+    {
+      "country": "RO",
+      "probability_pct": 9.52
+    },
+    {
+      "country": "BG",
+      "probability_pct": 7.07
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 97.63
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 1.17
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.34
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81182,
+    "lpips": 0.198,
+    "blurred_area": 0.07223,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81182
+  },
+  "prediction_type": "country",
+  "source_id": "SouthDakota_00001_103581976_d9b87d0c35_36_96388182@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

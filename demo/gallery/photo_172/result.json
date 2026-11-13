@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 172",
+  "truth": {
+    "lat": 33.522792,
+    "lng": 36.309814,
+    "country": "SY"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 92.98
+    },
+    {
+      "country": "AL",
+      "probability_pct": 1.5
+    },
+    {
+      "country": "KZ",
+      "probability_pct": 0.53
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 84.38
+      },
+      {
+        "country": "IR",
+        "probability_pct": 5.52
+      },
+      {
+        "country": "IN",
+        "probability_pct": 1.99
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81404,
+    "lpips": 0.17454,
+    "blurred_area": 0.0849,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81404
+  },
+  "prediction_type": "country",
+  "source_id": "Syria_00001_91276050_f4598af84a_27_80528961@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

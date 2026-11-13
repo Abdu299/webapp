@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 72",
+  "truth": {
+    "lat": 41.939545,
+    "lng": -87.639586,
+    "country": "US"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 19.13
+    },
+    {
+      "country": "AL",
+      "probability_pct": 5.54
+    },
+    {
+      "country": "MM",
+      "probability_pct": 4.32
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 53.97
+      },
+      {
+        "country": "CA",
+        "probability_pct": 6.14
+      },
+      {
+        "country": "SG",
+        "probability_pct": 5.57
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.80925,
+    "lpips": 0.20881,
+    "blurred_area": 0.07402,
+    "quality_metric": "SSIM",
+    "quality_score": 0.80925
+  },
+  "prediction_type": "country",
+  "source_id": "Chicago_00080_496345089_f5d47dea91_196_69212252@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

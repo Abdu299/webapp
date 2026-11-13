@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 103",
+  "truth": {
+    "lat": 27.179676,
+    "lng": 78.044042,
+    "country": "IN"
+  },
+  "model": {
+    "lat": 20.0,
+    "lng": 77.0,
+    "country": "IN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IN",
+      "probability_pct": 36.58
+    },
+    {
+      "country": "IR",
+      "probability_pct": 15.41
+    },
+    {
+      "country": "GE",
+      "probability_pct": 9.69
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 24.0,
+      "lng": 54.0,
+      "country": "AE",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AE",
+        "probability_pct": 64.24
+      },
+      {
+        "country": "GE",
+        "probability_pct": 21.96
+      },
+      {
+        "country": "BH",
+        "probability_pct": 3.21
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.88794,
+    "lpips": 0.1577,
+    "blurred_area": 0.08359,
+    "quality_metric": "SSIM",
+    "quality_score": 0.88794
+  },
+  "prediction_type": "country",
+  "source_id": "India_00032_291479604_013cb872ba_122_59555137@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

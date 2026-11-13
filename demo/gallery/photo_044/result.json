@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 44",
+  "truth": {
+    "lat": -14.666716,
+    "lng": 145.448513,
+    "country": "AU"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 36.26
+    },
+    {
+      "country": "NO",
+      "probability_pct": 8.49
+    },
+    {
+      "country": "FR",
+      "probability_pct": 6.79
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 28.79
+      },
+      {
+        "country": "NG",
+        "probability_pct": 11.69
+      },
+      {
+        "country": "DK",
+        "probability_pct": 9.45
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.98222,
+    "lpips": 0.06794,
+    "blurred_area": 0.03106,
+    "quality_metric": "SSIM",
+    "quality_score": 0.98222
+  },
+  "prediction_type": "country",
+  "source_id": "522546192_0030ad0eb1_237_61819159@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

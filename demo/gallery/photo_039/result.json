@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 39",
+  "truth": {
+    "lat": -34.609758,
+    "lng": -58.411216,
+    "country": "AR"
+  },
+  "model": {
+    "lat": -34.0,
+    "lng": -64.0,
+    "country": "AR",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AR",
+      "probability_pct": 82.44
+    },
+    {
+      "country": "ES",
+      "probability_pct": 4.27
+    },
+    {
+      "country": "UY",
+      "probability_pct": 2.86
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 35.42
+      },
+      {
+        "country": "AE",
+        "probability_pct": 21.32
+      },
+      {
+        "country": "IR",
+        "probability_pct": 20.65
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.6998,
+    "lpips": 0.29205,
+    "blurred_area": 0.11077,
+    "quality_metric": "SSIM",
+    "quality_score": 0.6998
+  },
+  "prediction_type": "country",
+  "source_id": "482314949_dbc149bb10_224_50435419@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

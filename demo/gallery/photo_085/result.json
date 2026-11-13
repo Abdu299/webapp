@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 85",
+  "truth": {
+    "lat": 18.365027,
+    "lng": -69.020611,
+    "country": "DO"
+  },
+  "model": {
+    "lat": 23.0,
+    "lng": -102.0,
+    "country": "MX",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "MX",
+      "probability_pct": 20.13
+    },
+    {
+      "country": "TR",
+      "probability_pct": 10.69
+    },
+    {
+      "country": "DO",
+      "probability_pct": 9.92
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 34.45
+      },
+      {
+        "country": "AU",
+        "probability_pct": 22.64
+      },
+      {
+        "country": "MY",
+        "probability_pct": 6.86
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81821,
+    "lpips": 0.13808,
+    "blurred_area": 0.06651,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81821
+  },
+  "prediction_type": "country",
+  "source_id": "DominicanRepublic_00008_528391253_78e9959702_1170_37476307@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

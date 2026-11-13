@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 138",
+  "truth": {
+    "lat": 23.606306,
+    "lng": 58.537731,
+    "country": "OM"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 35.62
+    },
+    {
+      "country": "IT",
+      "probability_pct": 17.44
+    },
+    {
+      "country": "ES",
+      "probability_pct": 12.15
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 62.57
+      },
+      {
+        "country": "AE",
+        "probability_pct": 10.82
+      },
+      {
+        "country": "JP",
+        "probability_pct": 5.01
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.76917,
+    "lpips": 0.22232,
+    "blurred_area": 0.11612,
+    "quality_metric": "SSIM",
+    "quality_score": 0.76917
+  },
+  "prediction_type": "country",
+  "source_id": "Oman_00001_159023565_dc1b205e99_70_67879480@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 31",
+  "truth": {
+    "lat": 41.403491,
+    "lng": 2.174423,
+    "country": "ES"
+  },
+  "model": {
+    "lat": 46.0,
+    "lng": 2.0,
+    "country": "FR",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "FR",
+      "probability_pct": 25.28
+    },
+    {
+      "country": "ES",
+      "probability_pct": 16.61
+    },
+    {
+      "country": "RU",
+      "probability_pct": 14.79
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 97.98
+      },
+      {
+        "country": "TZ",
+        "probability_pct": 0.51
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.25
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.8693,
+    "lpips": 0.14586,
+    "blurred_area": 0.05522,
+    "quality_metric": "SSIM",
+    "quality_score": 0.8693
+  },
+  "prediction_type": "country",
+  "source_id": "429777514_e0ba93984e_169_89418754@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 190",
+  "truth": {
+    "lat": 46.783282,
+    "lng": -121.763534,
+    "country": "US"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 36.37
+    },
+    {
+      "country": "CH",
+      "probability_pct": 35.87
+    },
+    {
+      "country": "AT",
+      "probability_pct": 17.92
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 62.0,
+      "lng": 10.0,
+      "country": "NO",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "NO",
+        "probability_pct": 42.86
+      },
+      {
+        "country": "RU",
+        "probability_pct": 17.95
+      },
+      {
+        "country": "PT",
+        "probability_pct": 8.87
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79057,
+    "lpips": 0.30218,
+    "blurred_area": 0.11951,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79057
+  },
+  "prediction_type": "country",
+  "source_id": "Washington_00092_1444342752_743c6981e6_1161_39405636@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

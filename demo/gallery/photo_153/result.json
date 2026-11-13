@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 153",
+  "truth": {
+    "lat": 45.793262,
+    "lng": 24.150695,
+    "country": "RO"
+  },
+  "model": {
+    "lat": 49.8,
+    "lng": 15.5,
+    "country": "CZ",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CZ",
+      "probability_pct": 52.99
+    },
+    {
+      "country": "HU",
+      "probability_pct": 19.86
+    },
+    {
+      "country": "DE",
+      "probability_pct": 9.17
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.39
+      },
+      {
+        "country": "GB",
+        "probability_pct": 0.13
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.1
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82195,
+    "lpips": 0.16533,
+    "blurred_area": 0.07519,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82195
+  },
+  "prediction_type": "country",
+  "source_id": "Romania_00003_147566544_11f95abd00_45_96155869@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

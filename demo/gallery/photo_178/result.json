@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 178",
+  "truth": {
+    "lat": 33.553412,
+    "lng": 9.966487,
+    "country": "TN"
+  },
+  "model": {
+    "lat": 32.0,
+    "lng": -5.0,
+    "country": "MA",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "MA",
+      "probability_pct": 43.05
+    },
+    {
+      "country": "BR",
+      "probability_pct": 28.31
+    },
+    {
+      "country": "DZ",
+      "probability_pct": 5.75
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 19.21
+      },
+      {
+        "country": "AE",
+        "probability_pct": 18.88
+      },
+      {
+        "country": "QA",
+        "probability_pct": 6.25
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.84724,
+    "lpips": 0.16206,
+    "blurred_area": 0.09013,
+    "quality_metric": "SSIM",
+    "quality_score": 0.84724
+  },
+  "prediction_type": "country",
+  "source_id": "Tunisia_00008_903924177_8eeea96057_1429_9416923@N08",
+  "heatmap_available": true,
+  "clues_available": false
+}

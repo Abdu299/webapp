@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 168",
+  "truth": {
+    "lat": 46.496974,
+    "lng": 7.675924,
+    "country": "CH"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 68.24
+    },
+    {
+      "country": "CH",
+      "probability_pct": 21.96
+    },
+    {
+      "country": "AT",
+      "probability_pct": 8.03
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.7
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.43
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.22
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79021,
+    "lpips": 0.20074,
+    "blurred_area": 0.09629,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79021
+  },
+  "prediction_type": "country",
+  "source_id": "Switzerland_00014_170747608_cf4538d97b_50_97458173@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

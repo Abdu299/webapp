@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 70",
+  "truth": {
+    "lat": 52.202557,
+    "lng": -117.239742,
+    "country": "CA"
+  },
+  "model": {
+    "lat": 47.0,
+    "lng": 8.0,
+    "country": "CH",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CH",
+      "probability_pct": 59.81
+    },
+    {
+      "country": "AR",
+      "probability_pct": 6.66
+    },
+    {
+      "country": "SJ",
+      "probability_pct": 4.83
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 97.15
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.86
+      },
+      {
+        "country": "CH",
+        "probability_pct": 0.59
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.89224,
+    "lpips": 0.13892,
+    "blurred_area": 0.04016,
+    "quality_metric": "SSIM",
+    "quality_score": 0.89224
+  },
+  "prediction_type": "country",
+  "source_id": "Canada_00113_568886932_37f47747b8_1250_48264126@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

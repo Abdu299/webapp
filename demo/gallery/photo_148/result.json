@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 148",
+  "truth": {
+    "lat": 49.597095,
+    "lng": 19.93467,
+    "country": "PL"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 45.34
+    },
+    {
+      "country": "IT",
+      "probability_pct": 7.1
+    },
+    {
+      "country": "PL",
+      "probability_pct": 5.72
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.34
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.51
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.19
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87245,
+    "lpips": 0.10951,
+    "blurred_area": 0.04829,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87245
+  },
+  "prediction_type": "country",
+  "source_id": "Poland_00039_939060542_595e7aa0f0_1297_15632944@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

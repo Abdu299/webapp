@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 197",
+  "truth": {
+    "lat": 43.765639,
+    "lng": 11.270256,
+    "country": "IT"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 98.46
+    },
+    {
+      "country": "VA",
+      "probability_pct": 0.33
+    },
+    {
+      "country": "RO",
+      "probability_pct": 0.3
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 53.96
+      },
+      {
+        "country": "SE",
+        "probability_pct": 7.01
+      },
+      {
+        "country": "NO",
+        "probability_pct": 6.1
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82614,
+    "lpips": 0.29366,
+    "blurred_area": 0.07749,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82614
+  },
+  "prediction_type": "country",
+  "source_id": "florence_00014_353015358_1e186608c3_153_37507546@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

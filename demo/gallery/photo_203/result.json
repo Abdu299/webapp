@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 203",
+  "truth": {
+    "lat": 40.747586,
+    "lng": 14.484207,
+    "country": "IT"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 65.85
+    },
+    {
+      "country": "GR",
+      "probability_pct": 14.54
+    },
+    {
+      "country": "TR",
+      "probability_pct": 10.6
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.96
+      },
+      {
+        "country": "NO",
+        "probability_pct": 1.87
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.98
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.83381,
+    "lpips": 0.22601,
+    "blurred_area": 0.06544,
+    "quality_metric": "SSIM",
+    "quality_score": 0.83381
+  },
+  "prediction_type": "country",
+  "source_id": "pompei_00003_876663807_361e72721c_1145_78841376@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

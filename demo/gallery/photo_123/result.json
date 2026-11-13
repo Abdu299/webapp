@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 123",
+  "truth": {
+    "lat": 42.633738,
+    "lng": -70.780902,
+    "country": "US"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 67.39
+    },
+    {
+      "country": "US",
+      "probability_pct": 21.63
+    },
+    {
+      "country": "RO",
+      "probability_pct": 2.4
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 90.36
+      },
+      {
+        "country": "BR",
+        "probability_pct": 3.16
+      },
+      {
+        "country": "JP",
+        "probability_pct": 2.83
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.78878,
+    "lpips": 0.17607,
+    "blurred_area": 0.07779,
+    "quality_metric": "SSIM",
+    "quality_score": 0.78878
+  },
+  "prediction_type": "country",
+  "source_id": "Massachusetts_00011_379112224_fbcf942ebd_169_57253263@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 159",
+  "truth": {
+    "lat": 37.782383,
+    "lng": -122.42031,
+    "country": "US"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": -95.0,
+    "country": "CA",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CA",
+      "probability_pct": 16.86
+    },
+    {
+      "country": "TR",
+      "probability_pct": 14.08
+    },
+    {
+      "country": "AL",
+      "probability_pct": 10.92
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 91.47
+      },
+      {
+        "country": "AE",
+        "probability_pct": 2.41
+      },
+      {
+        "country": "OM",
+        "probability_pct": 1.42
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.94774,
+    "lpips": 0.11061,
+    "blurred_area": 0.03519,
+    "quality_metric": "SSIM",
+    "quality_score": 0.94774
+  },
+  "prediction_type": "country",
+  "source_id": "SanFrancisco_00096_442372330_8e060f4138_176_7571568@N05",
+  "heatmap_available": true,
+  "clues_available": false
+}

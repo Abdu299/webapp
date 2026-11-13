@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 122",
+  "truth": {
+    "lat": 39.397543,
+    "lng": -76.601765,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 90.52
+    },
+    {
+      "country": "CA",
+      "probability_pct": 9.31
+    },
+    {
+      "country": "SE",
+      "probability_pct": 0.07
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -27.0,
+      "lng": 133.0,
+      "country": "AU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AU",
+        "probability_pct": 60.84
+      },
+      {
+        "country": "RU",
+        "probability_pct": 34.36
+      },
+      {
+        "country": "MY",
+        "probability_pct": 0.88
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.7449,
+    "lpips": 0.24896,
+    "blurred_area": 0.09591,
+    "quality_metric": "SSIM",
+    "quality_score": 0.7449
+  },
+  "prediction_type": "country",
+  "source_id": "Maryland_00035_1409295892_d1f7b16b3f_1421_88483799@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

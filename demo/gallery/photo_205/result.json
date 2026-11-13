@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 205",
+  "truth": {
+    "lat": 58.202872,
+    "lng": -6.379451,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 77.46
+    },
+    {
+      "country": "IE",
+      "probability_pct": 21.56
+    },
+    {
+      "country": "GG",
+      "probability_pct": 0.89
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 94.86
+      },
+      {
+        "country": "GB",
+        "probability_pct": 1.56
+      },
+      {
+        "country": "JP",
+        "probability_pct": 1.28
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.94593,
+    "lpips": 0.08368,
+    "blurred_area": 0.04354,
+    "quality_metric": "SSIM",
+    "quality_score": 0.94593
+  },
+  "prediction_type": "country",
+  "source_id": "scotland_00053_331995269_96230f644d_165_77235581@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}
