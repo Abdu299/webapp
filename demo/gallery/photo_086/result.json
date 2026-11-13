@@ -25,7 +25,28 @@
       "probability_pct": 10.35
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 79.2
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 14.8
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "share_pct": 3.7
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "share_pct": 1.2
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +79,87 @@
   "prediction_type": "country",
   "source_id": "Ecuador_00016_1042198302_3e83aea565_1079_7132415@N03",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "South America",
+  "clue_importance": [
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 2.01
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 0.83
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "heat_ratio": 0.72
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "heat_ratio": 0.66
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.126,
+        "significant": true
+      },
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.107,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.09,
+        "significant": true
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.077,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": 0.018,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.001,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": -0.023,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.034,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.253,
+        "significant": true
+      }
+    ]
+  }
 }

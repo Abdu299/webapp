@@ -1036,6 +1036,47 @@ function MainGallery() {
                       this photo.
                     </p>
                   )}
+
+                  {/* WHAT THE MODEL RELIED ON */}
+                  <div className="subheading">What the model relied on</div>
+                  {result?.clue_importance?.length ? (
+                    <>
+                      <p className="muted">
+                        How much the model's guess depended on each part of the photo (1× = an average spot).
+                      </p>
+                      {result.clue_importance.slice(0, 5).map(c => (
+                        <div className="rank" key={c.name}>
+                          <strong>{c.name}</strong>
+                          <div className="bar">
+                            <i style={{ width: `${Math.max(4, 100 * c.heat_ratio / result.clue_importance[0].heat_ratio)}%` }} />
+                          </div>
+                          <b>{c.heat_ratio.toFixed(1)}×</b>
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <p className="muted">The model was so sure that no single region changed its mind.</p>
+                  )}
+
+                  {/* WHAT GIVES THE CONTINENT AWAY */}
+                  {result?.continent_clues && (
+                    <>
+                      <div className="subheading">What gives {result.continent} away</div>
+                      <p className="muted">
+                        Hiding this clue makes the model this much less sure than hiding a random patch of
+                        the same size ({result.continent_clues.photos} street-view photos).
+                      </p>
+                      {result.continent_clues.clues.filter(c => c.effect > 0).slice(0, 3).map(c => (
+                        <div className="rank" key={c.name} style={{ opacity: c.significant ? 1 : 0.45 }}>
+                          <strong>{c.name}</strong>
+                          <div className="bar">
+                            <i style={{ width: `${100 * c.effect / result.continent_clues.clues[0].effect}%` }} />
+                          </div>
+                          <b>−{Math.round(c.effect * 100)} pts</b>
+                        </div>
+                      ))}
+                    </>
+                  )}
                 </>
               )}
 

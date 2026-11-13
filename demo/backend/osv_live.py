@@ -56,6 +56,10 @@ _labels = None
 _privacy_model = None
 _segment_model = None
 
+# Live heatmap and segmentation results per photo, reused by /importance
+_heat_grids = {}
+_clue_masks = {}
+
 
 def file_for(photo_id):
     if not re.fullmatch(
@@ -442,6 +446,8 @@ def calculate_heatmap(photo_id: str):
 
                     values.append(change)
 
+        _heat_grids[photo_id] = values
+
         strongest = max(values) or 1.0
 
         canvas = Image.new(
@@ -563,7 +569,7 @@ def calculate_clues(photo_id: str):
         original = raw_image(photo_id)
 
         resized = original.resize(
-            (448, 336),
+            (896, 672),
             Image.Resampling.BILINEAR
         )
 
@@ -597,6 +603,8 @@ def calculate_clues(photo_id: str):
             mask = scores.argmax(
                 dim=1
             )[0].cpu().numpy()
+
+        _clue_masks[photo_id] = mask.astype(np.uint8)
 
         rgba = np.zeros(
             (
@@ -842,3 +850,66 @@ def test_protected_image(
                 f"{str(error)[:240]}"
             )
         )
+
+
+CONTINENT_CLUES = Path(__file__).resolve().parent / "continent_clues.json"
+
+
+@router.post("/{photo_id}/importance")
+def calculate_importance(photo_id: str):
+    """
+    Heat ratio per clue class (mean heat on the class / mean heat of the
+    photo, as in segmenter/heatmap_ranking.py) and the clue ranking for
+    the photo's continent.
+    """
+    import numpy as np
+
+    segment_dir = REPO / "segmenter"
+    if str(segment_dir) not in sys.path:
+        sys.path.insert(0, str(segment_dir))
+    from clue_classes import CLUE_CLASSES
+    from test_sets import CONTINENT
+
+    # Only runs the models if the heatmap or clues button wasn't pressed
+    if photo_id not in _heat_grids:
+        calculate_heatmap(photo_id)
+    if photo_id not in _clue_masks:
+        calculate_clues(photo_id)
+
+    # The heatmap cells are on the photo squashed to 224x224,
+    # so the mask is squashed the same way
+    mask = np.array(
+        Image.fromarray(_clue_masks[photo_id]).resize(
+            (224, 224), Image.Resampling.NEAREST
+        )
+    )
+    grid = np.array(_heat_grids[photo_id], dtype=np.float32).reshape(7, 7)
+    heat = np.repeat(np.repeat(grid, 32, axis=0), 32, axis=1)
+
+    # A flat heatmap means no cell changed the guess, so there is nothing to rank
+    importance = None
+    if heat.max() >= 0.02 and heat.mean() > 0:
+        importance = []
+        for class_id, name, color in CLUE_CLASSES:
+            in_class = mask == class_id
+            if in_class.mean() < 0.01:
+                continue
+            importance.append({
+                "name": name.replace("_", " ").title(),
+                "color": "#%02x%02x%02x" % color,
+                "heat_ratio": round(float(heat[in_class].mean() / heat.mean()), 2),
+            })
+        importance.sort(key=lambda c: c["heat_ratio"], reverse=True)
+
+    # Same country -> continent table as the experiments
+    country = labels_for(photo_id).get("country", "")
+    continent = CONTINENT.get(country, "")
+    continent_clues = None
+    if continent and CONTINENT_CLUES.is_file():
+        continent_clues = json.loads(CONTINENT_CLUES.read_text()).get(continent)
+
+    return {
+        "clue_importance": importance,
+        "continent": continent,
+        "continent_clues": continent_clues,
+    }

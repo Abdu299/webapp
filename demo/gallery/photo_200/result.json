@@ -25,7 +25,43 @@
       "probability_pct": 11.47
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "share_pct": 33.7
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "share_pct": 21.2
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 17.3
+    },
+    {
+      "name": "Road Markings",
+      "color": "#ffffff",
+      "share_pct": 10.3
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "share_pct": 9.5
+    },
+    {
+      "name": "Signs And Text",
+      "color": "#ffdc00",
+      "share_pct": 5.0
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 2.8
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +94,102 @@
   "prediction_type": "country",
   "source_id": "nyc_00037_195999660_2dba8fdba9_60_40829484@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "North America",
+  "clue_importance": [
+    {
+      "name": "Road Markings",
+      "color": "#ffffff",
+      "heat_ratio": 1.38
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "heat_ratio": 1.26
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 1.18
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 1.1
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "heat_ratio": 0.8
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "heat_ratio": 0.69
+    },
+    {
+      "name": "Signs And Text",
+      "color": "#ffdc00",
+      "heat_ratio": 0.37
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.138,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.12,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.065,
+        "significant": true
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.009,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.008,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": 0.002,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.005,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.015,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.255,
+        "significant": true
+      }
+    ]
+  }
 }
