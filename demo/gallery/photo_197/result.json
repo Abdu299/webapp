@@ -25,7 +25,23 @@
       "probability_pct": 0.3
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 39.2
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 31.1
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 29.4
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -37,7 +53,7 @@
     "new_top3": [
       {
         "country": "RU",
-        "probability_pct": 53.96
+        "probability_pct": 53.97
       },
       {
         "country": "SE",
@@ -58,5 +74,82 @@
   "prediction_type": "country",
   "source_id": "florence_00014_353015358_1e186608c3_153_37507546@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "Europe",
+  "clue_importance": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 2.15
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 0.76
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 0.23
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.12,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.109,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.097,
+        "significant": true
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.031,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": 0.02,
+        "significant": false
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": -0.015,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.018,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.023,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.305,
+        "significant": true
+      }
+    ]
+  }
 }

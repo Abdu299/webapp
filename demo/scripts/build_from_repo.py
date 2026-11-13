@@ -62,22 +62,53 @@ def export_heatmap(path, out):
     Image.fromarray(rgba,'RGBA').resize((768,768),Image.Resampling.BILINEAR).save(out)
     return True
 
-def export_clues(path, out):
+def export_clues(path, out, size=768):
     if not path or not path.is_file():
         return []
     with Image.open(path) as im:
-        values = np.array(im.convert('L').resize((768,768), Image.Resampling.NEAREST))
-    rgba = np.zeros((768,768,4),dtype=np.uint8)
-    info=[]
-    for idx,(name,color) in enumerate(CLASSES):
+        # Same centre crop as original.jpg so the overlay lines up.
+        # NEAREST so class ids aren't blended into ids that don't exist.
+        mask = ImageOps.fit(im.convert('L'), (size, size), method=Image.Resampling.NEAREST)
+    values = np.array(mask)
+
+    rgba = np.zeros((size, size, 4), dtype=np.uint8)
+    info = []
+    for idx, (name, color) in enumerate(CLASSES):
         selector = values == idx
-        pct=float(selector.mean()*100)
-        if pct > 0:
-            info.append({'name':name.replace('_',' ').title(), 'color':'#%02x%02x%02x'%color, 'share_pct':round(pct,2)})
-        rgba[selector,:3] = color
-        rgba[selector,3] = 112
-    Image.fromarray(rgba,'RGBA').save(out)
+        pct = float(selector.mean() * 100)
+        rgba[selector, :3] = color
+        rgba[selector, 3] = 112
+        # Leave classes under 1 % out of the legend, a few stray pixels aren't a clue
+        if pct >= 1:
+            info.append({'name': name.replace('_', ' ').title(),
+                         'color': '#%02x%02x%02x' % color,
+                         'share_pct': round(pct, 1)})
+    info.sort(key=lambda c: c['share_pct'], reverse=True)
+    Image.fromarray(rgba, 'RGBA').save(out)
     return info
+
+def clue_importance(mask_path, heat_path, min_area=0.01, min_heat=0.02):
+    """Heat ratio per clue class, as in segmenter/heatmap_ranking.py:
+    mean heat on the class / mean heat of the photo (1 = an average pixel)."""
+    if not mask_path or not mask_path.is_file() or not heat_path.is_file():
+        return None
+    heat = np.nan_to_num(np.load(heat_path).astype(np.float32))
+    # A flat heatmap means no window changed the guess, so there is nothing to rank
+    if heat.max() < min_heat or heat.mean() <= 0:
+        return None
+    with Image.open(mask_path) as im:
+        # The heatmaps are on the centre square (centre_square in class_blur.py)
+        mask = np.array(ImageOps.fit(im.convert('L'), heat.shape[::-1], method=Image.Resampling.NEAREST))
+    out = []
+    for idx, (name, color) in enumerate(CLASSES):
+        in_class = mask == idx
+        if in_class.mean() < min_area:
+            continue
+        out.append({'name': name.replace('_', ' ').title(),
+                    'color': '#%02x%02x%02x' % color,
+                    'heat_ratio': round(float(heat[in_class].mean() / heat.mean()), 2)})
+    out.sort(key=lambda c: c['heat_ratio'], reverse=True)
+    return out
 
 def main():
     p=argparse.ArgumentParser()
@@ -85,7 +116,11 @@ def main():
     p.add_argument('--limit',type=int,default=20,help='0 exports all 237 images')
     p.add_argument('--out',type=Path,default=DEMO/'gallery')
     p.add_argument('--clue-masks',type=Path,default=None,help='Optional folder of 0..9 segmentation mask PNGs')
+    p.add_argument('--continents',type=Path,default=None,help='Test-set CSV with name + continent columns')
+    p.add_argument('--continent-clues',type=Path,default=None,help='JSON from segmenter/continent_clues.py')
     a=p.parse_args()
+    continent_by_stem={r['name']:r['continent'] for r in read_csv(a.continents)} if a.continents else {}
+    continent_clues=json.loads(a.continent_clues.read_text()) if a.continent_clues else {}
     repo=a.repo.resolve()
     live.REPO=repo
     live.CHECKPOINT=repo/'model/vit_countries_last3_geographic_lr0.0001.pth'
@@ -166,12 +201,16 @@ def main():
                     if 'ssim' in privacy:
                         privacy['quality_metric']='SSIM'
                         privacy['quality_score']=privacy['ssim']
+            continent=continent_by_stem.get(stem,'')
             data={'title':f'Mystery photo {num}',
                   'truth':{'lat':lat,'lng':lon,'country':country_by_stem.get(stem,'')},
                   'model':model,'top3':prediction['top3'],
                   'clues':clue_list,'privacy':privacy,
                   'prediction_type':'country','source_id':stem,
-                  'heatmap_available':heat,'clues_available':bool(clue_list)}
+                  'heatmap_available':heat,'clues_available':bool(clue_list),
+                  'continent':continent,
+                  'clue_importance':clue_importance(mask_path,heatmaps/(stem+'.npy')),
+                  'continent_clues':continent_clues.get(continent)}
             (dest/'result.json').write_text(json.dumps(data,indent=2),encoding='utf-8')
             index.append({'id':pid,'title':data['title']})
             print(f'{len(index):3} {stem} | GeoViT {model["country"]} | privacy {privacy["available"]}',flush=True)

@@ -25,7 +25,48 @@
       "probability_pct": 2.86
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 31.8
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 23.1
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "share_pct": 13.5
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 12.7
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "share_pct": 10.1
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "share_pct": 4.3
+    },
+    {
+      "name": "Vehicles",
+      "color": "#00008e",
+      "share_pct": 2.6
+    },
+    {
+      "name": "Signs And Text",
+      "color": "#ffdc00",
+      "share_pct": 1.5
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +99,107 @@
   "prediction_type": "country",
   "source_id": "482314949_dbc149bb10_224_50435419@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "South America",
+  "clue_importance": [
+    {
+      "name": "Road",
+      "color": "#804080",
+      "heat_ratio": 1.7
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "heat_ratio": 1.32
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "heat_ratio": 1.05
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 1.05
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 0.8
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 0.76
+    },
+    {
+      "name": "Vehicles",
+      "color": "#00008e",
+      "heat_ratio": 0.53
+    },
+    {
+      "name": "Signs And Text",
+      "color": "#ffdc00",
+      "heat_ratio": 0.17
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.126,
+        "significant": true
+      },
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.107,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.09,
+        "significant": true
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.077,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": 0.018,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.001,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": -0.023,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.034,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.253,
+        "significant": true
+      }
+    ]
+  }
 }

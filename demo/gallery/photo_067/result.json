@@ -25,7 +25,28 @@
       "probability_pct": 0.04
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 42.9
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 34.6
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "share_pct": 21.0
+    },
+    {
+      "name": "Road Markings",
+      "color": "#ffffff",
+      "share_pct": 1.5
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +79,66 @@
   "prediction_type": "country",
   "source_id": "California_00147_439592027_f8ffa59be8_188_66347119@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "North America",
+  "clue_importance": null,
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.138,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.12,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.065,
+        "significant": true
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.009,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.008,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": 0.002,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.005,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.015,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.255,
+        "significant": true
+      }
+    ]
+  }
 }

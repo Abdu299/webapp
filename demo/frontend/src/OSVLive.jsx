@@ -424,6 +424,7 @@ export default function OSVLive() {
 
   const [heatmap, setHeatmap] = useState(null)
   const [clues, setClues] = useState(null)
+  const [importance, setImportance] = useState(null)
 
   const [blur, setBlur] = useState(null)
   const [protectedResult, setProtectedResult] = useState(null)
@@ -459,6 +460,7 @@ export default function OSVLive() {
 
     setHeatmap(null)
     setClues(null)
+    setImportance(null)
 
     setBlur(null)
     setProtectedResult(null)
@@ -565,6 +567,22 @@ export default function OSVLive() {
 
         setShowClues(true)
         setShowHeat(false)
+      }
+    )
+  }
+
+
+  // Heatmap per clue class and the continent's clue ranking.
+  function getImportance() {
+    run(
+      'Comparing the heatmap with the clues…',
+      async () => {
+        const data = await api(
+          `/api/osv/${selected.id}/importance`,
+          'POST'
+        )
+
+        setImportance(data)
       }
     )
   }
@@ -804,7 +822,10 @@ export default function OSVLive() {
               {/* SEGMENTATION CLUE LIST */}
               {showClues && clues && (
                 <div className="osv-clue-list">
-                  {clues.clues.map(clue => (
+                  {clues.clues
+                    .filter(clue => clue.share_pct >= 1)
+                    .sort((a, b) => b.share_pct - a.share_pct)
+                    .map(clue => (
                     <div key={clue.name}>
                       <i
                         style={{
@@ -819,6 +840,62 @@ export default function OSVLive() {
                       </strong>
                     </div>
                   ))}
+                </div>
+              )}
+
+              {/* WHAT THE MODEL RELIED ON */}
+              {result && !blur && !importance && (
+                <div className="osv-actions">
+                  <button
+                    disabled={!!busy}
+                    onClick={getImportance}
+                  >
+                    <Layers size={17} />
+                    What did the model rely on?
+                  </button>
+                </div>
+              )}
+
+              {importance && !blur && (
+                <div>
+                  <div className="subheading">What the model relied on</div>
+                  {importance.clue_importance?.length ? (
+                    <>
+                      <p className="muted">
+                        How much the model's guess depended on each part of the photo (1× = an average spot).
+                      </p>
+                      {importance.clue_importance.slice(0, 5).map(c => (
+                        <div className="rank" key={c.name}>
+                          <strong>{c.name}</strong>
+                          <div className="bar">
+                            <i style={{ width: `${Math.max(4, 100 * c.heat_ratio / importance.clue_importance[0].heat_ratio)}%` }} />
+                          </div>
+                          <b>{c.heat_ratio.toFixed(1)}×</b>
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <p className="muted">The model was so sure that no single region changed its mind.</p>
+                  )}
+
+                  {importance.continent_clues && (
+                    <>
+                      <div className="subheading">What gives {importance.continent} away</div>
+                      <p className="muted">
+                        Hiding this clue makes the model this much less sure than hiding a random patch of
+                        the same size ({importance.continent_clues.photos} street-view photos).
+                      </p>
+                      {importance.continent_clues.clues.filter(c => c.effect > 0).slice(0, 3).map(c => (
+                        <div className="rank" key={c.name} style={{ opacity: c.significant ? 1 : 0.45 }}>
+                          <strong>{c.name}</strong>
+                          <div className="bar">
+                            <i style={{ width: `${100 * c.effect / importance.continent_clues.clues[0].effect}%` }} />
+                          </div>
+                          <b>−{Math.round(c.effect * 100)} pts</b>
+                        </div>
+                      ))}
+                    </>
+                  )}
                 </div>
               )}
 

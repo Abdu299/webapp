@@ -25,7 +25,33 @@
       "probability_pct": 10.76
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 61.2
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 22.9
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "share_pct": 6.1
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "share_pct": 5.1
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "share_pct": 3.9
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +84,92 @@
   "prediction_type": "country",
   "source_id": "Virginia_00055_1440634934_ac4db3526d_1135_91062007@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "North America",
+  "clue_importance": [
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "heat_ratio": 2.07
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "heat_ratio": 1.35
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 0.96
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 0.81
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "heat_ratio": 0.61
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.138,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.12,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.065,
+        "significant": true
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.009,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.008,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": 0.002,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.005,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.015,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.255,
+        "significant": true
+      }
+    ]
+  }
 }

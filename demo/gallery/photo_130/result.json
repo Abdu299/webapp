@@ -25,7 +25,23 @@
       "probability_pct": 7.71
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 76.9
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 13.1
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "share_pct": 10.0
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +74,88 @@
   "prediction_type": "country",
   "source_id": "Morocco2_00003_369458188_1dcee11573_178_13527886@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "Africa",
+  "clue_importance": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 2.23
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 0.84
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "heat_ratio": 0.62
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.068,
+        "significant": true
+      },
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.067,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.055,
+        "significant": false
+      },
+      {
+        "name": "People",
+        "color": "#dc143c",
+        "effect": 0.033,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.01,
+        "significant": false
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": -0.003,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.005,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.009,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.091,
+        "significant": true
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.336,
+        "significant": true
+      }
+    ]
+  }
 }

@@ -25,7 +25,33 @@
       "probability_pct": 22.39
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 40.3
+    },
+    {
+      "name": "Vehicles",
+      "color": "#00008e",
+      "share_pct": 32.5
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "share_pct": 19.9
+    },
+    {
+      "name": "Signs And Text",
+      "color": "#ffdc00",
+      "share_pct": 5.7
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 1.5
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +84,92 @@
   "prediction_type": "country",
   "source_id": "Washington_00077_933052351_c52eb39df8_1294_54699140@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "North America",
+  "clue_importance": [
+    {
+      "name": "Signs And Text",
+      "color": "#ffdc00",
+      "heat_ratio": 1.2
+    },
+    {
+      "name": "Vehicles",
+      "color": "#00008e",
+      "heat_ratio": 1.06
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "heat_ratio": 0.98
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 0.95
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 0.4
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.138,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.12,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.065,
+        "significant": true
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.009,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.008,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": 0.002,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.005,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.015,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.255,
+        "significant": true
+      }
+    ]
+  }
 }

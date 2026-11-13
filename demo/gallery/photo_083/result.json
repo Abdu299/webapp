@@ -25,7 +25,33 @@
       "probability_pct": 8.94
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 58.1
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 14.5
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "share_pct": 10.2
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 9.4
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "share_pct": 7.2
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +84,92 @@
   "prediction_type": "country",
   "source_id": "Denmark_00009_258337247_96db5706ff_95_70402049@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "Europe",
+  "clue_importance": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 1.8
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 1.04
+    },
+    {
+      "name": "People",
+      "color": "#dc143c",
+      "heat_ratio": 0.76
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "heat_ratio": 0.44
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 0.27
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.12,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.109,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.097,
+        "significant": true
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.031,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": 0.02,
+        "significant": false
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": -0.015,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.018,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.023,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.305,
+        "significant": true
+      }
+    ]
+  }
 }

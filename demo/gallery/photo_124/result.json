@@ -25,7 +25,18 @@
       "probability_pct": 2.76
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 94.2
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 4.1
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +69,77 @@
   "prediction_type": "country",
   "source_id": "Melbourne_00004_129975593_87d37e1218_53_28026984@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "Oceania",
+  "clue_importance": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 1.71
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 0.97
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.184,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.072,
+        "significant": true
+      },
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.027,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": 0.023,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": 0.001,
+        "significant": false
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": -0.008,
+        "significant": false
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": -0.029,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": -0.037,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.211,
+        "significant": true
+      }
+    ]
+  }
 }

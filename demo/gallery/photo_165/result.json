@@ -25,7 +25,33 @@
       "probability_pct": 17.09
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 33.9
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "share_pct": 33.4
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 20.4
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "share_pct": 10.6
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "share_pct": 1.6
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -41,7 +67,7 @@
       },
       {
         "country": "BY",
-        "probability_pct": 19.55
+        "probability_pct": 19.56
       },
       {
         "country": "NE",
@@ -58,5 +84,98 @@
   "prediction_type": "country",
   "source_id": "SriLanka_00008_841500207_6eabfd01c6_1147_9900419@N06",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "Asia",
+  "clue_importance": [
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 1.13
+    },
+    {
+      "name": "Buildings And Structures",
+      "color": "#464646",
+      "heat_ratio": 1.01
+    },
+    {
+      "name": "Road",
+      "color": "#804080",
+      "heat_ratio": 1.0
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 0.81
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "heat_ratio": 0.48
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.122,
+        "significant": true
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.08,
+        "significant": true
+      },
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.062,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.041,
+        "significant": false
+      },
+      {
+        "name": "People",
+        "color": "#dc143c",
+        "effect": 0.011,
+        "significant": false
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.01,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": 0.004,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.009,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.013,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.244,
+        "significant": true
+      }
+    ]
+  }
 }

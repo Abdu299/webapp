@@ -25,7 +25,33 @@
       "probability_pct": 12.87
     }
   ],
-  "clues": [],
+  "clues": [
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "share_pct": 56.5
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "share_pct": 26.6
+    },
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "share_pct": 8.1
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "share_pct": 6.0
+    },
+    {
+      "name": "Vehicles",
+      "color": "#00008e",
+      "share_pct": 2.6
+    }
+  ],
   "privacy": {
     "available": true,
     "model": {
@@ -58,5 +84,98 @@
   "prediction_type": "country",
   "source_id": "Pakistan_00003_408755072_963acdb313_132_14262239@N00",
   "heatmap_available": true,
-  "clues_available": false
+  "clues_available": true,
+  "continent": "Asia",
+  "clue_importance": [
+    {
+      "name": "Barriers And Sidewalk",
+      "color": "#be9999",
+      "heat_ratio": 1.62
+    },
+    {
+      "name": "Vegetation And Terrain",
+      "color": "#6b8e23",
+      "heat_ratio": 1.31
+    },
+    {
+      "name": "Vehicles",
+      "color": "#00008e",
+      "heat_ratio": 0.56
+    },
+    {
+      "name": "Poles And Street Furniture",
+      "color": "#ff7800",
+      "heat_ratio": 0.42
+    },
+    {
+      "name": "Sky",
+      "color": "#4682b4",
+      "heat_ratio": 0.31
+    }
+  ],
+  "continent_clues": {
+    "photos": 200,
+    "clues": [
+      {
+        "name": "Road Markings",
+        "color": "#ffffff",
+        "effect": 0.122,
+        "significant": true
+      },
+      {
+        "name": "Barriers And Sidewalk",
+        "color": "#be9999",
+        "effect": 0.08,
+        "significant": true
+      },
+      {
+        "name": "Road",
+        "color": "#804080",
+        "effect": 0.062,
+        "significant": true
+      },
+      {
+        "name": "Vegetation And Terrain",
+        "color": "#6b8e23",
+        "effect": 0.041,
+        "significant": false
+      },
+      {
+        "name": "People",
+        "color": "#dc143c",
+        "effect": 0.011,
+        "significant": false
+      },
+      {
+        "name": "Buildings And Structures",
+        "color": "#464646",
+        "effect": 0.01,
+        "significant": false
+      },
+      {
+        "name": "Signs And Text",
+        "color": "#ffdc00",
+        "effect": 0.004,
+        "significant": false
+      },
+      {
+        "name": "Vehicles",
+        "color": "#00008e",
+        "effect": -0.009,
+        "significant": false
+      },
+      {
+        "name": "Poles And Street Furniture",
+        "color": "#ff7800",
+        "effect": -0.013,
+        "significant": false
+      },
+      {
+        "name": "Sky",
+        "color": "#4682b4",
+        "effect": -0.244,
+        "significant": true
+      }
+    ]
+  }
 }
