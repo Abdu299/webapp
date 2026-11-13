@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 131",
+  "truth": {
+    "lat": 34.059485,
+    "lng": -5.005645,
+    "country": "MA"
+  },
+  "model": {
+    "lat": 31.0,
+    "lng": 36.0,
+    "country": "JO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JO",
+      "probability_pct": 59.13
+    },
+    {
+      "country": "PS",
+      "probability_pct": 13.95
+    },
+    {
+      "country": "PE",
+      "probability_pct": 12.13
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 24.0,
+      "lng": 54.0,
+      "country": "AE",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AE",
+        "probability_pct": 35.72
+      },
+      {
+        "country": "RU",
+        "probability_pct": 24.56
+      },
+      {
+        "country": "BH",
+        "probability_pct": 9.78
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.73179,
+    "lpips": 0.28359,
+    "blurred_area": 0.08931,
+    "quality_metric": "SSIM",
+    "quality_score": 0.73179
+  },
+  "prediction_type": "country",
+  "source_id": "Morocco2_00016_872564984_73ef641d65_1104_83039477@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 107",
+  "truth": {
+    "lat": 41.071069,
+    "lng": 28.948974,
+    "country": "TR"
+  },
+  "model": {
+    "lat": 24.0,
+    "lng": 90.0,
+    "country": "BD",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "BD",
+      "probability_pct": 42.97
+    },
+    {
+      "country": "IN",
+      "probability_pct": 22.8
+    },
+    {
+      "country": "NP",
+      "probability_pct": 5.52
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 76.68
+      },
+      {
+        "country": "IR",
+        "probability_pct": 5.52
+      },
+      {
+        "country": "SA",
+        "probability_pct": 2.78
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.73023,
+    "lpips": 0.25948,
+    "blurred_area": 0.10633,
+    "quality_metric": "SSIM",
+    "quality_score": 0.73023
+  },
+  "prediction_type": "country",
+  "source_id": "Istanbul_00021_475022521_99f3da9240_170_69445076@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

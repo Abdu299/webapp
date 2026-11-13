@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 144",
+  "truth": {
+    "lat": 48.855298,
+    "lng": 2.312461,
+    "country": "FR"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 25.76
+    },
+    {
+      "country": "CN",
+      "probability_pct": 19.76
+    },
+    {
+      "country": "FR",
+      "probability_pct": 15.54
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 91.98
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.63
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.58
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82552,
+    "lpips": 0.18078,
+    "blurred_area": 0.06149,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82552
+  },
+  "prediction_type": "country",
+  "source_id": "Paris_00159_523650404_92319fd22a_254_51035632501@N01",
+  "heatmap_available": true,
+  "clues_available": false
+}

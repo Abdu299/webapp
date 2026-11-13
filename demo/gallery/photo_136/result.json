@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 136",
+  "truth": {
+    "lat": 78.052895,
+    "lng": 14.238967,
+    "country": "SJ"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 10.0,
+    "country": "NO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NO",
+      "probability_pct": 62.22
+    },
+    {
+      "country": "RU",
+      "probability_pct": 15.99
+    },
+    {
+      "country": "SJ",
+      "probability_pct": 5.83
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 62.83
+      },
+      {
+        "country": "NO",
+        "probability_pct": 12.64
+      },
+      {
+        "country": "JP",
+        "probability_pct": 2.89
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.91395,
+    "lpips": 0.12968,
+    "blurred_area": 0.04992,
+    "quality_metric": "SSIM",
+    "quality_score": 0.91395
+  },
+  "prediction_type": "country",
+  "source_id": "Norway_00048_1457219700_4744851a83_1196_99437479@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 46",
+  "truth": {
+    "lat": -22.995414,
+    "lng": -43.238539,
+    "country": "BR"
+  },
+  "model": {
+    "lat": 20.0,
+    "lng": 77.0,
+    "country": "IN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IN",
+      "probability_pct": 30.41
+    },
+    {
+      "country": "PK",
+      "probability_pct": 13.49
+    },
+    {
+      "country": "BO",
+      "probability_pct": 11.81
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 31.92
+      },
+      {
+        "country": "ES",
+        "probability_pct": 17.3
+      },
+      {
+        "country": "HK",
+        "probability_pct": 9.16
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.71266,
+    "lpips": 0.30189,
+    "blurred_area": 0.09188,
+    "quality_metric": "SSIM",
+    "quality_score": 0.71266
+  },
+  "prediction_type": "country",
+  "source_id": "534657711_dc2aa849a8_1333_72154266@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

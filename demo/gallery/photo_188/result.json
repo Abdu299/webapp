@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 188",
+  "truth": {
+    "lat": 36.859948,
+    "lng": -75.978484,
+    "country": "US"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 48.77
+    },
+    {
+      "country": "FR",
+      "probability_pct": 23.21
+    },
+    {
+      "country": "GR",
+      "probability_pct": 10.76
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 86.39
+      },
+      {
+        "country": "AE",
+        "probability_pct": 1.85
+      },
+      {
+        "country": "JP",
+        "probability_pct": 1.59
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.89028,
+    "lpips": 0.112,
+    "blurred_area": 0.04679,
+    "quality_metric": "SSIM",
+    "quality_score": 0.89028
+  },
+  "prediction_type": "country",
+  "source_id": "Virginia_00055_1440634934_ac4db3526d_1135_91062007@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

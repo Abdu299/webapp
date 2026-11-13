@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 121",
+  "truth": {
+    "lat": 12.653068,
+    "lng": -7.987232,
+    "country": "ML"
+  },
+  "model": {
+    "lat": 17.0,
+    "lng": -4.0,
+    "country": "ML",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "ML",
+      "probability_pct": 81.0
+    },
+    {
+      "country": "SN",
+      "probability_pct": 15.78
+    },
+    {
+      "country": "ZM",
+      "probability_pct": 1.6
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 25.5,
+      "lng": 51.25,
+      "country": "QA",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "QA",
+        "probability_pct": 20.06
+      },
+      {
+        "country": "EG",
+        "probability_pct": 14.85
+      },
+      {
+        "country": "AE",
+        "probability_pct": 10.21
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81624,
+    "lpips": 0.21458,
+    "blurred_area": 0.09742,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81624
+  },
+  "prediction_type": "country",
+  "source_id": "Mali_00003_389132534_c1f2631a86_186_59398218@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

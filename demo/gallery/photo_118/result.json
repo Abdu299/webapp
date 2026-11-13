@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 118",
+  "truth": {
+    "lat": 51.510204,
+    "lng": -0.085991,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 99.28
+    },
+    {
+      "country": "HK",
+      "probability_pct": 0.13
+    },
+    {
+      "country": "RU",
+      "probability_pct": 0.13
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 36.0,
+      "lng": 138.0,
+      "country": "JP",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "JP",
+        "probability_pct": 85.28
+      },
+      {
+        "country": "RU",
+        "probability_pct": 6.18
+      },
+      {
+        "country": "GE",
+        "probability_pct": 3.27
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.69364,
+    "lpips": 0.35919,
+    "blurred_area": 0.10333,
+    "quality_metric": "SSIM",
+    "quality_score": 0.69364
+  },
+  "prediction_type": "country",
+  "source_id": "London_00173_399097890_cca3d6eb5c_47_89904893@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

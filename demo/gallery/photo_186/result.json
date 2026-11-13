@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 186",
+  "truth": {
+    "lat": 15.878047,
+    "lng": 108.337898,
+    "country": "VN"
+  },
+  "model": {
+    "lat": 28.0,
+    "lng": 84.0,
+    "country": "NP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NP",
+      "probability_pct": 34.42
+    },
+    {
+      "country": "ID",
+      "probability_pct": 21.25
+    },
+    {
+      "country": "IN",
+      "probability_pct": 7.59
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.3
+      },
+      {
+        "country": "GE",
+        "probability_pct": 1.89
+      },
+      {
+        "country": "AR",
+        "probability_pct": 0.69
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.86705,
+    "lpips": 0.13759,
+    "blurred_area": 0.05984,
+    "quality_metric": "SSIM",
+    "quality_score": 0.86705
+  },
+  "prediction_type": "country",
+  "source_id": "Vietnam_00013_309555658_1206a876e1_109_40279823@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

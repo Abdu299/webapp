@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 181",
+  "truth": {
+    "lat": 51.682337,
+    "lng": -1.78659,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 30.85
+    },
+    {
+      "country": "RU",
+      "probability_pct": 21.22
+    },
+    {
+      "country": "CU",
+      "probability_pct": 7.8
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 58.35
+      },
+      {
+        "country": "US",
+        "probability_pct": 9.12
+      },
+      {
+        "country": "TR",
+        "probability_pct": 8.31
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.95856,
+    "lpips": 0.06473,
+    "blurred_area": 0.03039,
+    "quality_metric": "SSIM",
+    "quality_score": 0.95856
+  },
+  "prediction_type": "country",
+  "source_id": "UnitedKingdom_00019_964966881_426cf82f57_1071_98545448@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

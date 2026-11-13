@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 126",
+  "truth": {
+    "lat": 44.923333,
+    "lng": -93.117333,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 89.41
+    },
+    {
+      "country": "CA",
+      "probability_pct": 3.27
+    },
+    {
+      "country": "IT",
+      "probability_pct": 2.47
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 71.01
+      },
+      {
+        "country": "NO",
+        "probability_pct": 8.72
+      },
+      {
+        "country": "DE",
+        "probability_pct": 3.63
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.932,
+    "lpips": 0.06159,
+    "blurred_area": 0.03456,
+    "quality_metric": "SSIM",
+    "quality_score": 0.932
+  },
+  "prediction_type": "country",
+  "source_id": "Mississippi_00011_537212117_97f048d808_1357_22941966@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 73",
+  "truth": {
+    "lat": 34.272254,
+    "lng": 108.896656,
+    "country": "CN"
+  },
+  "model": {
+    "lat": 35.0,
+    "lng": 105.0,
+    "country": "CN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CN",
+      "probability_pct": 70.63
+    },
+    {
+      "country": "JP",
+      "probability_pct": 20.12
+    },
+    {
+      "country": "KR",
+      "probability_pct": 8.37
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 70.69
+      },
+      {
+        "country": "US",
+        "probability_pct": 5.56
+      },
+      {
+        "country": "GE",
+        "probability_pct": 3.89
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.70363,
+    "lpips": 0.25392,
+    "blurred_area": 0.11787,
+    "quality_metric": "SSIM",
+    "quality_score": 0.70363
+  },
+  "prediction_type": "country",
+  "source_id": "China_00073_487137127_79fefd5305_196_8159033@N04",
+  "heatmap_available": true,
+  "clues_available": false
+}

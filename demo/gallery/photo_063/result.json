@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 63",
+  "truth": {
+    "lat": 50.657949,
+    "lng": 5.474624,
+    "country": "BE"
+  },
+  "model": {
+    "lat": 51.0,
+    "lng": 9.0,
+    "country": "DE",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "DE",
+      "probability_pct": 54.82
+    },
+    {
+      "country": "RU",
+      "probability_pct": 13.24
+    },
+    {
+      "country": "FR",
+      "probability_pct": 8.25
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 51.0,
+      "lng": 9.0,
+      "country": "DE",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "DE",
+        "probability_pct": 38.93
+      },
+      {
+        "country": "RU",
+        "probability_pct": 36.34
+      },
+      {
+        "country": "GB",
+        "probability_pct": 9.75
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.94391,
+    "lpips": 0.09204,
+    "blurred_area": 0.03591,
+    "quality_metric": "SSIM",
+    "quality_score": 0.94391
+  },
+  "prediction_type": "country",
+  "source_id": "Belgium_00017_276044730_dceb8cccbc_112_12814307@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

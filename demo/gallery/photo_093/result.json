@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 93",
+  "truth": {
+    "lat": 60.185232,
+    "lng": -44.217224,
+    "country": "GL"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 10.0,
+    "country": "NO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NO",
+      "probability_pct": 72.84
+    },
+    {
+      "country": "RU",
+      "probability_pct": 9.28
+    },
+    {
+      "country": "FR",
+      "probability_pct": 6.1
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 41.45
+      },
+      {
+        "country": "JP",
+        "probability_pct": 15.76
+      },
+      {
+        "country": "RU",
+        "probability_pct": 5.97
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.90357,
+    "lpips": 0.12985,
+    "blurred_area": 0.04661,
+    "quality_metric": "SSIM",
+    "quality_score": 0.90357
+  },
+  "prediction_type": "country",
+  "source_id": "Greenland_00001_384853046_34ad6e1163_159_82952591@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

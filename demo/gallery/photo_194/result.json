@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 194",
+  "truth": {
+    "lat": 51.243139,
+    "lng": -0.359823,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 56.0,
+    "lng": 10.0,
+    "country": "DK",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "DK",
+      "probability_pct": 23.77
+    },
+    {
+      "country": "GB",
+      "probability_pct": 23.52
+    },
+    {
+      "country": "DE",
+      "probability_pct": 14.91
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -27.0,
+      "lng": 133.0,
+      "country": "AU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AU",
+        "probability_pct": 39.36
+      },
+      {
+        "country": "DK",
+        "probability_pct": 15.26
+      },
+      {
+        "country": "RU",
+        "probability_pct": 13.48
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.90719,
+    "lpips": 0.10019,
+    "blurred_area": 0.04494,
+    "quality_metric": "SSIM",
+    "quality_score": 0.90719
+  },
+  "prediction_type": "country",
+  "source_id": "england_00041_251424233_428738c274_111_11114422@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

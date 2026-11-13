@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 135",
+  "truth": {
+    "lat": 62.147918,
+    "lng": 6.059207,
+    "country": "NO"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 10.0,
+    "country": "NO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NO",
+      "probability_pct": 67.69
+    },
+    {
+      "country": "SE",
+      "probability_pct": 23.3
+    },
+    {
+      "country": "CA",
+      "probability_pct": 4.04
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.93
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.02
+      },
+      {
+        "country": "NL",
+        "probability_pct": 0.01
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.86035,
+    "lpips": 0.14639,
+    "blurred_area": 0.05775,
+    "quality_metric": "SSIM",
+    "quality_score": 0.86035
+  },
+  "prediction_type": "country",
+  "source_id": "Norway_00040_990922720_327b7613ae_1157_96928198@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

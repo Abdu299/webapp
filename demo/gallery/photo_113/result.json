@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 113",
+  "truth": {
+    "lat": 31.58895,
+    "lng": 74.311378,
+    "country": "PK"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 42.2
+    },
+    {
+      "country": "IN",
+      "probability_pct": 25.2
+    },
+    {
+      "country": "KW",
+      "probability_pct": 4.84
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 41.92
+      },
+      {
+        "country": "AU",
+        "probability_pct": 15.05
+      },
+      {
+        "country": "GE",
+        "probability_pct": 8.2
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79574,
+    "lpips": 0.28071,
+    "blurred_area": 0.10095,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79574
+  },
+  "prediction_type": "country",
+  "source_id": "Lahore_00001_321085080_28863df64f_130_82503882@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

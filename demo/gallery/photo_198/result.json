@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 198",
+  "truth": {
+    "lat": -0.393444,
+    "lng": -90.281352,
+    "country": "EC"
+  },
+  "model": {
+    "lat": 39.0,
+    "lng": 22.0,
+    "country": "GR",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GR",
+      "probability_pct": 47.09
+    },
+    {
+      "country": "ES",
+      "probability_pct": 11.78
+    },
+    {
+      "country": "IL",
+      "probability_pct": 9.72
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 18.9
+      },
+      {
+        "country": "FR",
+        "probability_pct": 16.1
+      },
+      {
+        "country": "ES",
+        "probability_pct": 10.95
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.69377,
+    "lpips": 0.25363,
+    "blurred_area": 0.1135,
+    "quality_metric": "SSIM",
+    "quality_score": 0.69377
+  },
+  "prediction_type": "country",
+  "source_id": "galapagos_00007_1030772840_1430e92543_1026_7132415@N03",
+  "heatmap_available": true,
+  "clues_available": false
+}

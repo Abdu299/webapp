@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 117",
+  "truth": {
+    "lat": 51.508648,
+    "lng": -0.094285,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 31.79
+    },
+    {
+      "country": "ES",
+      "probability_pct": 14.79
+    },
+    {
+      "country": "AZ",
+      "probability_pct": 14.48
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 89.77
+      },
+      {
+        "country": "GE",
+        "probability_pct": 2.5
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 1.28
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.94238,
+    "lpips": 0.06402,
+    "blurred_area": 0.02888,
+    "quality_metric": "SSIM",
+    "quality_score": 0.94238
+  },
+  "prediction_type": "country",
+  "source_id": "London_00163_383132699_73d5a3db68_139_96387799@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

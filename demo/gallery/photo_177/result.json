@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 177",
+  "truth": {
+    "lat": -40.884642,
+    "lng": 173.048229,
+    "country": "NZ"
+  },
+  "model": {
+    "lat": 15.0,
+    "lng": 100.0,
+    "country": "TH",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TH",
+      "probability_pct": 33.13
+    },
+    {
+      "country": "JP",
+      "probability_pct": 22.75
+    },
+    {
+      "country": "US",
+      "probability_pct": 6.59
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -27.0,
+      "lng": 133.0,
+      "country": "AU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AU",
+        "probability_pct": 67.94
+      },
+      {
+        "country": "RU",
+        "probability_pct": 9.42
+      },
+      {
+        "country": "BR",
+        "probability_pct": 5.33
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.93749,
+    "lpips": 0.15798,
+    "blurred_area": 0.0344,
+    "quality_metric": "SSIM",
+    "quality_score": 0.93749
+  },
+  "prediction_type": "country",
+  "source_id": "Tonga_00002_479647466_2e7ea24455_169_36709487@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

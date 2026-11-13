@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 77",
+  "truth": {
+    "lat": 41.387237,
+    "lng": -72.984205,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 82.29
+    },
+    {
+      "country": "SE",
+      "probability_pct": 3.92
+    },
+    {
+      "country": "NL",
+      "probability_pct": 2.58
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.95
+      },
+      {
+        "country": "BY",
+        "probability_pct": 2.03
+      },
+      {
+        "country": "GB",
+        "probability_pct": 0.97
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.8808,
+    "lpips": 0.08181,
+    "blurred_area": 0.04669,
+    "quality_metric": "SSIM",
+    "quality_score": 0.8808
+  },
+  "prediction_type": "country",
+  "source_id": "Connecticut_00004_364162616_48c230f9e2_116_15376845@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

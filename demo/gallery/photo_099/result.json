@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 99",
+  "truth": {
+    "lat": 17.361741,
+    "lng": 78.474558,
+    "country": "IN"
+  },
+  "model": {
+    "lat": 20.0,
+    "lng": 77.0,
+    "country": "IN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IN",
+      "probability_pct": 44.17
+    },
+    {
+      "country": "IT",
+      "probability_pct": 20.42
+    },
+    {
+      "country": "CN",
+      "probability_pct": 8.93
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 25.5,
+      "lng": 51.25,
+      "country": "QA",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "QA",
+        "probability_pct": 36.8
+      },
+      {
+        "country": "RU",
+        "probability_pct": 18.49
+      },
+      {
+        "country": "KW",
+        "probability_pct": 15.88
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81639,
+    "lpips": 0.21652,
+    "blurred_area": 0.09512,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81639
+  },
+  "prediction_type": "country",
+  "source_id": "Hyderabad_00003_359871435_f5abb5524b_155_36887937@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

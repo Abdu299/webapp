@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 61",
+  "truth": {
+    "lat": 9.376241,
+    "lng": 99.94091,
+    "country": "TH"
+  },
+  "model": {
+    "lat": 15.0,
+    "lng": 100.0,
+    "country": "TH",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TH",
+      "probability_pct": 33.56
+    },
+    {
+      "country": "TW",
+      "probability_pct": 30.1
+    },
+    {
+      "country": "NZ",
+      "probability_pct": 12.37
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 68.55
+      },
+      {
+        "country": "JP",
+        "probability_pct": 5.85
+      },
+      {
+        "country": "ES",
+        "probability_pct": 4.55
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87809,
+    "lpips": 0.13039,
+    "blurred_area": 0.05652,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87809
+  },
+  "prediction_type": "country",
+  "source_id": "Bangkok_00011_215914338_705d7ea038_92_20194767@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

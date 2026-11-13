@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 166",
+  "truth": {
+    "lat": 58.474311,
+    "lng": 11.311798,
+    "country": "SE"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 15.0,
+    "country": "SE",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "SE",
+      "probability_pct": 46.22
+    },
+    {
+      "country": "PT",
+      "probability_pct": 29.04
+    },
+    {
+      "country": "FI",
+      "probability_pct": 12.66
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 81.06
+      },
+      {
+        "country": "BY",
+        "probability_pct": 8.92
+      },
+      {
+        "country": "SE",
+        "probability_pct": 3.62
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.85961,
+    "lpips": 0.14292,
+    "blurred_area": 0.0581,
+    "quality_metric": "SSIM",
+    "quality_score": 0.85961
+  },
+  "prediction_type": "country",
+  "source_id": "Sweden_00010_187208678_92004a5c41_72_46054052@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

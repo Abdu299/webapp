@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 129",
+  "truth": {
+    "lat": 42.453987,
+    "lng": 18.536338,
+    "country": "ME"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 89.23
+    },
+    {
+      "country": "GR",
+      "probability_pct": 2.59
+    },
+    {
+      "country": "HR",
+      "probability_pct": 2.54
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -27.0,
+      "lng": 133.0,
+      "country": "AU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AU",
+        "probability_pct": 13.71
+      },
+      {
+        "country": "GE",
+        "probability_pct": 12.21
+      },
+      {
+        "country": "ES",
+        "probability_pct": 11.54
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.69838,
+    "lpips": 0.26071,
+    "blurred_area": 0.11655,
+    "quality_metric": "SSIM",
+    "quality_score": 0.69838
+  },
+  "prediction_type": "country",
+  "source_id": "Montenegro_00002_279525048_069d71861c_85_36093984@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

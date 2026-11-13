@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 211",
+  "truth": {
+    "lat": 51.644335,
+    "lng": -2.677059,
+    "country": "GB"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 61.47
+    },
+    {
+      "country": "IT",
+      "probability_pct": 18.54
+    },
+    {
+      "country": "FR",
+      "probability_pct": 6.86
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 82.8
+      },
+      {
+        "country": "QA",
+        "probability_pct": 2.52
+      },
+      {
+        "country": "CA",
+        "probability_pct": 2.46
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.82541,
+    "lpips": 0.2074,
+    "blurred_area": 0.09438,
+    "quality_metric": "SSIM",
+    "quality_score": 0.82541
+  },
+  "prediction_type": "country",
+  "source_id": "wales_00019_442821205_59d2f2ee89_168_96019796@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

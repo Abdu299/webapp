@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 192",
+  "truth": {
+    "lat": 41.746157,
+    "lng": -73.932248,
+    "country": "US"
+  },
+  "model": {
+    "lat": 34.0,
+    "lng": 9.0,
+    "country": "TN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TN",
+      "probability_pct": 15.03
+    },
+    {
+      "country": "AL",
+      "probability_pct": 8.79
+    },
+    {
+      "country": "US",
+      "probability_pct": 8.78
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 39.0,
+      "lng": 71.0,
+      "country": "TJ",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "TJ",
+        "probability_pct": 13.47
+      },
+      {
+        "country": "RU",
+        "probability_pct": 10.67
+      },
+      {
+        "country": "GE",
+        "probability_pct": 8.55
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.97563,
+    "lpips": 0.02584,
+    "blurred_area": 0.01662,
+    "quality_metric": "SSIM",
+    "quality_score": 0.97563
+  },
+  "prediction_type": "country",
+  "source_id": "america_00003_225732316_f761e65a4e_70_70484005@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

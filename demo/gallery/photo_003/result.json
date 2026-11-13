@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 3",
+  "truth": {
+    "lat": 42.346571,
+    "lng": -71.097228,
+    "country": "US"
+  },
+  "model": {
+    "lat": 20.0,
+    "lng": 77.0,
+    "country": "IN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IN",
+      "probability_pct": 23.58
+    },
+    {
+      "country": "SG",
+      "probability_pct": 14.22
+    },
+    {
+      "country": "LK",
+      "probability_pct": 6.84
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 68.87
+      },
+      {
+        "country": "BY",
+        "probability_pct": 29.0
+      },
+      {
+        "country": "GE",
+        "probability_pct": 0.46
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87943,
+    "lpips": 0.17457,
+    "blurred_area": 0.05364,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87943
+  },
+  "prediction_type": "country",
+  "source_id": "1185597181_0158ab4213_1311_43616936@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

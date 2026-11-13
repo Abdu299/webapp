@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 164",
+  "truth": {
+    "lat": 37.389024,
+    "lng": -5.994071,
+    "country": "ES"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 68.43
+    },
+    {
+      "country": "AZ",
+      "probability_pct": 11.82
+    },
+    {
+      "country": "MT",
+      "probability_pct": 3.84
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 40.5,
+      "lng": 47.5,
+      "country": "AZ",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AZ",
+        "probability_pct": 51.8
+      },
+      {
+        "country": "CN",
+        "probability_pct": 14.75
+      },
+      {
+        "country": "RU",
+        "probability_pct": 9.25
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87495,
+    "lpips": 0.11248,
+    "blurred_area": 0.05116,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87495
+  },
+  "prediction_type": "country",
+  "source_id": "Spain_00083_486577745_b0256c3b07_221_51162504@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

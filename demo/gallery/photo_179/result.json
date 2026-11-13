@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 179",
+  "truth": {
+    "lat": 38.671304,
+    "lng": 34.839363,
+    "country": "TR"
+  },
+  "model": {
+    "lat": 34.0,
+    "lng": 9.0,
+    "country": "TN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TN",
+      "probability_pct": 26.71
+    },
+    {
+      "country": "TR",
+      "probability_pct": 25.6
+    },
+    {
+      "country": "IL",
+      "probability_pct": 20.23
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 92.64
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 2.97
+      },
+      {
+        "country": "BY",
+        "probability_pct": 1.04
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87728,
+    "lpips": 0.12358,
+    "blurred_area": 0.05486,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87728
+  },
+  "prediction_type": "country",
+  "source_id": "Turkey_00007_199529249_b54fd55a6e_70_85971448@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

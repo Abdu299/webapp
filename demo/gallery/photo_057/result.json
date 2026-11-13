@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 57",
+  "truth": {
+    "lat": 36.065673,
+    "lng": -112.11713,
+    "country": "US"
+  },
+  "model": {
+    "lat": -29.0,
+    "lng": 24.0,
+    "country": "ZA",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "ZA",
+      "probability_pct": 22.23
+    },
+    {
+      "country": "MG",
+      "probability_pct": 19.97
+    },
+    {
+      "country": "PE",
+      "probability_pct": 14.69
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 97.72
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.57
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.56
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.87398,
+    "lpips": 0.15262,
+    "blurred_area": 0.08286,
+    "quality_metric": "SSIM",
+    "quality_score": 0.87398
+  },
+  "prediction_type": "country",
+  "source_id": "Arizona_00044_527647931_821085049a_1048_7412395@N07",
+  "heatmap_available": true,
+  "clues_available": false
+}

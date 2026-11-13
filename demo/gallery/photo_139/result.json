@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 139",
+  "truth": {
+    "lat": 36.300531,
+    "lng": 74.649868,
+    "country": "PK"
+  },
+  "model": {
+    "lat": 35.0,
+    "lng": 105.0,
+    "country": "CN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CN",
+      "probability_pct": 18.29
+    },
+    {
+      "country": "BO",
+      "probability_pct": 14.99
+    },
+    {
+      "country": "AL",
+      "probability_pct": 12.87
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.51
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 0.94
+      },
+      {
+        "country": "JP",
+        "probability_pct": 0.8
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.84008,
+    "lpips": 0.13307,
+    "blurred_area": 0.06567,
+    "quality_metric": "SSIM",
+    "quality_score": 0.84008
+  },
+  "prediction_type": "country",
+  "source_id": "Pakistan_00003_408755072_963acdb313_132_14262239@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

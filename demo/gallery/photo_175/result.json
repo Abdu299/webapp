@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 175",
+  "truth": {
+    "lat": 12.925599,
+    "lng": 100.891571,
+    "country": "TH"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 15.21
+    },
+    {
+      "country": "AE",
+      "probability_pct": 10.18
+    },
+    {
+      "country": "TW",
+      "probability_pct": 9.01
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 92.9
+      },
+      {
+        "country": "GE",
+        "probability_pct": 1.55
+      },
+      {
+        "country": "NL",
+        "probability_pct": 1.11
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.64743,
+    "lpips": 0.31729,
+    "blurred_area": 0.13648,
+    "quality_metric": "SSIM",
+    "quality_score": 0.64743
+  },
+  "prediction_type": "country",
+  "source_id": "Thailand_00034_327008969_eda8c71554_140_17362713@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

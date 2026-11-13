@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 174",
+  "truth": {
+    "lat": -3.169805,
+    "lng": 35.528561,
+    "country": "TZ"
+  },
+  "model": {
+    "lat": -29.5,
+    "lng": 28.5,
+    "country": "LS",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "LS",
+      "probability_pct": 73.95
+    },
+    {
+      "country": "BO",
+      "probability_pct": 20.04
+    },
+    {
+      "country": "PE",
+      "probability_pct": 3.98
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 34.01
+      },
+      {
+        "country": "AU",
+        "probability_pct": 27.0
+      },
+      {
+        "country": "IN",
+        "probability_pct": 14.13
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.71212,
+    "lpips": 0.21792,
+    "blurred_area": 0.10815,
+    "quality_metric": "SSIM",
+    "quality_score": 0.71212
+  },
+  "prediction_type": "country",
+  "source_id": "Tanzania_00019_1292210091_693ea74b7a_1088_15274769@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

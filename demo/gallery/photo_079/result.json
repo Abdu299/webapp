@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 79",
+  "truth": {
+    "lat": 44.881174,
+    "lng": 15.616722,
+    "country": "HR"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 14.18
+    },
+    {
+      "country": "GB",
+      "probability_pct": 14.08
+    },
+    {
+      "country": "SE",
+      "probability_pct": 10.03
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 56.0,
+      "lng": 10.0,
+      "country": "DK",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "DK",
+        "probability_pct": 25.42
+      },
+      {
+        "country": "RU",
+        "probability_pct": 10.7
+      },
+      {
+        "country": "BY",
+        "probability_pct": 9.87
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75025,
+    "lpips": 0.24326,
+    "blurred_area": 0.08264,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75025
+  },
+  "prediction_type": "country",
+  "source_id": "Croatia_00021_473963193_d9ce489f23_222_18744817@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

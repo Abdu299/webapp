@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 124",
+  "truth": {
+    "lat": -37.829175,
+    "lng": 144.971466,
+    "country": "AU"
+  },
+  "model": {
+    "lat": -41.0,
+    "lng": 174.0,
+    "country": "NZ",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NZ",
+      "probability_pct": 83.94
+    },
+    {
+      "country": "US",
+      "probability_pct": 3.61
+    },
+    {
+      "country": "CO",
+      "probability_pct": 2.76
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 31.42
+      },
+      {
+        "country": "PT",
+        "probability_pct": 15.47
+      },
+      {
+        "country": "RU",
+        "probability_pct": 13.29
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.60832,
+    "lpips": 0.32434,
+    "blurred_area": 0.14103,
+    "quality_metric": "SSIM",
+    "quality_score": 0.60832
+  },
+  "prediction_type": "country",
+  "source_id": "Melbourne_00004_129975593_87d37e1218_53_28026984@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

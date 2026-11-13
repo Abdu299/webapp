@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 92",
+  "truth": {
+    "lat": 47.79858,
+    "lng": 13.0461,
+    "country": "AT"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 10.0,
+    "country": "NO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "NO",
+      "probability_pct": 23.01
+    },
+    {
+      "country": "AT",
+      "probability_pct": 22.23
+    },
+    {
+      "country": "IT",
+      "probability_pct": 12.6
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.56
+      },
+      {
+        "country": "GE",
+        "probability_pct": 2.79
+      },
+      {
+        "country": "CH",
+        "probability_pct": 0.56
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.74973,
+    "lpips": 0.2617,
+    "blurred_area": 0.09182,
+    "quality_metric": "SSIM",
+    "quality_score": 0.74973
+  },
+  "prediction_type": "country",
+  "source_id": "Germany_00063_254492987_7c8d55a3b5_99_32367657@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

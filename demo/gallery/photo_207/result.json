@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 207",
+  "truth": {
+    "lat": 45.433515,
+    "lng": 12.346229,
+    "country": "IT"
+  },
+  "model": {
+    "lat": 40.5,
+    "lng": 47.5,
+    "country": "AZ",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "AZ",
+      "probability_pct": 16.59
+    },
+    {
+      "country": "IT",
+      "probability_pct": 10.84
+    },
+    {
+      "country": "TR",
+      "probability_pct": 10.02
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 97.74
+      },
+      {
+        "country": "TM",
+        "probability_pct": 0.27
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 0.21
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.89046,
+    "lpips": 0.12864,
+    "blurred_area": 0.04817,
+    "quality_metric": "SSIM",
+    "quality_score": 0.89046
+  },
+  "prediction_type": "country",
+  "source_id": "venice_00002_69431815_c01190b915_35_39303693@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

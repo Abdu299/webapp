@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 120",
+  "truth": {
+    "lat": 33.988206,
+    "lng": -118.47536,
+    "country": "US"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 97.53
+    },
+    {
+      "country": "CA",
+      "probability_pct": 2.39
+    },
+    {
+      "country": "MX",
+      "probability_pct": 0.06
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 96.31
+      },
+      {
+        "country": "CA",
+        "probability_pct": 1.29
+      },
+      {
+        "country": "FI",
+        "probability_pct": 0.78
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.76935,
+    "lpips": 0.32216,
+    "blurred_area": 0.09644,
+    "quality_metric": "SSIM",
+    "quality_score": 0.76935
+  },
+  "prediction_type": "country",
+  "source_id": "LosAngeles_00023_349121428_aaa440bcc6_132_97332629@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

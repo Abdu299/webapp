@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 167",
+  "truth": {
+    "lat": 46.167286,
+    "lng": 7.099698,
+    "country": "CH"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 30.09
+    },
+    {
+      "country": "IT",
+      "probability_pct": 24.35
+    },
+    {
+      "country": "AL",
+      "probability_pct": 10.83
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 92.25
+      },
+      {
+        "country": "GE",
+        "probability_pct": 2.76
+      },
+      {
+        "country": "PT",
+        "probability_pct": 0.98
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.77928,
+    "lpips": 0.21049,
+    "blurred_area": 0.07811,
+    "quality_metric": "SSIM",
+    "quality_score": 0.77928
+  },
+  "prediction_type": "country",
+  "source_id": "Switzerland_00008_103429200_c4904154d8_38_73293249@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

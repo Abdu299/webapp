@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 143",
+  "truth": {
+    "lat": 48.863133,
+    "lng": 2.336654,
+    "country": "FR"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 20.6
+    },
+    {
+      "country": "IT",
+      "probability_pct": 17.0
+    },
+    {
+      "country": "FR",
+      "probability_pct": 15.23
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 90.11
+      },
+      {
+        "country": "AZ",
+        "probability_pct": 3.31
+      },
+      {
+        "country": "FR",
+        "probability_pct": 1.13
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.81398,
+    "lpips": 0.19464,
+    "blurred_area": 0.07012,
+    "quality_metric": "SSIM",
+    "quality_score": 0.81398
+  },
+  "prediction_type": "country",
+  "source_id": "Paris_00131_445353063_8c58bd82b1_179_88895879@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

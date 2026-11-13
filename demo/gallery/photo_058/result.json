@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 58",
+  "truth": {
+    "lat": 12.532151,
+    "lng": -70.051435,
+    "country": "AW"
+  },
+  "model": {
+    "lat": 20.0,
+    "lng": 77.0,
+    "country": "IN",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IN",
+      "probability_pct": 44.59
+    },
+    {
+      "country": "TH",
+      "probability_pct": 17.04
+    },
+    {
+      "country": "GH",
+      "probability_pct": 11.38
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.75
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.09
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.03
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75494,
+    "lpips": 0.2257,
+    "blurred_area": 0.10145,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75494
+  },
+  "prediction_type": "country",
+  "source_id": "Aruba_00001_99110142_a573655582_34_50517642@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

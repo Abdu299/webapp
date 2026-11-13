@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 191",
+  "truth": {
+    "lat": 43.654692,
+    "lng": -89.821643,
+    "country": "US"
+  },
+  "model": {
+    "lat": 52.0,
+    "lng": 20.0,
+    "country": "PL",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "PL",
+      "probability_pct": 50.21
+    },
+    {
+      "country": "HU",
+      "probability_pct": 16.66
+    },
+    {
+      "country": "AR",
+      "probability_pct": 8.81
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 96.77
+      },
+      {
+        "country": "BY",
+        "probability_pct": 2.12
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.22
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.73373,
+    "lpips": 0.21031,
+    "blurred_area": 0.08869,
+    "quality_metric": "SSIM",
+    "quality_score": 0.73373
+  },
+  "prediction_type": "country",
+  "source_id": "Wisconsin_00036_1174326080_46cb7b0c2b_1168_10976003@N07",
+  "heatmap_available": true,
+  "clues_available": false
+}

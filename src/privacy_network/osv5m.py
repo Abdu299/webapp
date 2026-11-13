@@ -11,6 +11,7 @@ import contextlib
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+import importlib
 
 from pathlib import Path
 from PIL import Image
@@ -32,16 +33,29 @@ model_dir = (
 out_dir = Path("output") / model_name
 sys.path.insert(0, str(model_dir))
 
-from models.huggingface import Geolocalizer
+
+
 
 
 def load_model():
-    """Loads the frozen baseline model."""
+
+    try:
+        module = importlib.import_module("models.huggingface")
+        Geolocalizer = module.Geolocalizer
+
+    except ModuleNotFoundError as error:
+        raise RuntimeError(
+            "The separate OSV-5M baseline repository "
+            "is required to load the baseline model."
+        ) from error
+
     with contextlib.chdir(model_dir):
         return (
-            Geolocalizer.from_pretrained("osv5m/baseline").eval().requires_grad_(False)
+            Geolocalizer
+            .from_pretrained("osv5m/baseline")
+            .eval()
+            .requires_grad_(False)
         )
-
 
 class CellLogits(torch.nn.Module):
     """

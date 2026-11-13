@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 137",
+  "truth": {
+    "lat": 35.611045,
+    "lng": -95.987763,
+    "country": "US"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 19.98
+    },
+    {
+      "country": "LT",
+      "probability_pct": 16.06
+    },
+    {
+      "country": "US",
+      "probability_pct": 14.63
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.91
+      },
+      {
+        "country": "BY",
+        "probability_pct": 0.05
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 0.01
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75135,
+    "lpips": 0.17654,
+    "blurred_area": 0.0827,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75135
+  },
+  "prediction_type": "country",
+  "source_id": "Oklahoma_00005_262685303_e360a17203_90_96332550@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

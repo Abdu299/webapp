@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 132",
+  "truth": {
+    "lat": 46.734397,
+    "lng": -117.005081,
+    "country": "US"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 28.37
+    },
+    {
+      "country": "RS",
+      "probability_pct": 12.25
+    },
+    {
+      "country": "NO",
+      "probability_pct": 9.42
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 87.0
+      },
+      {
+        "country": "NO",
+        "probability_pct": 4.92
+      },
+      {
+        "country": "JP",
+        "probability_pct": 1.84
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.91724,
+    "lpips": 0.12467,
+    "blurred_area": 0.04665,
+    "quality_metric": "SSIM",
+    "quality_score": 0.91724
+  },
+  "prediction_type": "country",
+  "source_id": "Moscow_00007_275816584_98e230bb1e_88_87484925@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 133",
+  "truth": {
+    "lat": 52.34158,
+    "lng": 4.792327,
+    "country": "NL"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 15.0,
+    "country": "SE",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "SE",
+      "probability_pct": 45.87
+    },
+    {
+      "country": "NL",
+      "probability_pct": 45.73
+    },
+    {
+      "country": "NO",
+      "probability_pct": 2.91
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 98.39
+      },
+      {
+        "country": "GB",
+        "probability_pct": 0.38
+      },
+      {
+        "country": "FR",
+        "probability_pct": 0.17
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.71709,
+    "lpips": 0.39751,
+    "blurred_area": 0.0991,
+    "quality_metric": "SSIM",
+    "quality_score": 0.71709
+  },
+  "prediction_type": "country",
+  "source_id": "Netherlands_00069_1354802467_1e48ea9c4c_1252_44067110@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

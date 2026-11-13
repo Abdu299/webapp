@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 51",
+  "truth": {
+    "lat": 36.057694,
+    "lng": -112.136614,
+    "country": "US"
+  },
+  "model": {
+    "lat": -29.5,
+    "lng": 28.5,
+    "country": "LS",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "LS",
+      "probability_pct": 57.0
+    },
+    {
+      "country": "NP",
+      "probability_pct": 14.14
+    },
+    {
+      "country": "US",
+      "probability_pct": 8.43
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 95.42
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.95
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.5
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.79516,
+    "lpips": 0.22823,
+    "blurred_area": 0.09882,
+    "quality_metric": "SSIM",
+    "quality_score": 0.79516
+  },
+  "prediction_type": "country",
+  "source_id": "872841181_2ef32acf29_1371_66281185@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

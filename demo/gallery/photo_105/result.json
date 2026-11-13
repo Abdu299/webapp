@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 105",
+  "truth": {
+    "lat": 52.141284,
+    "lng": -10.279426,
+    "country": "IE"
+  },
+  "model": {
+    "lat": 60.0,
+    "lng": 100.0,
+    "country": "RU",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RU",
+      "probability_pct": 48.91
+    },
+    {
+      "country": "SE",
+      "probability_pct": 16.7
+    },
+    {
+      "country": "NO",
+      "probability_pct": 12.1
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 93.91
+      },
+      {
+        "country": "SE",
+        "probability_pct": 3.48
+      },
+      {
+        "country": "NL",
+        "probability_pct": 1.78
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.97243,
+    "lpips": 0.02046,
+    "blurred_area": 0.01403,
+    "quality_metric": "SSIM",
+    "quality_score": 0.97243
+  },
+  "prediction_type": "country",
+  "source_id": "Ireland_00028_249916505_59bfd4d0d3_81_92123108@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 81",
+  "truth": {
+    "lat": 23.121653,
+    "lng": -81.347064,
+    "country": "CU"
+  },
+  "model": {
+    "lat": 15.0,
+    "lng": 100.0,
+    "country": "TH",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TH",
+      "probability_pct": 36.29
+    },
+    {
+      "country": "US",
+      "probability_pct": 25.55
+    },
+    {
+      "country": "MM",
+      "probability_pct": 11.46
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 43.16
+      },
+      {
+        "country": "US",
+        "probability_pct": 17.67
+      },
+      {
+        "country": "DK",
+        "probability_pct": 9.71
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.97343,
+    "lpips": 0.09026,
+    "blurred_area": 0.02402,
+    "quality_metric": "SSIM",
+    "quality_score": 0.97343
+  },
+  "prediction_type": "country",
+  "source_id": "Cuba_00025_699768122_15733c7a1a_1425_8078991@N04",
+  "heatmap_available": true,
+  "clues_available": false
+}

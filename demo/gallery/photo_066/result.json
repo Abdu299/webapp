@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 66",
+  "truth": {
+    "lat": 33.441321,
+    "lng": -118.492891,
+    "country": "US"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 15.0,
+    "country": "SE",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "SE",
+      "probability_pct": 14.27
+    },
+    {
+      "country": "DK",
+      "probability_pct": 13.77
+    },
+    {
+      "country": "GB",
+      "probability_pct": 7.87
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 30.69
+      },
+      {
+        "country": "BO",
+        "probability_pct": 9.16
+      },
+      {
+        "country": "CL",
+        "probability_pct": 6.51
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.8977,
+    "lpips": 0.11919,
+    "blurred_area": 0.05366,
+    "quality_metric": "SSIM",
+    "quality_score": 0.8977
+  },
+  "prediction_type": "country",
+  "source_id": "California_00122_361328855_6ace238cbf_134_41894169878@N01",
+  "heatmap_available": true,
+  "clues_available": false
+}

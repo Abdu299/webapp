@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 95",
+  "truth": {
+    "lat": 20.881077,
+    "lng": -156.545133,
+    "country": "US"
+  },
+  "model": {
+    "lat": 23.7,
+    "lng": 121.0,
+    "country": "TW",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TW",
+      "probability_pct": 59.75
+    },
+    {
+      "country": "NZ",
+      "probability_pct": 17.5
+    },
+    {
+      "country": "JP",
+      "probability_pct": 7.99
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 32.56
+      },
+      {
+        "country": "AU",
+        "probability_pct": 32.32
+      },
+      {
+        "country": "JP",
+        "probability_pct": 14.27
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.7911,
+    "lpips": 0.17244,
+    "blurred_area": 0.09784,
+    "quality_metric": "SSIM",
+    "quality_score": 0.7911
+  },
+  "prediction_type": "country",
+  "source_id": "Hawaii_00072_532408762_9c4ecc305a_1200_79756109@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

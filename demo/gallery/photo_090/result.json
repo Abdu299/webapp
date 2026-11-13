@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 90",
+  "truth": {
+    "lat": 47.882045,
+    "lng": 7.226428,
+    "country": "FR"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 33.34
+    },
+    {
+      "country": "IT",
+      "probability_pct": 17.22
+    },
+    {
+      "country": "DE",
+      "probability_pct": 12.65
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 54.0,
+      "lng": -2.0,
+      "country": "GB",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "GB",
+        "probability_pct": 27.63
+      },
+      {
+        "country": "AU",
+        "probability_pct": 22.66
+      },
+      {
+        "country": "RU",
+        "probability_pct": 12.51
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.83379,
+    "lpips": 0.18757,
+    "blurred_area": 0.08373,
+    "quality_metric": "SSIM",
+    "quality_score": 0.83379
+  },
+  "prediction_type": "country",
+  "source_id": "France_00057_257413141_469dcde004_96_26519935@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

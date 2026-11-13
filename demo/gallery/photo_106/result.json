@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 106",
+  "truth": {
+    "lat": 31.776938,
+    "lng": 35.23545,
+    "country": "PS"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 30.2
+    },
+    {
+      "country": "AE",
+      "probability_pct": 19.49
+    },
+    {
+      "country": "PS",
+      "probability_pct": 13.01
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 21.0,
+      "lng": 57.0,
+      "country": "OM",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "OM",
+        "probability_pct": 34.92
+      },
+      {
+        "country": "AE",
+        "probability_pct": 14.99
+      },
+      {
+        "country": "IR",
+        "probability_pct": 14.56
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.85034,
+    "lpips": 0.14931,
+    "blurred_area": 0.079,
+    "quality_metric": "SSIM",
+    "quality_score": 0.85034
+  },
+  "prediction_type": "country",
+  "source_id": "Israel_00028_511241861_3efa314a4b_219_62126383@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

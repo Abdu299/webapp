@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 88",
+  "truth": {
+    "lat": 60.375722,
+    "lng": 21.391754,
+    "country": "FI"
+  },
+  "model": {
+    "lat": 62.0,
+    "lng": 15.0,
+    "country": "SE",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "SE",
+      "probability_pct": 98.37
+    },
+    {
+      "country": "NO",
+      "probability_pct": 1.45
+    },
+    {
+      "country": "AX",
+      "probability_pct": 0.13
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 40.57
+      },
+      {
+        "country": "SE",
+        "probability_pct": 30.23
+      },
+      {
+        "country": "NO",
+        "probability_pct": 23.56
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.77192,
+    "lpips": 0.26757,
+    "blurred_area": 0.10379,
+    "quality_metric": "SSIM",
+    "quality_score": 0.77192
+  },
+  "prediction_type": "country",
+  "source_id": "Finland_00036_636777751_bedf67eb53_1348_86122102@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

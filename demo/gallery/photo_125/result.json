@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 125",
+  "truth": {
+    "lat": 20.749853,
+    "lng": -99.94606,
+    "country": "MX"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 82.33
+    },
+    {
+      "country": "ES",
+      "probability_pct": 6.28
+    },
+    {
+      "country": "HR",
+      "probability_pct": 4.8
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 99.08
+      },
+      {
+        "country": "KZ",
+        "probability_pct": 0.38
+      },
+      {
+        "country": "AU",
+        "probability_pct": 0.07
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.73978,
+    "lpips": 0.24936,
+    "blurred_area": 0.10806,
+    "quality_metric": "SSIM",
+    "quality_score": 0.73978
+  },
+  "prediction_type": "country",
+  "source_id": "Mexico2_00027_373475154_2cddb4fa40_137_23812473@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

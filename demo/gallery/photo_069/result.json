@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 69",
+  "truth": {
+    "lat": 13.372585,
+    "lng": 103.856849,
+    "country": "KH"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 14.99
+    },
+    {
+      "country": "GE",
+      "probability_pct": 13.89
+    },
+    {
+      "country": "DZ",
+      "probability_pct": 10.91
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 40.1
+      },
+      {
+        "country": "IN",
+        "probability_pct": 10.8
+      },
+      {
+        "country": "SN",
+        "probability_pct": 8.81
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.92422,
+    "lpips": 0.10104,
+    "blurred_area": 0.0352,
+    "quality_metric": "SSIM",
+    "quality_score": 0.92422
+  },
+  "prediction_type": "country",
+  "source_id": "Cambodia_00020_401343054_b6c0b85d50_133_33463080@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

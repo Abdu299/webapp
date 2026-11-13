@@ -47,31 +47,91 @@ class GeoVit(nn.Module):
         return self.classifier(tokens[:, 0])  # (B, num_countries)
 
 
+
 def load_model():
-    country_to_label = json.loads(countries_path.read_text())
+    country_to_label = json.loads(
+        countries_path.read_text()
+    )
+
     countries = [None] * len(country_to_label)
+
     for country, label in country_to_label.items():
         countries[label] = country
 
     model = GeoVit(len(countries))
-    state = torch.load(weights_path, map_location="cpu", weights_only=True)
-    renamed = {}
-    for key, value in state.items():
-        for old, new in renames.items():
-            key = key.replace(old, new)
-        renamed[key] = value
-    model.load_state_dict(renamed)
 
-    # label i is the country code model.countries[i]
+    state = torch.load(
+        weights_path,
+        map_location="cpu",
+        weights_only=True
+    )
+
+    if "model_state_dict" in state:
+        state = state["model_state_dict"]
+
+    # Different Transformers versions use different
+    # names for DINOv2 attention layers.
+    #
+    # Convert checkpoint keys to match the model
+    # installed in the current environment.
+
+    names = {
+        ".attention.attention.query.": ".attention.q_proj.",
+        ".attention.attention.key.": ".attention.k_proj.",
+        ".attention.attention.value.": ".attention.v_proj.",
+        ".attention.output.dense.": ".attention.o_proj."
+    }
+
+    expected_keys = set(model.state_dict().keys())
+
+    converted_state = {}
+
+    for key, value in state.items():
+        new_key = key
+
+        if key not in expected_keys:
+            for old_name, new_name in names.items():
+                if old_name in new_key:
+                    candidate = new_key.replace(
+                        old_name,
+                        new_name
+                    )
+
+                    if candidate in expected_keys:
+                        new_key = candidate
+                        break
+
+                elif new_name in new_key:
+                    candidate = new_key.replace(
+                        new_name,
+                        old_name
+                    )
+
+                    if candidate in expected_keys:
+                        new_key = candidate
+                        break
+
+        converted_state[new_key] = value
+
+    # Keep strict loading to detect any real
+    # architecture mismatch.
+    model.load_state_dict(
+        converted_state,
+        strict=True
+    )
+
     model.countries = countries
 
-    # same crop as the OSV-5M transform, so it sees the same pixels as the blurred pngs
     model.transform = transforms.Compose([
         transforms.Resize(224),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]), # ImageNet normalisation
+        transforms.Normalize(
+            [0.485, 0.456, 0.406],
+            [0.229, 0.224, 0.225]
+        )
     ])
+
     return model.eval().requires_grad_(False)
 
 

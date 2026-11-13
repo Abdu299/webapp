@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 59",
+  "truth": {
+    "lat": 37.971102,
+    "lng": 23.726767,
+    "country": "GR"
+  },
+  "model": {
+    "lat": -10.0,
+    "lng": -55.0,
+    "country": "BR",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "BR",
+      "probability_pct": 38.38
+    },
+    {
+      "country": "IN",
+      "probability_pct": 10.62
+    },
+    {
+      "country": "PT",
+      "probability_pct": 5.7
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 50.08
+      },
+      {
+        "country": "BR",
+        "probability_pct": 25.78
+      },
+      {
+        "country": "PT",
+        "probability_pct": 6.58
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.73858,
+    "lpips": 0.29537,
+    "blurred_area": 0.10466,
+    "quality_metric": "SSIM",
+    "quality_score": 0.73858
+  },
+  "prediction_type": "country",
+  "source_id": "Athens_00016_516320955_2f7c0642b4_212_36764971@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

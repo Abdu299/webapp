@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 76",
+  "truth": {
+    "lat": 39.450311,
+    "lng": -106.470608,
+    "country": "US"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 30.07
+    },
+    {
+      "country": "ES",
+      "probability_pct": 18.05
+    },
+    {
+      "country": "FR",
+      "probability_pct": 13.09
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -27.0,
+      "lng": 133.0,
+      "country": "AU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "AU",
+        "probability_pct": 97.24
+      },
+      {
+        "country": "RU",
+        "probability_pct": 0.94
+      },
+      {
+        "country": "BR",
+        "probability_pct": 0.46
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.8634,
+    "lpips": 0.1158,
+    "blurred_area": 0.0546,
+    "quality_metric": "SSIM",
+    "quality_score": 0.8634
+  },
+  "prediction_type": "country",
+  "source_id": "Colorado_00057_1199140107_b35790beec_1001_59341685@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

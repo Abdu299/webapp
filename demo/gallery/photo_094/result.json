@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 94",
+  "truth": {
+    "lat": 23.117311,
+    "lng": 113.353328,
+    "country": "CN"
+  },
+  "model": {
+    "lat": 23.7,
+    "lng": 121.0,
+    "country": "TW",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "TW",
+      "probability_pct": 76.05
+    },
+    {
+      "country": "SG",
+      "probability_pct": 11.99
+    },
+    {
+      "country": "HK",
+      "probability_pct": 5.01
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 88.86
+      },
+      {
+        "country": "GE",
+        "probability_pct": 6.68
+      },
+      {
+        "country": "BY",
+        "probability_pct": 2.37
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.76222,
+    "lpips": 0.28693,
+    "blurred_area": 0.10388,
+    "quality_metric": "SSIM",
+    "quality_score": 0.76222
+  },
+  "prediction_type": "country",
+  "source_id": "Guangzhou_00003_986276060_2769109737_1375_70618949@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

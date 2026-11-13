@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 84",
+  "truth": {
+    "lat": 15.574013,
+    "lng": -61.455373,
+    "country": "DM"
+  },
+  "model": {
+    "lat": 4.0,
+    "lng": -72.0,
+    "country": "CO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "CO",
+      "probability_pct": 77.8
+    },
+    {
+      "country": "TW",
+      "probability_pct": 7.03
+    },
+    {
+      "country": "MX",
+      "probability_pct": 2.92
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 76.86
+      },
+      {
+        "country": "CO",
+        "probability_pct": 6.81
+      },
+      {
+        "country": "AE",
+        "probability_pct": 3.83
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.72184,
+    "lpips": 0.19685,
+    "blurred_area": 0.10295,
+    "quality_metric": "SSIM",
+    "quality_score": 0.72184
+  },
+  "prediction_type": "country",
+  "source_id": "Dominica_00002_479941913_0bf2cf5743_169_7687052@N07",
+  "heatmap_available": true,
+  "clues_available": false
+}

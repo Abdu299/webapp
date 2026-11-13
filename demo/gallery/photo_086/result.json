@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 86",
+  "truth": {
+    "lat": -0.967437,
+    "lng": -77.763977,
+    "country": "EC"
+  },
+  "model": {
+    "lat": 46.0,
+    "lng": 25.0,
+    "country": "RO",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "RO",
+      "probability_pct": 18.02
+    },
+    {
+      "country": "AT",
+      "probability_pct": 15.13
+    },
+    {
+      "country": "DE",
+      "probability_pct": 10.35
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 21.19
+      },
+      {
+        "country": "CZ",
+        "probability_pct": 9.69
+      },
+      {
+        "country": "BD",
+        "probability_pct": 6.71
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.92574,
+    "lpips": 0.11906,
+    "blurred_area": 0.05527,
+    "quality_metric": "SSIM",
+    "quality_score": 0.92574
+  },
+  "prediction_type": "country",
+  "source_id": "Ecuador_00016_1042198302_3e83aea565_1079_7132415@N03",
+  "heatmap_available": true,
+  "clues_available": false
+}

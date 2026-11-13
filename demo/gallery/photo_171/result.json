@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 171",
+  "truth": {
+    "lat": -33.870344,
+    "lng": 151.225433,
+    "country": "AU"
+  },
+  "model": {
+    "lat": 54.0,
+    "lng": -2.0,
+    "country": "GB",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "GB",
+      "probability_pct": 31.93
+    },
+    {
+      "country": "NL",
+      "probability_pct": 23.66
+    },
+    {
+      "country": "DE",
+      "probability_pct": 7.88
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 87.76
+      },
+      {
+        "country": "NL",
+        "probability_pct": 6.4
+      },
+      {
+        "country": "GB",
+        "probability_pct": 2.15
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.89529,
+    "lpips": 0.14993,
+    "blurred_area": 0.04735,
+    "quality_metric": "SSIM",
+    "quality_score": 0.89529
+  },
+  "prediction_type": "country",
+  "source_id": "Sydney_00073_1226915900_eea86783cd_1128_65768710@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 98",
+  "truth": {
+    "lat": 22.282425,
+    "lng": 114.146447,
+    "country": "HK"
+  },
+  "model": {
+    "lat": 22.25,
+    "lng": 114.16666666,
+    "country": "HK",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "HK",
+      "probability_pct": 62.41
+    },
+    {
+      "country": "JP",
+      "probability_pct": 35.98
+    },
+    {
+      "country": "SG",
+      "probability_pct": 0.73
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 36.0,
+      "lng": 138.0,
+      "country": "JP",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "JP",
+        "probability_pct": 55.37
+      },
+      {
+        "country": "HK",
+        "probability_pct": 24.25
+      },
+      {
+        "country": "RU",
+        "probability_pct": 6.06
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75639,
+    "lpips": 0.30822,
+    "blurred_area": 0.10954,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75639
+  },
+  "prediction_type": "country",
+  "source_id": "HongKong_00041_504492617_7af38e0004_208_7224156@N03",
+  "heatmap_available": true,
+  "clues_available": false
+}

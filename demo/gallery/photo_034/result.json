@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 34",
+  "truth": {
+    "lat": 39.937908,
+    "lng": 116.398086,
+    "country": "CN"
+  },
+  "model": {
+    "lat": 38.0,
+    "lng": -97.0,
+    "country": "US",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "US",
+      "probability_pct": 13.99
+    },
+    {
+      "country": "TW",
+      "probability_pct": 10.93
+    },
+    {
+      "country": "FR",
+      "probability_pct": 9.86
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 54.19
+      },
+      {
+        "country": "US",
+        "probability_pct": 14.11
+      },
+      {
+        "country": "NO",
+        "probability_pct": 4.94
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.84554,
+    "lpips": 0.16278,
+    "blurred_area": 0.07848,
+    "quality_metric": "SSIM",
+    "quality_score": 0.84554
+  },
+  "prediction_type": "country",
+  "source_id": "436360592_ef20eb1e98_178_99746029@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

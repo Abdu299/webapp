@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 128",
+  "truth": {
+    "lat": 42.907186,
+    "lng": -5.561764,
+    "country": "ES"
+  },
+  "model": {
+    "lat": 31.5,
+    "lng": 34.75,
+    "country": "IL",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IL",
+      "probability_pct": 24.74
+    },
+    {
+      "country": "IN",
+      "probability_pct": 19.47
+    },
+    {
+      "country": "US",
+      "probability_pct": 13.95
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 39.5,
+      "lng": -8.0,
+      "country": "PT",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "PT",
+        "probability_pct": 39.06
+      },
+      {
+        "country": "ES",
+        "probability_pct": 11.7
+      },
+      {
+        "country": "RU",
+        "probability_pct": 7.59
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.67144,
+    "lpips": 0.31732,
+    "blurred_area": 0.15055,
+    "quality_metric": "SSIM",
+    "quality_score": 0.67144
+  },
+  "prediction_type": "country",
+  "source_id": "Montana_00013_452159720_caae190cec_196_93487964@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}

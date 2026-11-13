@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 68",
+  "truth": {
+    "lat": 37.752614,
+    "lng": -119.526979,
+    "country": "US"
+  },
+  "model": {
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "country": "IT",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "IT",
+      "probability_pct": 39.06
+    },
+    {
+      "country": "FR",
+      "probability_pct": 36.63
+    },
+    {
+      "country": "ES",
+      "probability_pct": 5.88
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": 60.0,
+      "lng": 100.0,
+      "country": "RU",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "RU",
+        "probability_pct": 94.31
+      },
+      {
+        "country": "PT",
+        "probability_pct": 4.06
+      },
+      {
+        "country": "NO",
+        "probability_pct": 0.56
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.75061,
+    "lpips": 0.24195,
+    "blurred_area": 0.08013,
+    "quality_metric": "SSIM",
+    "quality_score": 0.75061
+  },
+  "prediction_type": "country",
+  "source_id": "California_00197_718693402_4ba930995d_1150_7980350@N08",
+  "heatmap_available": true,
+  "clues_available": false
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Mystery photo 71",
+  "truth": {
+    "lat": 41.885921,
+    "lng": -87.622833,
+    "country": "US"
+  },
+  "model": {
+    "lat": 36.0,
+    "lng": 138.0,
+    "country": "JP",
+    "kind": "country_representative"
+  },
+  "top3": [
+    {
+      "country": "JP",
+      "probability_pct": 26.03
+    },
+    {
+      "country": "TW",
+      "probability_pct": 22.87
+    },
+    {
+      "country": "SG",
+      "probability_pct": 14.94
+    }
+  ],
+  "clues": [],
+  "privacy": {
+    "available": true,
+    "model": {
+      "lat": -10.0,
+      "lng": -55.0,
+      "country": "BR",
+      "kind": "country_representative"
+    },
+    "new_top3": [
+      {
+        "country": "BR",
+        "probability_pct": 23.49
+      },
+      {
+        "country": "RU",
+        "probability_pct": 20.13
+      },
+      {
+        "country": "MY",
+        "probability_pct": 14.02
+      }
+    ],
+    "estimate_method": "country_representative",
+    "ssim": 0.89803,
+    "lpips": 0.10102,
+    "blurred_area": 0.05534,
+    "quality_metric": "SSIM",
+    "quality_score": 0.89803
+  },
+  "prediction_type": "country",
+  "source_id": "Chicago_00046_286428804_4fd17dde48_106_51306116@N00",
+  "heatmap_available": true,
+  "clues_available": false
+}
