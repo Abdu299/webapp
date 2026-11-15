@@ -82,6 +82,9 @@ _clue_masks = {}
 _uploads = {}
 MAX_UPLOADS = 20
 
+# Where the uploader says the photo was taken, if they told us
+_upload_truth = {}
+
 
 def remember_upload(image):
     import uuid
@@ -92,6 +95,7 @@ def remember_upload(image):
     while len(_uploads) > MAX_UPLOADS:
         oldest = next(iter(_uploads))
         del _uploads[oldest]
+        _upload_truth.pop(oldest, None)
         _heat_grids.pop(oldest, None)
         _clue_masks.pop(oldest, None)
 
@@ -147,6 +151,9 @@ def jpeg_data(image):
 
 
 def labels_for(photo_id):
+    if photo_id in _uploads:
+        return dict(_upload_truth.get(photo_id, {}))
+
     csv_path = IMAGES / "gallery.csv"
 
     if not csv_path.is_file():
@@ -936,3 +943,24 @@ def calculate_importance(photo_id: str):
         "continent": continent,
         "continent_clues": continent_clues,
     }
+
+class TruthPayload(BaseModel):
+    lat: float
+    lng: float
+
+
+@router.post("/{photo_id}/truth")
+def set_upload_truth(photo_id: str, payload: TruthPayload):
+    """
+    The uploader marks where their photo was taken. It is kept in memory
+    with the upload and used as the true location for the rest of the round.
+    """
+    if photo_id not in _uploads:
+        raise HTTPException(404, "Upload not found, try uploading again")
+
+    if not (-90 <= payload.lat <= 90 and -180 <= payload.lng <= 180):
+        raise HTTPException(400, "That spot is outside the map")
+
+    truth = add_true_country({"lat": payload.lat, "lng": payload.lng})
+    _upload_truth[photo_id] = truth
+    return truth

@@ -69,3 +69,7 @@
 }
 
 
+
+/* Same as on the OSV page (OSVLive.css), for the main page */
+.privacy-info{display:flex;gap:9px;align-items:center;background:#eef6ff;color:#466381;padding:14px;border-radius:10px;font-size:12px;line-height:1.6;margin-top:15px}
+.privacy-link{background:transparent;border:0;color:#2563eb;font-weight:800;font-size:12px;padding:12px 0;display:block;margin:0 auto}

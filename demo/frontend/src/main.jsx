@@ -713,9 +713,10 @@ function MainGallery() {
   }
 
 
-  // Reveal saved original prediction
-  async function reveal() {
-    if (!guess || !selected) {
+  // Reveal saved original prediction. For an upload, the spot the
+  // uploader marked is the true location, unless they chose to skip.
+  async function reveal(skip = false) {
+    if (!selected || (!guess && !skip)) {
       return
     }
 
@@ -725,7 +726,21 @@ function MainGallery() {
       let response
 
       if (selected.uploaded) {
-        response = selected.result
+        const truth = skip
+          ? null
+          : await jsonFetch(
+              `/api/osv/${encodeURIComponent(selected.id)}/truth`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lat: guess.lat, lng: guess.lng })
+              }
+            )
+
+        response = { ...selected.result, truth }
+
+        // The marked spot is the answer, not a guess, so no blue pin
+        setGuess(null)
       } else {
         response = await jsonFetch(
           `/api/photos/${selected.id}/reveal`,
@@ -818,6 +833,13 @@ function MainGallery() {
     } else {
       winner = "It's a tie!"
     }
+  }
+
+  // The uploader already knew the answer, so only the model is scored
+  if (selected?.uploaded && result?.truth) {
+    winner = result.model?.country === result.truth.country
+      ? 'The model got the country right'
+      : 'The model guessed the wrong country'
   }
 
 
@@ -1483,9 +1505,15 @@ function MainGallery() {
               </div>
 
               <p className="map-intro">
-                {locked
-                  ? "Here is your guess next to the model's."
-                  : 'Click the map to place your guess. You can drag the pin to move it.'}
+                {selected?.uploaded
+                  ? locked
+                    ? result?.truth
+                      ? "Here is the spot you marked next to the model's guess."
+                      : "Here is the model's guess."
+                    : 'Where was this photo taken? Click the map to mark the spot. You can drag the pin to move it.'
+                  : locked
+                    ? "Here is your guess next to the model's."
+                    : 'Click the map to place your guess. You can drag the pin to move it.'}
               </p>
 
 
@@ -1501,15 +1529,28 @@ function MainGallery() {
 
               {/* LOCK GUESS BUTTON */}
               {!locked ? (
-                <button
-                  className="primary"
-                  onClick={reveal}
-                  disabled={!guess}
-                >
-                  Lock in my guess
+                <>
+                  <button
+                    className="primary"
+                    onClick={() => reveal()}
+                    disabled={!guess}
+                  >
+                    {selected?.uploaded
+                      ? 'This is where it was taken'
+                      : 'Lock in my guess'}
 
-                  <ArrowRight size={18} />
-                </button>
+                    <ArrowRight size={18} />
+                  </button>
+
+                  {selected?.uploaded && (
+                    <button
+                      className="privacy-link"
+                      onClick={() => reveal(true)}
+                    >
+                      Skip, I'd rather not say
+                    </button>
+                  )}
+                </>
 
               ) : (
                 <>
@@ -1540,21 +1581,29 @@ function MainGallery() {
                                 : 'difference'}
                           </small>
                         )}
+
+                      {selected?.uploaded && modelKm !== null && (
+                        <small>
+                          Its pin was {fmt(modelKm)} from the spot you marked
+                        </small>
+                      )}
                     </div>
                   </div>
 
 
                   {/* DISTANCES */}
                   <div className="metrics">
-                    <div>
-                      <small>
-                        YOUR DISTANCE
-                      </small>
+                    {!selected?.uploaded && (
+                      <div>
+                        <small>
+                          YOUR DISTANCE
+                        </small>
 
-                      <strong>
-                        {fmt(userKm)}
-                      </strong>
-                    </div>
+                        <strong>
+                          {fmt(userKm)}
+                        </strong>
+                      </div>
+                    )}
 
                     <div>
                       <small>
