@@ -1,4 +1,3 @@
-
 """Live inference for the OSV image gallery."""
 
 import base64
@@ -34,12 +33,29 @@ PRIVACY_CKPT = REPO / os.getenv(
     "output/geovit/privacy_network/geovit_seed0/best.ckpt"
 )
 
-SEGMENT_CKPT = Path(
-    os.getenv(
-        "OSV_SEGMENT_CHECKPOINT",
-        str(REPO / "segmenter_896_seed0.pt")
-    )
-)
+def find_segment_checkpoint():
+    """Find the trained segmentation decoder without guessing its weights."""
+    custom = os.getenv("OSV_SEGMENT_CHECKPOINT", "").strip()
+    if custom:
+        candidate = Path(custom).expanduser()
+        if not candidate.is_absolute():
+            candidate = REPO / candidate
+        return candidate
+
+    candidates = [
+        REPO / "segmenter_896_seed0.pt",
+        REPO / "segmenter" / "segmenter_896_seed0.pt",
+        REPO / "checkpoints" / "segmenter_896_seed0.pt",
+        REPO / "segmenter" / "checkpoints" / "segmenter_896_seed0.pt",
+        REPO / "model" / "segmenter_896_seed0.pt",
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+    return candidates[0]
+
+
+SEGMENT_CKPT = find_segment_checkpoint()
 
 ALLOWED = {".jpg", ".jpeg", ".png", ".webp"}
 
@@ -525,8 +541,11 @@ def calculate_clues(photo_id: str):
         raise HTTPException(
             503,
             (
-                "Segmenter checkpoint missing. "
-                "Set OSV_SEGMENT_CHECKPOINT."
+                f"Trained segmenter checkpoint not found at {SEGMENT_CKPT}. "
+                "The main gallery uses a precomputed clues.png; OSV Live "
+                "needs William's segmenter_896_seed0.pt to calculate new "
+                "masks. Put that file in webapp/segmenter/ or set "
+                "OSV_SEGMENT_CHECKPOINT to its actual path before starting FastAPI."
             )
         )
 
