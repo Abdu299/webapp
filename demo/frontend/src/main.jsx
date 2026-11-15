@@ -1371,6 +1371,56 @@ function MainGallery() {
                     AI pins represent countries rather than
                     exact predicted GPS locations.
                   </p>
+
+                  {/* TOP 3 COUNTRIES */}
+                  <div className="subheading">
+                    Model confidence: top 3 countries
+                  </div>
+
+                  {result.top3?.length ? (
+                    result.top3
+                      .slice(0, 3)
+                      .map((country, index) => (
+                        <div
+                          className="rank"
+                          key={index}
+                        >
+                          <span>
+                            0{index + 1}
+                          </span>
+
+                          <strong>
+                            {country.country}
+                          </strong>
+
+                          <div className="bar">
+                            <i
+                              style={{
+                                width: `${
+                                  Math.max(
+                                    0,
+                                    Math.min(
+                                      100,
+                                      country.probability_pct ?? 0
+                                    )
+                                  )
+                                }%`
+                              }}
+                            />
+                          </div>
+
+                          <b>
+                            {Number(
+                              country.probability_pct ?? 0
+                            ).toFixed(1)}%
+                          </b>
+                        </div>
+                      ))
+                  ) : (
+                    <p className="muted">
+                      Country confidence data unavailable.
+                    </p>
+                  )}
                 </>
               )}
             </section>
@@ -1382,70 +1432,7 @@ function MainGallery() {
           {/* =========================================== */}
 
           {locked && (
-            <div className="details-grid">
-
-              {/* TOP 3 COUNTRIES */}
-              <section className="panel result-panel">
-                <div className="panel-heading">
-                  <div>
-                    <span className="eyebrow">
-                      MODEL CONFIDENCE
-                    </span>
-
-                    <h2>
-                      Top 3 countries
-                    </h2>
-                  </div>
-
-                  <Sparkles size={20} />
-                </div>
-
-                {result.top3?.length ? (
-                  result.top3
-                    .slice(0, 3)
-                    .map((country, index) => (
-                      <div
-                        className="rank"
-                        key={index}
-                      >
-                        <span>
-                          0{index + 1}
-                        </span>
-
-                        <strong>
-                          {country.country}
-                        </strong>
-
-                        <div className="bar">
-                          <i
-                            style={{
-                              width: `${
-                                Math.max(
-                                  0,
-                                  Math.min(
-                                    100,
-                                    country.probability_pct ?? 0
-                                  )
-                                )
-                              }%`
-                            }}
-                          />
-                        </div>
-
-                        <b>
-                          {Number(
-                            country.probability_pct ?? 0
-                          ).toFixed(1)}%
-                        </b>
-                      </div>
-                    ))
-                ) : (
-                  <p className="muted">
-                    Country confidence data unavailable.
-                  </p>
-                )}
-              </section>
-
+            <div className="privacy-panel">
 
               {/* PRIVACY INFORMATION */}
               <section className="panel result-panel">

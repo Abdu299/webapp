@@ -48,6 +48,10 @@ def export_heatmap(path, out):
     if h.ndim != 2:
         return False
     h = np.nan_to_num(h, nan=0, posinf=0, neginf=0)
+    # heatmaps.py moves its window in 16 px steps, so each 16x16 cell has one value.
+    # Interpolating between the cell centres draws a smooth map instead of blocks.
+    cells = np.ascontiguousarray(h[8::16, 8::16])
+    h = np.array(Image.fromarray(cells, 'F').resize((768, 768), Image.Resampling.BICUBIC))
     # Strongest visible areas, not raw probability. The input heatmap is centred crop.
     high = float(np.percentile(h, 99))
     low = float(np.min(h))
@@ -59,7 +63,7 @@ def export_heatmap(path, out):
     rgba[...,1] = (190*(1-h)).astype(np.uint8)
     rgba[...,2] = (30*(1-h)).astype(np.uint8)
     rgba[...,3] = (190*h).astype(np.uint8)
-    Image.fromarray(rgba,'RGBA').resize((768,768),Image.Resampling.BILINEAR).save(out)
+    Image.fromarray(rgba,'RGBA').save(out)
     return True
 
 def export_clues(path, out, size=768):

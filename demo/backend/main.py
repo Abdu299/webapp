@@ -92,7 +92,7 @@ def photo_asset(photo_id: str, filename: str):
     path = photo_dir(photo_id) / filename
     if not path.is_file():
         raise HTTPException(404, 'Asset not available')
-    return FileResponse(path, headers={'Cache-Control': 'public, max-age=3600'})
+    return FileResponse(path, headers={'Cache-Control': 'no-cache'})
 
 
 @app.post('/api/photos/{photo_id}/reveal')

@@ -797,17 +797,6 @@ export default function OSVLive() {
                 <div className="osv-actions">
                   <button
                     disabled={!!busy}
-                    onClick={getHeatmap}
-                  >
-                    <Eye size={17} />
-
-                    {showHeat
-                      ? 'Hide heatmap'
-                      : 'Calculate heatmap'}
-                  </button>
-
-                  <button
-                    disabled={!!busy}
                     onClick={getClues}
                   >
                     <Layers size={17} />
@@ -815,6 +804,17 @@ export default function OSVLive() {
                     {showClues
                       ? 'Hide clues'
                       : 'Run segmentation'}
+                  </button>
+
+                  <button
+                    disabled={!!busy}
+                    onClick={getHeatmap}
+                  >
+                    <Eye size={17} />
+
+                    {showHeat
+                      ? 'Hide heatmap'
+                      : 'Calculate heatmap'}
                   </button>
                 </div>
               )}

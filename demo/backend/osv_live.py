@@ -370,13 +370,16 @@ def predict_original(photo_id: str):
 @router.post("/{photo_id}/heatmap")
 def calculate_heatmap(photo_id: str):
     """
-    Live 7x7 occlusion heatmap.
-    Measures change in top-country probability.
+    Live occlusion heatmap, the same method as segmenter/heatmaps.py
+    scaled to 224x224: a 32 px window moved in 16 px steps (13x13 = 169
+    blurred versions), each pixel's heat is the mean over the windows
+    that cover it. Heat is the drop in the log-odds of the original top
+    country, which still changes when the probability is close to 100 %.
     """
 
     try:
+        import numpy as np
         import torch
-        from PIL import ImageDraw
 
         model, transform, _ = get_geovit()
 
@@ -399,93 +402,70 @@ def calculate_heatmap(photo_id: str):
             blurred
         ).unsqueeze(0)
 
-        values = []
+        window, stride, size = 32, 16, 224
+        corners = [
+            (y, x)
+            for y in range(0, size - window + 1, stride)
+            for x in range(0, size - window + 1, stride)
+        ]
+
+        def log_odds(logits, index):
+            # log(p / (1 - p)) of one class, without rounding p to 1
+            log_probs = logits.log_softmax(-1)
+            others = torch.cat(
+                [log_probs[:, :index], log_probs[:, index + 1:]],
+                dim=1
+            )
+            return log_probs[:, index] - others.logsumexp(-1)
+
+        drops = []
 
         with torch.inference_mode():
-            original_probs = model(
-                image_tensor
-            ).softmax(-1)[0]
+            logits = model(image_tensor)
+            top_idx = int(logits.argmax())
+            baseline = float(log_odds(logits, top_idx)[0])
 
-            top_idx = int(
-                original_probs.argmax()
-            )
-
-            baseline = float(
-                original_probs[top_idx]
-            )
-
-            for row in range(7):
-                for col in range(7):
-                    y0 = row * 32
-                    x0 = col * 32
-
-                    changed = image_tensor.clone()
-
-                    changed[
-                        :,
-                        :,
-                        y0:y0 + 32,
-                        x0:x0 + 32
-                    ] = blurred_tensor[
-                        :,
-                        :,
-                        y0:y0 + 32,
-                        x0:x0 + 32
-                    ]
-
-                    new_probs = model(
-                        changed
-                    ).softmax(-1)[0]
-
-                    change = max(
-                        0.0,
-                        baseline - float(
-                            new_probs[top_idx]
-                        )
-                    )
-
-                    values.append(change)
-
-        _heat_grids[photo_id] = values
-
-        strongest = max(values) or 1.0
-
-        canvas = Image.new(
-            "RGBA",
-            (224, 224),
-            (0, 0, 0, 0)
-        )
-
-        draw = ImageDraw.Draw(canvas)
-
-        for index, value in enumerate(values):
-            strength = value / strongest
-
-            if strength <= 0:
-                continue
-
-            col = index % 7
-            row = index // 7
-
-            draw.rectangle(
-                (
-                    col * 32,
-                    row * 32,
-                    col * 32 + 31,
-                    row * 32 + 31
-                ),
-                fill=(
-                    255,
-                    int(180 * (1 - strength)),
-                    0,
-                    int(185 * strength)
+            # Batches are much faster on the CPU than one version at a time
+            for start in range(0, len(corners), 32):
+                batch = image_tensor.repeat(
+                    len(corners[start:start + 32]), 1, 1, 1
                 )
-            )
+                for i, (y, x) in enumerate(corners[start:start + 32]):
+                    batch[i, :, y:y + window, x:x + window] = (
+                        blurred_tensor[0, :, y:y + window, x:x + window]
+                    )
+                new = log_odds(model(batch), top_idx)
+                drops.extend((baseline - new).clamp(min=0).tolist())
 
-        canvas = canvas.resize(
-            original.size,
-            Image.Resampling.BILINEAR
+        heat = np.zeros((size, size), dtype=np.float32)
+        count = np.zeros((size, size), dtype=np.float32)
+        for (y, x), drop in zip(corners, drops):
+            heat[y:y + window, x:x + window] += drop
+            count[y:y + window, x:x + window] += 1
+        heat /= np.maximum(count, 1)
+
+        _heat_grids[photo_id] = heat
+
+        # Every 16x16 cell has one value; interpolating between the cell
+        # centres draws a smooth map instead of blocks
+        cells = heat[stride // 2::stride, stride // 2::stride]
+        smooth = np.array(
+            Image.fromarray(cells, "F").resize(
+                original.size, Image.Resampling.BICUBIC
+            )
         )
+
+        # Same colours as the gallery heatmaps (build_from_repo.py)
+        high = float(np.percentile(smooth, 99))
+        strength = np.clip(smooth / high, 0, 1) if high > 0 else smooth * 0
+
+        rgba = np.zeros((*strength.shape, 4), dtype=np.uint8)
+        rgba[..., 0] = 255
+        rgba[..., 1] = (190 * (1 - strength)).astype(np.uint8)
+        rgba[..., 2] = (30 * (1 - strength)).astype(np.uint8)
+        rgba[..., 3] = (190 * strength).astype(np.uint8)
+
+        canvas = Image.fromarray(rgba, "RGBA")
 
         output = io.BytesIO()
         canvas.save(output, "PNG")
@@ -499,8 +479,8 @@ def calculate_heatmap(photo_id: str):
                 "data:image/png;base64," + encoded
             ),
             "method": (
-                "Live 7x7 occlusion; "
-                "change in GeoViT confidence"
+                "Live occlusion, 32 px window in 16 px steps; "
+                "drop in GeoViT's log-odds for its top country"
             )
         }
 
@@ -876,19 +856,18 @@ def calculate_importance(photo_id: str):
     if photo_id not in _clue_masks:
         calculate_clues(photo_id)
 
-    # The heatmap cells are on the photo squashed to 224x224,
+    # The heatmap is on the photo squashed to 224x224,
     # so the mask is squashed the same way
     mask = np.array(
         Image.fromarray(_clue_masks[photo_id]).resize(
             (224, 224), Image.Resampling.NEAREST
         )
     )
-    grid = np.array(_heat_grids[photo_id], dtype=np.float32).reshape(7, 7)
-    heat = np.repeat(np.repeat(grid, 32, axis=0), 32, axis=1)
+    heat = _heat_grids[photo_id]
 
-    # A flat heatmap means no cell changed the guess, so there is nothing to rank
+    # A flat heatmap means no window changed the guess, so there is nothing to rank
     importance = None
-    if heat.max() >= 0.02 and heat.mean() > 0:
+    if heat.max() >= 0.05 and heat.mean() > 0:
         importance = []
         for class_id, name, color in CLUE_CLASSES:
             in_class = mask == class_id
