@@ -805,8 +805,14 @@ def protect_image(photo_id: str):
         except ImportError:
             pass
 
+        blue = torch.tensor([37, 99, 235]).view(3, 1, 1) / 255
+        mask_image = to_pil_image(
+            1 - mask[0].float().cpu() * (1 - blue)
+        )
+
         return {
             "image_data": jpeg_data(protected),
+            "mask_data": jpeg_data(mask_image),
             "blurred_area_pct": round(
                 float(mask.mean()) * 100,
                 1
