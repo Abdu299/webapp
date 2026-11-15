@@ -33,14 +33,70 @@ import {
 } from 'lucide-react'
 
 import OSVLive from './OSVLive'
+import { ISO2_TO_ISO3 } from './countryIso3'
 
 import 'leaflet/dist/leaflet.css'
 import './style.css'
 
 
+
+// GeoJSON country identifiers use ISO-3 while our labels use ISO-2.
+function isTrueCountryPolygon(feature, countryCode) {
+  if (!countryCode) return false
+
+  const code = String(countryCode).trim().toUpperCase()
+  const iso3 = ISO2_TO_ISO3[code] || code
+  const props = feature?.properties || {}
+  const identifiers = [
+    feature?.id,
+    props.ISO_A3,
+    props.iso_a3,
+    props.ADM0_A3,
+    props.adm0_a3,
+    props.ISO3166_1_Alpha_3,
+    props.ISO_A2,
+    props.iso_a2,
+    props.ISO3166_1_Alpha_2
+  ]
+
+  return identifiers.some(value => {
+    if (value == null) return false
+    const actual = String(value).trim().toUpperCase()
+    return actual === iso3 || actual === code
+  })
+}
+
+function countryMapStyle(feature, truthCode) {
+  if (isTrueCountryPolygon(feature, truthCode)) {
+    return {
+      color: '#15803d',
+      weight: 2.5,
+      opacity: 1,
+      fillColor: '#22c55e',
+      fillOpacity: 0.43
+    }
+  }
+
+  return {
+    color: '#64748b',
+    weight: 0.9,
+    opacity: 0.65,
+    fillOpacity: 0
+  }
+}
+
 // ==================================================
 // MAP HELPERS
 // ==================================================
+
+
+// Highlight only the ground-truth country and matching predictions.
+function isCorrectCountry(candidate, truth) {
+  if (!candidate || !truth) return false
+  return String(candidate).trim().toUpperCase() === String(truth).trim().toUpperCase()
+}
+
+const correctCountryStyle = { color: '#16a34a' }
 
 function makePin(color) {
   return L.divIcon({
@@ -254,14 +310,13 @@ function WorldMap({
         {/* Country borders */}
         {borders && (
           <GeoJSON
+            key={locked ? (result?.truth?.country || 'revealed') : 'hidden'}
             data={borders}
             interactive={false}
-            style={{
-              color: '#64748b',
-              weight: 0.9,
-              opacity: 0.65,
-              fillOpacity: 0
-            }}
+            style={feature => countryMapStyle(
+              feature,
+              locked ? result?.truth?.country : null
+            )}
           />
         )}
 
@@ -1321,7 +1376,7 @@ function MainGallery() {
                             TRUE LOCATION
                           </small>
 
-                          <strong>
+                          <strong style={result.truth?.country ? correctCountryStyle : undefined}>
                             {result.truth?.country ||
                               'Unknown'}
                           </strong>
@@ -1332,7 +1387,7 @@ function MainGallery() {
                             AI GUESS AFTER BLURRING
                           </small>
 
-                          <strong>
+                          <strong style={isCorrectCountry(result.privacy.model?.country || result.privacy.model?.label, result.truth?.country) ? correctCountryStyle : undefined}>
                             {result.privacy.model?.country ||
                               result.privacy.model?.label ||
                               'Unknown'}
@@ -1520,7 +1575,7 @@ function MainGallery() {
                         ACTUAL LOCATION
                       </small>
 
-                      <strong>
+                      <strong style={result.truth?.country ? correctCountryStyle : undefined}>
                         {result.truth?.country ||
                           'Unknown'}
                       </strong>
@@ -1531,7 +1586,7 @@ function MainGallery() {
                         AI PREDICTION
                       </small>
 
-                      <strong>
+                      <strong style={isCorrectCountry(result.model?.country || result.model?.label, result.truth?.country) ? correctCountryStyle : undefined}>
                         {result.model?.country ||
                           result.model?.label ||
                           'Unknown'}
@@ -1556,18 +1611,20 @@ function MainGallery() {
                         <div
                           className="rank"
                           key={index}
+                          style={isCorrectCountry(country.country, result.truth?.country) ? { background: '#f0fdf4', borderRadius: 9, paddingLeft: 10, paddingRight: 10 } : undefined}
                         >
                           <span>
                             0{index + 1}
                           </span>
 
-                          <strong>
+                          <strong style={isCorrectCountry(country.country, result.truth?.country) ? correctCountryStyle : undefined}>
                             {country.country}
                           </strong>
 
                           <div className="bar">
                             <i
                               style={{
+                                background: isCorrectCountry(country.country, result.truth?.country) ? '#16a34a' : undefined,
                                 width: `${
                                   Math.max(
                                     0,

@@ -21,15 +21,75 @@ import {
   Layers,
   RotateCcw,
   ShieldCheck,
-  Sparkles
+  Sparkles,
+  Trophy,
+  MapPin,
+  CircleHelp,
+  Globe2
 } from 'lucide-react'
 
+import { ISO2_TO_ISO3 } from './countryIso3'
 import './OSVLive.css'
 
+
+
+// GeoJSON country identifiers use ISO-3 while our labels use ISO-2.
+function isTrueCountryPolygon(feature, countryCode) {
+  if (!countryCode) return false
+
+  const code = String(countryCode).trim().toUpperCase()
+  const iso3 = ISO2_TO_ISO3[code] || code
+  const props = feature?.properties || {}
+  const identifiers = [
+    feature?.id,
+    props.ISO_A3,
+    props.iso_a3,
+    props.ADM0_A3,
+    props.adm0_a3,
+    props.ISO3166_1_Alpha_3,
+    props.ISO_A2,
+    props.iso_a2,
+    props.ISO3166_1_Alpha_2
+  ]
+
+  return identifiers.some(value => {
+    if (value == null) return false
+    const actual = String(value).trim().toUpperCase()
+    return actual === iso3 || actual === code
+  })
+}
+
+function countryMapStyle(feature, truthCode) {
+  if (isTrueCountryPolygon(feature, truthCode)) {
+    return {
+      color: '#15803d',
+      weight: 2.5,
+      opacity: 1,
+      fillColor: '#22c55e',
+      fillOpacity: 0.43
+    }
+  }
+
+  return {
+    color: '#64748b',
+    weight: 0.9,
+    opacity: 0.65,
+    fillOpacity: 0
+  }
+}
 
 // --------------------------------------------------
 // MAP HELPERS
 // --------------------------------------------------
+
+
+// Highlight only the ground-truth country and matching predictions.
+function isCorrectCountry(candidate, truth) {
+  if (!candidate || !truth) return false
+  return String(candidate).trim().toUpperCase() === String(truth).trim().toUpperCase()
+}
+
+const correctCountryStyle = { color: '#16a34a' }
 
 function makePin(color) {
   return L.divIcon({
@@ -232,14 +292,13 @@ function GuessMap({
         {/* Country borders */}
         {borders && (
           <GeoJSON
+            key={locked ? (result?.truth?.country || 'revealed') : 'hidden'}
             data={borders}
             interactive={false}
-            style={{
-              color: '#64748b',
-              weight: 0.9,
-              opacity: 0.65,
-              fillOpacity: 0
-            }}
+            style={feature => countryMapStyle(
+              feature,
+              locked ? result?.truth?.country : null
+            )}
           />
         )}
 
@@ -588,7 +647,7 @@ export default function OSVLive() {
     }
 
     run(
-      'Comparing the heatmap with the clues…',
+      'Comparing the heatmap with the clues, this can take about 20 seconds…',
       async () => {
         const data = await api(
           `/api/osv/${selected.id}/importance`,
@@ -671,500 +730,229 @@ export default function OSVLive() {
   )
 
 
+  const locked = Boolean(result)
+  let winner = 'The true location is unknown'
+  if (trueDistance !== null && modelDistance !== null) {
+    if (trueDistance < modelDistance) winner = 'You beat the AI!'
+    else if (trueDistance > modelDistance) winner = 'AI wins this round'
+    else winner = "It's a tie!"
+  }
+
+  const topImportance = importance?.clue_importance || []
+  const topHeatRatio = topImportance[0]?.heat_ratio || 1
+  const continentItems = importance?.continent_clues?.clues || []
+  const topContinentEffect = continentItems.find(item => item.effect > 0)?.effect || 1
+
   return (
-    <div className="osv-page">
-      <header className="osv-header">
-        <a
-          href="/"
-          className="osv-back"
-        >
-          <ArrowLeft size={18} />
-          Main gallery
-        </a>
-
-        <strong>
-          GeoGuess<span>AI</span>
-          <small> / OSV LIVE</small>
-        </strong>
-
-        <span className="osv-live-tag">
-          RUNS LIVE
-        </span>
+    <div className="app osv-page osv-match-main">
+      <header className="top">
+        <div className="brand">
+          <span className="brand-icon"><Globe2 size={23} /></span>
+          <div>
+            <strong>GeoGuess<span>AI</span></strong>
+            <small>VISUAL GEOLOCATION · OSV LIVE</small>
+          </div>
+        </div>
+        <div className="top-right">
+          <span className="pill"><span className="green-dot" />RUNS LIVE</span>
+          <span className="top-sub">IN5310 · GROUP 2</span>
+        </div>
       </header>
 
       {!selected ? (
-        <main className="osv-container">
-          <div className="osv-intro">
-            <span>
-              STREET VIEW, LIVE
-            </span>
-
-            <h1>
-              Everything runs <em>live.</em>
-            </h1>
-
-            <p>
-              Pick a street view photo. Unlike the main
-              gallery, nothing here is worked out in
-              advance. The models run when you click.
-            </p>
+        <main className="start">
+          <div className="intro">
+            <span className="eyebrow">STREET VIEW, LIVE</span>
+            <h1>Everything runs<br /><em>live.</em></h1>
+            <p>Pick a street view photo and guess where it is. Unlike the main gallery, nothing here is worked out in advance. The models run when you click.</p>
           </div>
-
-          {error && (
-            <p className="osv-error">
-              {error}
-            </p>
-          )}
-
-          {loading ? (
-            <p>Loading photos…</p>
-          ) : photos.length === 0 ? (
-            <div className="osv-empty">
-              No photos yet. Add JPG/PNG/WebP files to
-              <code>
-                {' '}
-                webapp/osv_image_galary/
-                {' '}
-              </code>
-              and refresh.
-            </div>
+          <div className="section-title">
+            <div><h2>Pick a photo</h2><p>{photos.length} street view photos</p></div>
+            <a className="upload" style={{textDecoration:'none'}} href="/"><ArrowLeft size={17}/> Main gallery</a>
+          </div>
+          {error && <div className="notice">{error}</div>}
+          {loading ? <p>Loading photos…</p> : photos.length === 0 ? (
+            <div className="empty"><h3>No OSV images found</h3><p>Add image files to webapp/osv_image_galary and refresh.</p></div>
           ) : (
-            <div className="osv-gallery">
-              {photos.map((photo, index) => (
-                <button
-                  key={photo.id}
-                  className="osv-card"
-                  onClick={() => open(photo)}
-                >
-                  <img
-                    src={photo.thumbnail}
-                    alt="Unknown location"
-                    loading="lazy"
-                  />
-
-                  <span>
-                    OSV IMAGE
-                    {' '}
-                    {String(index + 1).padStart(2, '0')}
-
-                    <ArrowRight size={17} />
-                  </span>
+            <div className="gallery">
+              {photos.map((photo,index) => (
+                <button className="photo-card" key={photo.id} onClick={() => open(photo)}>
+                  <img src={photo.thumbnail} alt="Mystery location" loading="lazy"/>
+                  <span className="photo-shade"/>
+                  <span className="photo-tag">OSV IMAGE {String(index+1).padStart(2,'0')}</span>
+                  <span className="photo-caption"><strong>Guess the location</strong><ArrowRight size={19}/></span>
                 </button>
               ))}
             </div>
           )}
+          <div className="footer-note"><ShieldCheck size={16}/> Every model on this page runs when you click.</div>
         </main>
       ) : (
-        <main className="osv-container">
-          <button
-            className="osv-back osv-return"
-            onClick={() => open(null)}
-          >
-            <ArrowLeft size={17} />
-            Back to photos
-          </button>
+        <main className="game">
+          <div className="game-head">
+            <button className="back" onClick={() => open(null)}><ArrowLeft size={17}/> Back to street view photos</button>
+            <span className="step">{locked ? 'ROUND REVEALED' : 'ROUND IN PROGRESS'} · STREET VIEW</span>
+          </div>
 
-          <div className="osv-columns">
-            {/* LEFT: IMAGE & AI FEATURES */}
-            <section className="osv-panel">
-              <div className="osv-panel-head">
-                <span>
-                  LIVE VISUAL ANALYSIS
-                </span>
-
-                <h2>
-                  {blur
-                    ? 'Protected image'
-                    : 'Mystery photo'}
-                </h2>
+          <div className="game-grid">
+            <section className="panel scene-panel">
+              <div className="panel-heading">
+                <div><span className="eyebrow">THE MYSTERY</span><h2>{blur ? 'Protected photo' : 'Look at the photo'}</h2></div>
+                <span className="tiny-pill">{blur ? 'PRIVACY PROTECTED' : locked ? 'REVEALED' : 'LOCATION HIDDEN'}</span>
               </div>
-
-              <div className="osv-photo-box">
-                <img
-                  className="osv-photo"
-                  src={blur?.image_data || original}
-                  alt="OSV test"
-                />
-
-                {!blur && showHeat && heatmap && (
-                  <img
-                    className="osv-overlay"
-                    src={heatmap.heatmap_data}
-                    alt="Live occlusion heatmap"
-                  />
-                )}
-
-                {!blur && showClues && clues && (
-                  <img
-                    className="osv-overlay"
-                    src={clues.overlay_data}
-                    alt="Live segmentation"
-                  />
-                )}
+              <div className="photo-stage">
+                <img className="scene" src={blur?.image_data || original} alt={blur ? 'Protected OSV photo' : 'OSV mystery photo'}/>
+                {!blur && showHeat && heatmap && <img className="overlay" src={heatmap.heatmap_data} alt="AI heatmap"/>}
+                {!blur && showClues && clues && <img className="overlay" src={clues.overlay_data} alt="Visual clues"/>}
               </div>
+              {!locked && <p className="hint"><CircleHelp size={16}/> Look for road signs, architecture, landscape and street markings.</p>}
 
-              {/* HEATMAP & SEGMENTATION */}
-              {result && !blur && (
-                <div className="osv-actions">
-                  <button
-                    disabled={!!busy}
-                    onClick={getClues}
-                  >
-                    <Layers size={17} />
-
-                    {showClues
-                      ? 'Hide clues'
-                      : 'Show clues'}
-                  </button>
-
-                  <button
-                    disabled={!!busy}
-                    onClick={getHeatmap}
-                  >
-                    <Eye size={17} />
-
-                    {showHeat
-                      ? 'Hide heatmap'
-                      : 'Show heatmap'}
-                  </button>
-                </div>
-              )}
-
-              {/* SEGMENTATION CLUE LIST */}
-              {showClues && clues && (
-                <div className="osv-clue-list">
-                  {clues.clues
-                    .filter(clue => clue.share_pct >= 1)
-                    .sort((a, b) => b.share_pct - a.share_pct)
-                    .map(clue => (
-                    <div key={clue.name}>
-                      <i
-                        style={{
-                          background: clue.color
-                        }}
-                      />
-
-                      {clue.name}
-
-                      <strong>
-                        {clue.share_pct}%
-                      </strong>
+              {locked && !blur && (
+                <>
+                  <div className="toggles">
+                    <button className={showClues ? 'toggle active':'toggle'} disabled={!!busy} onClick={getClues}>
+                      <Layers size={16}/> Visual clues <span>{showClues ? 'ON' : 'OFF'}</span>
+                    </button>
+                    <button className={showHeat ? 'toggle active':'toggle'} disabled={!!busy} onClick={getHeatmap}>
+                      <Eye size={16}/> AI heatmap <span>{showHeat ? 'ON' : 'OFF'}</span>
+                    </button>
+                  </div>
+                  {showClues && clues?.clues?.length > 0 && <>
+                    <div className="subheading">Visual clues</div>
+                    <div className="clue-list">
+                      {[...clues.clues].filter(c => c.share_pct >= 1).sort((a,b) => b.share_pct-a.share_pct).map(c => (
+                        <div className="clue" key={c.name}><i style={{background:c.color}}/><span>{c.name}</span><strong>{c.share_pct}%</strong></div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  </>}
 
-              {/* WHAT THE MODEL RELIED ON */}
-              {result && !blur && (
-                <div className="osv-actions">
-                  <button
-                    disabled={!!busy}
-                    onClick={getImportance}
-                  >
-                    <Sparkles size={17} />
-
-                    {showImportance
-                      ? 'Hide what the model relied on'
-                      : 'What did the model rely on?'}
-                  </button>
-                </div>
-              )}
-
-              {importance && showImportance && !blur && (
-                <div>
-                  <div className="subheading">What the model relied on</div>
-                  {importance.clue_importance?.length ? (
+                  <div className="toggles">
+                    <button className={showImportance ? 'toggle active':'toggle'} disabled={!!busy} onClick={getImportance}>
+                      <Sparkles size={16}/> What did the model rely on? <span>{showImportance ? 'ON' : 'OFF'}</span>
+                    </button>
+                  </div>
+                  {importance && showImportance && <div className="subheading">What the model relied on</div>}
+                  {importance && showImportance && (topImportance.length ? (
                     <>
-                      <p className="muted">
-                        How much each part of the photo mattered for the guess. 1× means an average spot.
-                      </p>
-                      {importance.clue_importance.slice(0, 5).map(c => (
+                      <p className="muted">How much each part of the photo mattered for the guess. 1× means an average spot.</p>
+                      {topImportance.slice(0,5).map(c => (
                         <div className="rank" key={c.name}>
                           <strong>{c.name}</strong>
-                          <div className="bar">
-                            <i style={{ width: `${Math.max(4, 100 * c.heat_ratio / importance.clue_importance[0].heat_ratio)}%` }} />
-                          </div>
-                          <b>{c.heat_ratio.toFixed(1)}×</b>
+                          <div className="bar"><i style={{width:`${Math.min(100, Math.max(4, 100*c.heat_ratio/topHeatRatio))}%`}}/></div>
+                          <b>{Number(c.heat_ratio).toFixed(1)}×</b>
                         </div>
                       ))}
                     </>
-                  ) : (
-                    <p className="muted">The model was so sure that hiding any one part of the photo didn't change its guess.</p>
-                  )}
-
-                  {importance.continent_clues && (
-                    <>
-                      <div className="subheading">What gives {importance.continent} away</div>
-                      <p className="muted">
-                        How much less sure the model gets when this clue is hidden, compared with hiding a
-                        random patch of the same size. Based on {importance.continent_clues.photos} street view
-                        photos from {importance.continent}.
-                      </p>
-                      {importance.continent_clues.clues.filter(c => c.effect > 0).slice(0, 3).map(c => (
-                        <div className="rank" key={c.name} style={{ opacity: c.significant ? 1 : 0.45 }}>
-                          <strong>{c.name}</strong>
-                          <div className="bar">
-                            <i style={{ width: `${100 * c.effect / importance.continent_clues.clues[0].effect}%` }} />
-                          </div>
-                          <b>{Math.round(c.effect * 100)} pts</b>
-                        </div>
-                      ))}
-                    </>
-                  )}
-                </div>
-              )}
-
-              {/* PROTECT IMAGE */}
-              {result && !blur && (
-                <button
-                  className="osv-primary"
-                  disabled={!!busy}
-                  onClick={protect}
-                >
-                  <ShieldCheck size={18} />
-                  Protect the photo
-                </button>
-              )}
-
-              {/* TEST PROTECTED IMAGE */}
-              {blur && !protectedResult && (
-                <>
-                  <p className="osv-note">
-                    This is the protected photo. Test it to
-                    see what the model guesses now.
-                  </p>
-
-                  <button
-                    className="osv-primary"
-                    disabled={!!busy}
-                    onClick={testProtected}
-                  >
-                    <Sparkles size={18} />
-                    Test the protected photo
-                  </button>
+                  ) : <p className="muted">The model was so sure that hiding any one part of the photo didn't change its guess.</p>)}
+                  {showImportance && importance?.continent_clues && <>
+                    <div className="subheading">What gives {importance.continent} away</div>
+                    <p className="muted">How much less sure the model gets when this clue is hidden, compared with hiding a random patch of the same size. Based on {importance.continent_clues.photos} street view photos from {importance.continent}.</p>
+                    {continentItems.filter(c => c.effect > 0).slice(0,3).map(c => (
+                      <div className="rank" key={c.name} style={{opacity:c.significant ? 1 : .45}}>
+                        <strong>{c.name}</strong>
+                        <div className="bar"><i style={{width:`${Math.min(100,Math.max(0,100*c.effect/topContinentEffect))}%`}}/></div>
+                        <b>{Math.round(c.effect*100)} pts</b>
+                      </div>
+                    ))}
+                  </>}
                 </>
               )}
 
-              {/* RETURN TO ORIGINAL */}
-              {blur && (
-                <button
-                  className="osv-text-btn"
-                  onClick={() => {
-                    setBlur(null)
-                    setProtectedResult(null)
-                  }}
-                >
-                  ← Show original image
-                </button>
-              )}
-
-              {/* PROTECTED IMAGE RESULTS */}
-              {protectedResult && (
-                <div className="osv-results">
-                  <h3>
-                    THE PROTECTED PHOTO
-                  </h3>
-
-                  <div>
-                    <small>TRUE LOCATION</small>
-
-                    <strong>
-                      {result?.truth?.country || 'Unknown'}
-                    </strong>
-                  </div>
-
-                  <div>
-                    <small>
-                      AI GUESS AFTER BLURRING
-                    </small>
-
-                    <strong>
-                      {protectedResult.model?.country ||
-                        'Unknown'}
-                    </strong>
-                  </div>
-
-                  <div>
-                    <small>AI ERROR AFTER BLURRING</small>
-
-                    <strong>
-                      {fmt(protectedDistance)}
-                    </strong>
-                  </div>
-
-                  <div>
-                    <small>AI GUESS MOVED</small>
-
-                    <strong>
-                      {fmt(moved)}
-                    </strong>
-                  </div>
-
-                  <div>
-                    <small>BLURRED AREA</small>
-
-                    <strong>
-                      {blur.blurred_area_pct}%
-                    </strong>
-                  </div>
-
-                  <div>
-                    <small>IMAGE QUALITY · SSIM</small>
-
-                    <strong>
-                      {blur.ssim ?? 'Unavailable'}
-                    </strong>
-                  </div>
+              {locked && (
+                <div className="privacy-flow">
+                  {!blur ? (
+                    <button className="primary privacy-action" onClick={protect} disabled={!!busy}>
+                      <ShieldCheck size={18}/> Protect the photo <ArrowRight size={18}/>
+                    </button>
+                  ) : !protectedResult ? (
+                    <>
+                      <div className="privacy-info"><ShieldCheck size={17}/> This is the protected photo. Test it to see what the model guesses now.</div>
+                      <button className="primary privacy-action" onClick={testProtected} disabled={!!busy}>
+                        <Sparkles size={18}/> Test the protected photo <ArrowRight size={18}/>
+                      </button>
+                      <button className="privacy-link" onClick={() => {setBlur(null);setProtectedResult(null)}}>Show the original</button>
+                    </>
+                  ) : (
+                    <div className="privacy-reveal">
+                      <span className="eyebrow">THE PROTECTED PHOTO</span>
+                      <div className="privacy-answer">
+                        <div><small>TRUE LOCATION</small><strong style={result?.truth?.country ? correctCountryStyle : undefined}>{result?.truth?.country || 'Unknown'}</strong></div>
+                        <div><small>AI GUESS AFTER BLURRING</small><strong style={isCorrectCountry(protectedResult.model?.country, result?.truth?.country) ? correctCountryStyle : undefined}>{protectedResult.model?.country || 'Unknown'}</strong></div>
+                      </div>
+                      <div className="privacy-stats">
+                        <div><small>AI ERROR AFTER BLURRING</small><strong>{fmt(protectedDistance)}</strong></div>
+                        <div><small>AI GUESS MOVED</small><strong>{fmt(moved)}</strong></div>
+                        <div><small>IMAGE QUALITY · SSIM</small><strong>{blur.ssim ?? 'Unavailable'}</strong></div>
+                      </div>
+                      <p className="disclaimer">{blur.blurred_area_pct ?? '—'} % of the photo was blurred. The model guesses a country, not an exact spot.</p>
+                      <button className="privacy-link" onClick={() => {setBlur(null);setProtectedResult(null)}}>Show the original</button>
+                    </div>
+                  )}
                 </div>
               )}
             </section>
 
-            {/* RIGHT: MAP & RESULTS */}
-            <section className="osv-panel">
-              <div className="osv-panel-head">
-                <span>
-                  GEOLOCATION CHALLENGE
-                </span>
-
-                <h2>
-                  {result
-                    ? 'The big reveal'
-                    : 'Where was it taken?'}
-                </h2>
+            <section className="panel map-panel">
+              <div className="panel-heading">
+                <div><span className="eyebrow">THE CHALLENGE</span><h2>{locked ? 'The big reveal' : 'Where was it taken?'}</h2></div>
+                <MapPin color="#64748b" size={23}/>
               </div>
-
-              <p className="osv-note">
-                {result
-                  ? "Here is your guess next to the model's."
-                  : 'Click the map to guess. The model only starts once you lock in.'}
-              </p>
-
-              <GuessMap
-                guess={guess}
-                onGuess={setGuess}
-                locked={!!result}
-                result={result}
-                tested={!!protectedResult}
-                privacyResult={protectedResult}
-              />
-
-              {!result ? (
-                <button
-                  className="osv-primary"
-                  disabled={!guess || !!busy}
-                  onClick={reveal}
-                >
-                  Lock in my guess
-                  <ArrowRight size={18} />
+              <p className="map-intro">{locked ? "Here is your guess next to the model's." : 'Click the map to place your guess. You can drag the pin to move it.'}</p>
+              <GuessMap guess={guess} onGuess={setGuess} locked={locked} result={result} tested={!!protectedResult} privacyResult={protectedResult}/>
+              {!locked ? (
+                <button className="primary" onClick={reveal} disabled={!guess || !!busy}>
+                  Lock in my guess <ArrowRight size={18}/>
                 </button>
               ) : (
                 <>
-                  {/* ORIGINAL MODEL RESULTS */}
-                  <div className="osv-results">
-                    <h3>
-                      RESULTS
-                    </h3>
-
+                  <div className="verdict">
+                    <Trophy size={21}/>
                     <div>
-                      <small>TRUE COUNTRY</small>
-
-                      <strong>
-                        {result.truth?.country ||
-                          'Unknown'}
-                      </strong>
-                    </div>
-
-                    <div>
-                      <small>AI PREDICTION</small>
-
-                      <strong>
-                        {result.model?.country || 'Unknown'}
-                      </strong>
-                    </div>
-
-                    <div>
-                      <small>YOUR DISTANCE</small>
-
-                      <strong>
-                        {fmt(trueDistance)}
-                      </strong>
-                    </div>
-
-                    <div>
-                      <small>AI DISTANCE</small>
-
-                      <strong>
-                        {fmt(modelDistance)}
-                      </strong>
+                      <strong>{winner}</strong>
+                      {trueDistance !== null && modelDistance !== null && (
+                        <small>{fmt(Math.abs(trueDistance-modelDistance))} {trueDistance < modelDistance ? 'closer than the AI' : trueDistance > modelDistance ? 'closer for the AI' : 'difference'}</small>
+                      )}
                     </div>
                   </div>
-
-                  {/* TOP 3 */}
-                  <h3 className="osv-subhead">
-                    The model's top 3 countries
-                  </h3>
-
-                  {result.top3?.map((country, index) => (
-                    <div
-                      className="osv-rank"
-                      key={country.country}
-                    >
-                      <span>
-                        {index + 1}.
-                        {' '}
-                        {country.country}
-                      </span>
-
-                      <div className="osv-bar">
-                        <i
-                          style={{
-                            width:
-                              `${country.probability_pct}%`
-                          }}
-                        />
-                      </div>
-
-                      <strong>
-                        {country.probability_pct.toFixed(1)}%
-                      </strong>
-                    </div>
-                  ))}
-
-                  <p className="osv-note">
-                    The model guesses a country, not an
-                    exact spot, so the AI pin marks the
-                    middle of that country.
-                  </p>
+                  <div className="metrics">
+                    <div><small>YOUR DISTANCE</small><strong>{fmt(trueDistance)}</strong></div>
+                    <div><small>AI DISTANCE</small><strong>{fmt(modelDistance)}</strong></div>
+                  </div>
+                  <div className="answer">
+                    <div><small>ACTUAL LOCATION</small><strong style={result.truth?.country ? correctCountryStyle : undefined}>{result.truth?.country || 'Unknown'}</strong></div>
+                    <div><small>AI PREDICTION</small><strong style={isCorrectCountry(result.model?.country, result.truth?.country) ? correctCountryStyle : undefined}>{result.model?.country || 'Unknown'}</strong></div>
+                  </div>
+                  <p className="disclaimer">The AI pin marks the middle of the country it guessed.</p>
+                  <div className="subheading">The model's top 3 countries</div>
+                {result.top3?.length ? result.top3.slice(0,3).map((country,index) => (
+                  <div className="rank" key={country.country || index} style={isCorrectCountry(country.country, result.truth?.country) ? {background:'#f0fdf4',borderRadius:9,paddingLeft:10,paddingRight:10} : undefined}>
+                    <span>0{index+1}</span>
+                    <strong style={isCorrectCountry(country.country, result.truth?.country) ? correctCountryStyle : undefined}>{country.country}</strong>
+                    <div className="bar"><i style={{width:`${Math.max(0,Math.min(100,country.probability_pct ?? 0))}%`, background:isCorrectCountry(country.country, result.truth?.country) ? '#16a34a' : undefined}}/></div>
+                    <b>{Number(country.probability_pct ?? 0).toFixed(1)}%</b>
+                  </div>
+                )) : <p className="muted">No country scores for this photo.</p>}
                 </>
               )}
             </section>
           </div>
 
-          {/* LOADING */}
-          {busy && (
-            <div className="osv-busy">
-              <span className="osv-spinner" />
-              {busy}
+          {locked && (
+            <div className="privacy-panel">
+              <section className="panel result-panel">
+                <div className="panel-heading"><div><span className="eyebrow">PRIVACY EXPERIMENT</span><h2>Can we hide the clues?</h2></div><ShieldCheck size={23}/></div>
+                <p className="map-intro">
+                  {protectedResult ? "The model's new guess is under the photo, and the purple pin shows it on the map." : blur ? "The protected photo is showing. Click Test the protected photo to see the model's new guess." : 'Click Protect the photo under the image to see if blurring parts of it fools the model.'}
+                </p>
+              </section>
             </div>
           )}
-
-          {/* ERROR */}
-          {error && (
-            <div className="osv-error">
-              {error}
-            </div>
-          )}
-
-          {/* NEXT IMAGE */}
-          <button
-            className="osv-next"
-            onClick={() => open(null)}
-          >
-            <RotateCcw size={17} />
-            Next photo
-          </button>
+          {busy && <div className="osv-busy"><span className="osv-spinner"/>{busy}</div>}
+          {error && <div className="osv-error" role="alert">{error}</div>}
+          {locked && <button className="next" onClick={() => open(null)}><RotateCcw size={17}/> Next photo <ArrowRight size={17}/></button>}
         </main>
       )}
+      <footer className="foot">GEOLOCATION · INTERPRETABILITY · PRIVACY <span>UNIVERSITY OF OSLO · IN5310</span></footer>
     </div>
   )
 }
