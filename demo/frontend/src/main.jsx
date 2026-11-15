@@ -509,6 +509,7 @@ function MainGallery() {
 
   const [privacy, setPrivacy] = useState(false)
   const [privacyTested, setPrivacyTested] = useState(false)
+  const [mask, setMask] = useState(false)
 
   const [uploading, setUploading] = useState(false)
 
@@ -543,6 +544,7 @@ function MainGallery() {
       return {
         'original.jpg': selected.image_data,
         'blurred.jpg': live.privacy?.image_data,
+        'mask.jpg': live.privacy?.mask_data,
         'clues.png': live.clues?.overlay_data,
         'heatmap.png': live.heatmap?.heatmap_data
       }[name] || null
@@ -567,6 +569,7 @@ function MainGallery() {
 
     setPrivacy(false)
     setPrivacyTested(false)
+    setMask(false)
 
     setLive({})
     setWorking('')
@@ -881,11 +884,6 @@ function MainGallery() {
         </div>
 
         <div className="top-right">
-          <span className="pill">
-            <span className="green-dot" />
-            LIVE DEMO
-          </span>
-
           <span className="top-sub">
             IN5310 · GROUP 2
           </span>
@@ -1111,7 +1109,7 @@ function MainGallery() {
                   className="scene"
                   src={asset(
                     privacy
-                      ? 'blurred.jpg'
+                      ? (mask ? 'mask.jpg' : 'blurred.jpg')
                       : 'original.jpg'
                   )}
                   alt={
@@ -1143,6 +1141,19 @@ function MainGallery() {
                   />
                 )}
               </div>
+
+
+              {/* MASK BUTTON */}
+              {privacy && (
+                <div className="toggles">
+                  <button
+                    className={mask ? 'toggle active' : 'toggle'}
+                    onClick={() => setMask(!mask)}
+                  >
+                    <Layers size={16} /> Show mask <span>{mask ? 'ON' : 'OFF'}</span>
+                  </button>
+                </div>
+              )}
 
 
               {!locked && (

@@ -91,6 +91,15 @@ def export_clues(path, out, size=768):
     Image.fromarray(rgba, 'RGBA').save(out)
     return info
 
+def export_mask(path, out, size=768):
+    """Blur mask as white (no blur) to blue #2563eb (most blur), like the live page."""
+    if not path.is_file():
+        return
+    with Image.open(path) as im:
+        m = np.asarray(im.convert('L'), dtype=np.float32)[..., None] / 255
+    rgb = 255 - m * (255 - np.array([37, 99, 235]))
+    ImageOps.fit(Image.fromarray(rgb.astype(np.uint8)), (size, size), Image.Resampling.LANCZOS).save(out, quality=90)
+
 def clue_importance(mask_path, heat_path, min_area=0.01, min_heat=0.02):
     """Heat ratio per clue class, as in segmenter/heatmap_ranking.py:
     mean heat on the class / mean heat of the photo (1 = an average pixel)."""
@@ -188,6 +197,7 @@ def main():
                 with Image.open(blur_path) as im:
                     protected=ImageOps.exif_transpose(im).convert('RGB')
                 ImageOps.fit(protected,(768,768),Image.Resampling.LANCZOS).save(dest/'blurred.jpg',quality=90,exif=b'')
+                export_mask(exp/'masks'/(stem+'.png'),dest/'mask.jpg')
                 new_prediction=predict_image(protected)
                 protected_model=new_prediction['model']
                 # The predicted-country representatives are for display only, NOT actual GPS predictions.

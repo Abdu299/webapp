@@ -494,6 +494,7 @@ export default function OSVLive() {
 
   const [showHeat, setShowHeat] = useState(false)
   const [showClues, setShowClues] = useState(false)
+  const [showMask, setShowMask] = useState(false)
 
 
   // Load OSV image gallery.
@@ -528,6 +529,7 @@ export default function OSVLive() {
 
     setShowHeat(false)
     setShowClues(false)
+    setShowMask(false)
 
     setBusy('')
     setError('')
@@ -754,7 +756,6 @@ export default function OSVLive() {
           </div>
         </div>
         <div className="top-right">
-          <span className="pill"><span className="green-dot" />RUNS LIVE</span>
           <span className="top-sub">IN5310 · GROUP 2</span>
         </div>
       </header>
@@ -801,10 +802,17 @@ export default function OSVLive() {
                 <span className="tiny-pill">{blur ? 'PRIVACY PROTECTED' : locked ? 'REVEALED' : 'LOCATION HIDDEN'}</span>
               </div>
               <div className="photo-stage">
-                <img className="scene" src={blur?.image_data || original} alt={blur ? 'Protected OSV photo' : 'OSV mystery photo'}/>
+                <img className="scene" src={blur && showMask ? blur.mask_data : blur?.image_data || original} alt={blur ? 'Protected OSV photo' : 'OSV mystery photo'}/>
                 {!blur && showHeat && heatmap && <img className="overlay" src={heatmap.heatmap_data} alt="AI heatmap"/>}
                 {!blur && showClues && clues && <img className="overlay" src={clues.overlay_data} alt="Visual clues"/>}
               </div>
+              {blur && (
+                <div className="toggles">
+                  <button className={showMask ? 'toggle active':'toggle'} onClick={() => setShowMask(!showMask)}>
+                    <Layers size={16}/> Show mask <span>{showMask ? 'ON' : 'OFF'}</span>
+                  </button>
+                </div>
+              )}
               {!locked && <p className="hint"><CircleHelp size={16}/> Look for road signs, architecture, landscape and street markings.</p>}
 
               {locked && !blur && (

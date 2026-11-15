@@ -87,7 +87,7 @@ def photo_info(photo_id: str):
 
 @app.get('/api/photos/{photo_id}/{filename}')
 def photo_asset(photo_id: str, filename: str):
-    if filename not in {'original.jpg', 'clues.png', 'heatmap.png', 'blurred.jpg'}:
+    if filename not in {'original.jpg', 'clues.png', 'heatmap.png', 'blurred.jpg', 'mask.jpg'}:
         raise HTTPException(404, 'Unknown asset')
     path = photo_dir(photo_id) / filename
     if not path.is_file():
