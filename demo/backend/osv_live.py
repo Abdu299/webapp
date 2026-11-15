@@ -37,7 +37,7 @@ PRIVACY_CKPT = REPO / os.getenv(
 SEGMENT_CKPT = Path(
     os.getenv(
         "OSV_SEGMENT_CHECKPOINT",
-        str(REPO / "segmenter_896_seed0.pt")
+        str(REPO / "model/segmenter_896_seed0.pt")
     )
 )
 

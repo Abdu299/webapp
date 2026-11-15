@@ -10,5 +10,3 @@ __pycache__/
 
 # Local secrets
 .env
-
-*.pt
