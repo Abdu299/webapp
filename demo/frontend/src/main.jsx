@@ -881,11 +881,6 @@ function MainGallery() {
         </div>
 
         <div className="top-right">
-          <span className="pill">
-            <span className="green-dot" />
-            LIVE DEMO
-          </span>
-
           <span className="top-sub">
             IN5310 · GROUP 2
           </span>

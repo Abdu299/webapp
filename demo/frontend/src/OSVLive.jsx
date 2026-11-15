@@ -754,7 +754,6 @@ export default function OSVLive() {
           </div>
         </div>
         <div className="top-right">
-          <span className="pill"><span className="green-dot" />RUNS LIVE</span>
           <span className="top-sub">IN5310 · GROUP 2</span>
         </div>
       </header>
