@@ -123,9 +123,11 @@ async def upload(file: UploadFile = File(...)):
         inference = await run_in_threadpool(live.predict, buffer.getvalue())
     except Exception as exc:
         raise HTTPException(503, f'Live model unavailable: {type(exc).__name__}: {str(exc)[:200]}') from exc
-    return {'id': 'upload', 'title': 'Your uploaded photo', 'image_data': 'data:image/jpeg;base64,' + base64.b64encode(buffer.getvalue()).decode('ascii'), 'result': inference}
+    # Kept in memory so the clue, heatmap and blur buttons can use it too
+    photo_id = remember_upload(Image.open(io.BytesIO(buffer.getvalue())).convert('RGB'))
+    return {'id': photo_id, 'title': 'Your uploaded photo', 'image_data': 'data:image/jpeg;base64,' + base64.b64encode(buffer.getvalue()).decode('ascii'), 'result': inference}
 
 
-from .osv_live import router as osv_router
+from .osv_live import router as osv_router, remember_upload
 
 app.include_router(osv_router)

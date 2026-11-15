@@ -60,6 +60,27 @@ _segment_model = None
 _heat_grids = {}
 _clue_masks = {}
 
+# Uploaded photos live only in memory, never on disk. The live endpoints
+# below read them by id, so an upload gets clues, heatmap and blur too.
+# Only the latest few are kept, older ones are dropped.
+_uploads = {}
+MAX_UPLOADS = 20
+
+
+def remember_upload(image):
+    import uuid
+
+    photo_id = "upload_" + uuid.uuid4().hex
+    _uploads[photo_id] = image
+
+    while len(_uploads) > MAX_UPLOADS:
+        oldest = next(iter(_uploads))
+        del _uploads[oldest]
+        _heat_grids.pop(oldest, None)
+        _clue_masks.pop(oldest, None)
+
+    return photo_id
+
 
 def file_for(photo_id):
     if not re.fullmatch(
@@ -78,6 +99,9 @@ def file_for(photo_id):
 
 
 def raw_image(photo_id):
+    if photo_id in _uploads:
+        return _uploads[photo_id].copy()
+
     try:
         with Image.open(file_for(photo_id)) as image:
             return ImageOps.exif_transpose(
@@ -370,11 +394,11 @@ def predict_original(photo_id: str):
 @router.post("/{photo_id}/heatmap")
 def calculate_heatmap(photo_id: str):
     """
-    Live occlusion heatmap, the same method as segmenter/heatmaps.py
-    scaled to 224x224: a 32 px window moved in 16 px steps (13x13 = 169
-    blurred versions), each pixel's heat is the mean over the windows
-    that cover it. Heat is the drop in the log-odds of the original top
-    country, which still changes when the probability is close to 100 %.
+    Live occlusion heatmap. Same method as segmenter/heatmaps.py, just on
+    the 224x224 photo: a 32 px window moved 16 px at a time, so 169 blurred
+    versions. Each pixel gets the average drop over the windows that cover
+    it. The drop is measured in log odds for the top country, since those
+    still move when the model is close to 100 % sure.
     """
 
     try:
@@ -410,7 +434,7 @@ def calculate_heatmap(photo_id: str):
         ]
 
         def log_odds(logits, index):
-            # log(p / (1 - p)) of one class, without rounding p to 1
+            # Log odds of one class, worked out so p never gets rounded to 1
             log_probs = logits.log_softmax(-1)
             others = torch.cat(
                 [log_probs[:, :index], log_probs[:, index + 1:]],
@@ -446,8 +470,8 @@ def calculate_heatmap(photo_id: str):
 
         _heat_grids[photo_id] = heat
 
-        # Every 16x16 cell has one value; interpolating between the cell
-        # centres draws a smooth map instead of blocks
+        # Each 16x16 cell has one value, so blend between the cell centres
+        # to draw a smooth map instead of squares
         cells = heat[stride // 2::stride, stride // 2::stride]
         smooth = np.array(
             Image.fromarray(cells, "F").resize(
@@ -479,8 +503,8 @@ def calculate_heatmap(photo_id: str):
                 "data:image/png;base64," + encoded
             ),
             "method": (
-                "Live occlusion, 32 px window in 16 px steps; "
-                "drop in GeoViT's log-odds for its top country"
+                "Live occlusion with a 32 px window moved 16 px at a time, "
+                "measured as the drop in log odds for the top country"
             )
         }
 
@@ -789,8 +813,9 @@ def test_protected_image(
     photo_id: str,
     payload: ProtectedPayload
 ):
-    # Verify that the selected OSV image exists.
-    file_for(photo_id)
+    # Verify that the selected OSV image or upload exists.
+    if photo_id not in _uploads:
+        file_for(photo_id)
 
     try:
         header, encoded = payload.image_data.split(
@@ -880,7 +905,7 @@ def calculate_importance(photo_id: str):
             })
         importance.sort(key=lambda c: c["heat_ratio"], reverse=True)
 
-    # Same country -> continent table as the experiments
+    # Same country to continent table as the experiments
     country = labels_for(photo_id).get("country", "")
     continent = CONTINENT.get(country, "")
     continent_clues = None

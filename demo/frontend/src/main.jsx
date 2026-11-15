@@ -450,11 +450,17 @@ function MainGallery() {
 
   const [clues, setClues] = useState(false)
   const [heat, setHeat] = useState(false)
+  const [reliance, setReliance] = useState(false)
 
   const [privacy, setPrivacy] = useState(false)
   const [privacyTested, setPrivacyTested] = useState(false)
 
   const [uploading, setUploading] = useState(false)
+
+  // Uploaded photos have nothing saved, so their clues, heatmap and blur
+  // are worked out live and kept here for the rest of the round
+  const [live, setLive] = useState({})
+  const [working, setWorking] = useState('')
 
 
   // Load precomputed Im2GPS gallery
@@ -479,11 +485,12 @@ function MainGallery() {
     }
 
     if (selected.uploaded) {
-      if (name === 'original.jpg') {
-        return selected.image_data
-      }
-
-      return null
+      return {
+        'original.jpg': selected.image_data,
+        'blurred.jpg': live.privacy?.image_data,
+        'clues.png': live.clues?.overlay_data,
+        'heatmap.png': live.heatmap?.heatmap_data
+      }[name] || null
     }
 
     return assetUrl(selected.id, name)
@@ -501,9 +508,13 @@ function MainGallery() {
 
     setClues(false)
     setHeat(false)
+    setReliance(false)
 
     setPrivacy(false)
     setPrivacyTested(false)
+
+    setLive({})
+    setWorking('')
 
     setError('')
   }
@@ -516,13 +527,127 @@ function MainGallery() {
   }
 
 
-  // Switch to precomputed privacy image
-  function protectImage() {
+  // Runs one step live for an uploaded photo, the first time only.
+  // Uses the same endpoints as the street view page.
+  async function runLive(key, step, message, body) {
+    if (live[key]) {
+      return live[key]
+    }
+
+    setWorking(message)
+    setError('')
+
+    try {
+      const data = await jsonFetch(
+        `/api/osv/${encodeURIComponent(selected.id)}/${step}`,
+        body
+          ? {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            }
+          : { method: 'POST' }
+      )
+
+      setLive(current => ({ ...current, [key]: data }))
+      return data
+
+    } catch (error) {
+      setError(error.message)
+      return null
+
+    } finally {
+      setWorking('')
+    }
+  }
+
+
+  async function toggleClues() {
+    if (
+      !clues &&
+      selected?.uploaded &&
+      !(await runLive('clues', 'clues', 'Finding the clues in the photo…'))
+    ) {
+      return
+    }
+
+    setClues(!clues)
+    setHeat(false)
+  }
+
+
+  async function toggleHeat() {
+    if (
+      !heat &&
+      selected?.uploaded &&
+      !(await runLive('heatmap', 'heatmap', 'Working out the heatmap, this takes about 20 seconds…'))
+    ) {
+      return
+    }
+
+    setHeat(!heat)
+    setClues(false)
+  }
+
+
+  async function toggleReliance() {
+    if (
+      !reliance &&
+      selected?.uploaded &&
+      !(await runLive('importance', 'importance', 'Comparing the heatmap with the clues, this can take about 20 seconds…'))
+    ) {
+      return
+    }
+
+    setReliance(!reliance)
+  }
+
+
+  // Gallery photos show the saved blurred version,
+  // uploads are blurred live by the privacy model
+  async function protectImage() {
+    if (
+      selected?.uploaded &&
+      !(await runLive('privacy', 'privacy', 'Blurring the photo…'))
+    ) {
+      return
+    }
+
     setPrivacy(true)
     setPrivacyTested(false)
 
     setClues(false)
     setHeat(false)
+  }
+
+
+  async function testProtected() {
+    if (selected?.uploaded) {
+      const blurred = live.privacy
+      const guessed = await runLive(
+        'protected',
+        'predict-protected',
+        'The model is guessing on the blurred photo…',
+        { image_data: blurred.image_data }
+      )
+
+      if (!guessed) {
+        return
+      }
+
+      setResult(current => ({
+        ...current,
+        privacy: {
+          available: true,
+          model: guessed.model,
+          new_top3: guessed.top3,
+          quality_metric: 'SSIM',
+          quality_score: blurred.ssim
+        }
+      }))
+    }
+
+    setPrivacyTested(true)
   }
 
 
@@ -625,7 +750,7 @@ function MainGallery() {
 
 
   // Determine the winner
-  let winner = 'No ground-truth GPS available'
+  let winner = 'The true location is unknown'
 
   if (
     userKm !== null &&
@@ -642,9 +767,19 @@ function MainGallery() {
 
 
   // Privacy availability
-  const hasPrivacy =
+  const hasPrivacy = selected?.uploaded || (
     result?.privacy?.available &&
     result?.privacy?.model
+  )
+
+  // Uploads read their clues and reliance from the live results
+  const clueList = selected?.uploaded
+    ? (live.clues?.clues || [])
+        .filter(clue => clue.share_pct >= 1)
+        .sort((a, b) => b.share_pct - a.share_pct)
+    : result?.clues
+
+  const relied = selected?.uploaded ? live.importance : result
 
 
   return (
@@ -690,19 +825,19 @@ function MainGallery() {
 
           <div className="intro">
             <span className="eyebrow">
-              CAN YOU OUTSMART THE MODEL?
+              CAN YOU BEAT THE MODEL?
             </span>
 
             <h1>
-              Every photo tells
+              Can you tell
               <br />
-              <em>a location.</em>
+              <em>where this is?</em>
             </h1>
 
             <p>
-              Study the scene. Drop your pin on the world map.
-              Then discover what gave the location away —
-              and how AI can hide it.
+              Look at a photo and guess where it was taken. Then
+              see what gave the location away, and whether
+              blurring part of the photo can hide it.
             </p>
           </div>
 
@@ -710,10 +845,10 @@ function MainGallery() {
           {/* GALLERY HEADER */}
           <div className="section-title">
             <div>
-              <h2>Choose your challenge</h2>
+              <h2>Pick a photo</h2>
 
               <p>
-                Pick a mystery photo to start your round.
+                Each photo is a new round.
               </p>
             </div>
 
@@ -750,7 +885,7 @@ function MainGallery() {
                 }}
               >
                 <Globe2 size={17} />
-                OSV images
+                Street view photos
               </a>
             </div>
           </div>
@@ -774,8 +909,8 @@ function MainGallery() {
               <h3>No gallery images found</h3>
 
               <p>
-                Generate the gallery from your GitHub
-                repository and refresh the page.
+                Build the gallery with build_from_repo.py,
+                then refresh the page.
               </p>
             </div>
 
@@ -817,8 +952,8 @@ function MainGallery() {
           <div className="footer-note">
             <ShieldCheck size={16} />
 
-            Uploaded images are processed in memory.
-            GPS metadata is removed.
+            Uploaded photos are never saved, and their
+            GPS data is removed.
           </div>
 
         </main>
@@ -868,7 +1003,7 @@ function MainGallery() {
                   <h2>
                     {privacy
                       ? 'Protected photo'
-                      : 'Study the photo'}
+                      : 'Look at the photo'}
                   </h2>
                 </div>
 
@@ -954,13 +1089,13 @@ function MainGallery() {
                           : 'toggle'
                       }
                       disabled={
-                        !result?.clues_available &&
-                        !result?.clues?.length
+                        !!working || (
+                          !selected?.uploaded &&
+                          !result?.clues_available &&
+                          !result?.clues?.length
+                        )
                       }
-                      onClick={() => {
-                        setClues(!clues)
-                        setHeat(false)
-                      }}
+                      onClick={toggleClues}
                     >
                       <Layers size={16} />
 
@@ -978,12 +1113,12 @@ function MainGallery() {
                           : 'toggle'
                       }
                       disabled={
-                        !result?.heatmap_available
+                        !!working || (
+                          !selected?.uploaded &&
+                          !result?.heatmap_available
+                        )
                       }
-                      onClick={() => {
-                        setHeat(!heat)
-                        setClues(false)
-                      }}
+                      onClick={toggleHeat}
                     >
                       <Eye size={16} />
 
@@ -995,15 +1130,21 @@ function MainGallery() {
                     </button>
                   </div>
 
+                  {working && (
+                    <p className="muted">{working}</p>
+                  )}
+
 
                   {/* CLUE BREAKDOWN */}
+                  {clues && (
+                  <>
                   <div className="subheading">
                     Visual clues
                   </div>
 
-                  {result?.clues?.length ? (
+                  {clueList?.length ? (
                     <div className="clue-list">
-                      {result.clues.map(
+                      {clueList.map(
                         (clue, index) => (
                           <div
                             className="clue"
@@ -1032,50 +1173,81 @@ function MainGallery() {
                     </div>
                   ) : (
                     <p className="muted">
-                      Clue breakdown unavailable for
-                      this photo.
+                      No clue breakdown for this photo.
                     </p>
+                  )}
+                  </>
                   )}
 
                   {/* WHAT THE MODEL RELIED ON */}
+                  <div className="toggles">
+                    <button
+                      className={
+                        reliance
+                          ? 'toggle active'
+                          : 'toggle'
+                      }
+                      disabled={
+                        !!working || (
+                          !selected?.uploaded &&
+                          !result?.clues_available
+                        )
+                      }
+                      onClick={toggleReliance}
+                    >
+                      <Sparkles size={16} />
+
+                      What did the model rely on?
+
+                      <span>
+                        {reliance ? 'ON' : 'OFF'}
+                      </span>
+                    </button>
+                  </div>
+
+                  {reliance && (
+                  <>
                   <div className="subheading">What the model relied on</div>
-                  {result?.clue_importance?.length ? (
+                  {relied?.clue_importance?.length ? (
                     <>
                       <p className="muted">
-                        How much the model's guess depended on each part of the photo (1× = an average spot).
+                        How much each part of the photo mattered for the guess. 1× means an average spot.
                       </p>
-                      {result.clue_importance.slice(0, 5).map(c => (
+                      {relied.clue_importance.slice(0, 5).map(c => (
                         <div className="rank" key={c.name}>
                           <strong>{c.name}</strong>
                           <div className="bar">
-                            <i style={{ width: `${Math.max(4, 100 * c.heat_ratio / result.clue_importance[0].heat_ratio)}%` }} />
+                            <i style={{ width: `${Math.max(4, 100 * c.heat_ratio / relied.clue_importance[0].heat_ratio)}%` }} />
                           </div>
                           <b>{c.heat_ratio.toFixed(1)}×</b>
                         </div>
                       ))}
                     </>
                   ) : (
-                    <p className="muted">The model was so sure that no single region changed its mind.</p>
+                    <p className="muted">The model was so sure that hiding any one part of the photo didn't change its guess.</p>
                   )}
 
                   {/* WHAT GIVES THE CONTINENT AWAY */}
-                  {result?.continent_clues && (
+                  {relied?.continent_clues && (
                     <>
-                      <div className="subheading">What gives {result.continent} away</div>
+                      <div className="subheading">What gives {relied.continent} away</div>
                       <p className="muted">
-                        Hiding this clue makes the model this much less sure than hiding a random patch of
-                        the same size ({result.continent_clues.photos} street-view photos).
+                        How much less sure the model gets when this clue is hidden, compared with hiding a
+                        random patch of the same size. Based on {relied.continent_clues.photos} street view
+                        photos from {relied.continent}.
                       </p>
-                      {result.continent_clues.clues.filter(c => c.effect > 0).slice(0, 3).map(c => (
+                      {relied.continent_clues.clues.filter(c => c.effect > 0).slice(0, 3).map(c => (
                         <div className="rank" key={c.name} style={{ opacity: c.significant ? 1 : 0.45 }}>
                           <strong>{c.name}</strong>
                           <div className="bar">
-                            <i style={{ width: `${100 * c.effect / result.continent_clues.clues[0].effect}%` }} />
+                            <i style={{ width: `${100 * c.effect / relied.continent_clues.clues[0].effect}%` }} />
                           </div>
-                          <b>−{Math.round(c.effect * 100)} pts</b>
+                          <b>{Math.round(c.effect * 100)} pts</b>
                         </div>
                       ))}
                     </>
+                  )}
+                  </>
                   )}
                 </>
               )}
@@ -1092,11 +1264,12 @@ function MainGallery() {
                   {!privacy ? (
                     <button
                       className="primary privacy-action"
+                      disabled={!!working}
                       onClick={protectImage}
                     >
                       <ShieldCheck size={18} />
 
-                      Protect image
+                      Protect the photo
 
                       <ArrowRight size={18} />
                     </button>
@@ -1108,20 +1281,19 @@ function MainGallery() {
                       <div className="privacy-info">
                         <ShieldCheck size={17} />
 
-                        The protected image has replaced
-                        the original. Test it to see what
-                        the AI predicts.
+                        This is the protected photo. Test
+                        it to see what the model guesses
+                        now.
                       </div>
 
                       <button
                         className="primary privacy-action"
-                        onClick={() => {
-                          setPrivacyTested(true)
-                        }}
+                        disabled={!!working}
+                        onClick={testProtected}
                       >
                         <Sparkles size={18} />
 
-                        Test protected image
+                        Test the protected photo
 
                         <ArrowRight size={18} />
                       </button>
@@ -1130,7 +1302,7 @@ function MainGallery() {
                         className="privacy-link"
                         onClick={showOriginal}
                       >
-                        Show original image
+                        Show the original
                       </button>
                     </>
 
@@ -1139,7 +1311,7 @@ function MainGallery() {
                     /* STEP 3: PRIVACY RESULTS */
                     <div className="privacy-reveal">
                       <span className="eyebrow">
-                        PROTECTED IMAGE · AI TEST RESULTS
+                        THE PROTECTED PHOTO
                       </span>
 
                       <div className="privacy-answer">
@@ -1157,7 +1329,7 @@ function MainGallery() {
 
                         <div>
                           <small>
-                            AI PREDICTED AFTER PROTECTION
+                            AI GUESS AFTER BLURRING
                           </small>
 
                           <strong>
@@ -1174,7 +1346,7 @@ function MainGallery() {
 
                         <div>
                           <small>
-                            PROTECTED AI ERROR
+                            AI ERROR AFTER BLURRING
                           </small>
 
                           <strong>
@@ -1211,17 +1383,17 @@ function MainGallery() {
                       </div>
 
                       <p className="disclaimer">
-                        GeoViT predicts countries, not
-                        exact GPS coordinates. Distances
-                        use representative locations for
-                        predicted countries.
+                        The model guesses a country, not
+                        an exact spot, so distances are
+                        measured from the middle of the
+                        country it guessed.
                       </p>
 
                       <button
                         className="privacy-link"
                         onClick={showOriginal}
                       >
-                        ← Show original image
+                        Show the original
                       </button>
                     </div>
                   )}
@@ -1257,8 +1429,8 @@ function MainGallery() {
 
               <p className="map-intro">
                 {locked
-                  ? 'Compare your location with the AI prediction.'
-                  : 'Click anywhere on the map to place your guess. Drag your pin to refine it.'}
+                  ? "Here is your guess next to the model's."
+                  : 'Click the map to place your guess. You can drag the pin to move it.'}
               </p>
 
 
@@ -1350,7 +1522,7 @@ function MainGallery() {
 
                       <strong>
                         {result.truth?.country ||
-                          'Unspecified'}
+                          'Unknown'}
                       </strong>
                     </div>
 
@@ -1362,19 +1534,19 @@ function MainGallery() {
                       <strong>
                         {result.model?.country ||
                           result.model?.label ||
-                          'Unspecified'}
+                          'Unknown'}
                       </strong>
                     </div>
                   </div>
 
                   <p className="disclaimer">
-                    AI pins represent countries rather than
-                    exact predicted GPS locations.
+                    The AI pin marks the middle of the
+                    country it guessed.
                   </p>
 
                   {/* TOP 3 COUNTRIES */}
                   <div className="subheading">
-                    Model confidence: top 3 countries
+                    The model's top 3 countries
                   </div>
 
                   {result.top3?.length ? (
@@ -1418,7 +1590,7 @@ function MainGallery() {
                       ))
                   ) : (
                     <p className="muted">
-                      Country confidence data unavailable.
+                      No country scores for this photo.
                     </p>
                   )}
                 </>
@@ -1452,16 +1624,16 @@ function MainGallery() {
 
                 <p className="map-intro">
                   {privacyTested
-                    ? 'The protected prediction is shown below the image. The purple pin shows the protected AI prediction.'
+                    ? "The model's new guess is under the photo, and the purple pin shows it on the map."
                     : privacy
-                      ? 'The protected image is displayed. Click Test protected image to reveal the new prediction.'
-                      : 'Click Protect image below the original photo to see how privacy protection changes the AI prediction.'}
+                      ? "The protected photo is showing. Click Test the protected photo to see the model's new guess."
+                      : 'Click Protect the photo under the image to see if blurring parts of it fools the model.'}
                 </p>
 
-                {!result.privacy?.available && (
+                {!selected?.uploaded && !result.privacy?.available && (
                   <p className="muted">
-                    No precomputed privacy result
-                    for this photo.
+                    There is no protected version of this
+                    photo.
                   </p>
                 )}
               </section>
@@ -1477,7 +1649,7 @@ function MainGallery() {
             >
               <RotateCcw size={17} />
 
-              Next photo / new visitor
+              Next photo
 
               <ArrowRight size={17} />
             </button>

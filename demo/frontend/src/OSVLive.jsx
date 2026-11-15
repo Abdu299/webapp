@@ -425,6 +425,7 @@ export default function OSVLive() {
   const [heatmap, setHeatmap] = useState(null)
   const [clues, setClues] = useState(null)
   const [importance, setImportance] = useState(null)
+  const [showImportance, setShowImportance] = useState(false)
 
   const [blur, setBlur] = useState(null)
   const [protectedResult, setProtectedResult] = useState(null)
@@ -461,6 +462,7 @@ export default function OSVLive() {
     setHeatmap(null)
     setClues(null)
     setImportance(null)
+    setShowImportance(false)
 
     setBlur(null)
     setProtectedResult(null)
@@ -499,7 +501,7 @@ export default function OSVLive() {
     }
 
     run(
-      'GeoViT is analyzing the original image…',
+      'The model is guessing…',
       async () => {
         const data = await api(
           `/api/osv/${selected.id}/predict`,
@@ -526,7 +528,7 @@ export default function OSVLive() {
     }
 
     run(
-      'Calculating heatmap (live occlusion)…',
+      'Working out the heatmap, this takes about 20 seconds…',
       async () => {
         const data = await api(
           `/api/osv/${selected.id}/heatmap`,
@@ -556,7 +558,7 @@ export default function OSVLive() {
     }
 
     run(
-      'Running live segmentation…',
+      'Finding the clues in the photo…',
       async () => {
         const data = await api(
           `/api/osv/${selected.id}/clues`,
@@ -572,8 +574,19 @@ export default function OSVLive() {
   }
 
 
-  // Heatmap per clue class and the continent's clue ranking.
+  // Heatmap per clue class and the clue ranking for the continent.
+  // The first click computes it, after that the button just shows and hides it.
   function getImportance() {
+    if (showImportance) {
+      setShowImportance(false)
+      return
+    }
+
+    if (importance) {
+      setShowImportance(true)
+      return
+    }
+
     run(
       'Comparing the heatmap with the clues…',
       async () => {
@@ -583,6 +596,7 @@ export default function OSVLive() {
         )
 
         setImportance(data)
+        setShowImportance(true)
       }
     )
   }
@@ -591,7 +605,7 @@ export default function OSVLive() {
   // Run privacy model.
   function protect() {
     run(
-      'Privacy model is creating the protected image…',
+      'Blurring the photo…',
       async () => {
         const data = await api(
           `/api/osv/${selected.id}/privacy`,
@@ -616,7 +630,7 @@ export default function OSVLive() {
     }
 
     run(
-      'GeoViT is analyzing the protected image…',
+      'The model is guessing on the blurred photo…',
       async () => {
         const data = await api(
           `/api/osv/${selected.id}/predict-protected`,
@@ -674,7 +688,7 @@ export default function OSVLive() {
         </strong>
 
         <span className="osv-live-tag">
-          ON-DEMAND INFERENCE
+          RUNS LIVE
         </span>
       </header>
 
@@ -682,20 +696,17 @@ export default function OSVLive() {
         <main className="osv-container">
           <div className="osv-intro">
             <span>
-              OSV LIVE GALLERY
+              STREET VIEW, LIVE
             </span>
 
             <h1>
-              Every prediction happens <em>now.</em>
+              Everything runs <em>live.</em>
             </h1>
 
             <p>
-              Choose any photo in
-              {' '}
-              <code>osv_image_galary</code>.
-              Unlike the main gallery, the models run
-              when you click — no precomputed predictions
-              or masks.
+              Pick a street view photo. Unlike the main
+              gallery, nothing here is worked out in
+              advance. The models run when you click.
             </p>
           </div>
 
@@ -706,7 +717,7 @@ export default function OSVLive() {
           )}
 
           {loading ? (
-            <p>Loading image folder…</p>
+            <p>Loading photos…</p>
           ) : photos.length === 0 ? (
             <div className="osv-empty">
               No photos yet. Add JPG/PNG/WebP files to
@@ -750,7 +761,7 @@ export default function OSVLive() {
             onClick={() => open(null)}
           >
             <ArrowLeft size={17} />
-            OSV gallery
+            Back to photos
           </button>
 
           <div className="osv-columns">
@@ -803,7 +814,7 @@ export default function OSVLive() {
 
                     {showClues
                       ? 'Hide clues'
-                      : 'Run segmentation'}
+                      : 'Show clues'}
                   </button>
 
                   <button
@@ -814,7 +825,7 @@ export default function OSVLive() {
 
                     {showHeat
                       ? 'Hide heatmap'
-                      : 'Calculate heatmap'}
+                      : 'Show heatmap'}
                   </button>
                 </div>
               )}
@@ -844,25 +855,28 @@ export default function OSVLive() {
               )}
 
               {/* WHAT THE MODEL RELIED ON */}
-              {result && !blur && !importance && (
+              {result && !blur && (
                 <div className="osv-actions">
                   <button
                     disabled={!!busy}
                     onClick={getImportance}
                   >
-                    <Layers size={17} />
-                    What did the model rely on?
+                    <Sparkles size={17} />
+
+                    {showImportance
+                      ? 'Hide what the model relied on'
+                      : 'What did the model rely on?'}
                   </button>
                 </div>
               )}
 
-              {importance && !blur && (
+              {importance && showImportance && !blur && (
                 <div>
                   <div className="subheading">What the model relied on</div>
                   {importance.clue_importance?.length ? (
                     <>
                       <p className="muted">
-                        How much the model's guess depended on each part of the photo (1× = an average spot).
+                        How much each part of the photo mattered for the guess. 1× means an average spot.
                       </p>
                       {importance.clue_importance.slice(0, 5).map(c => (
                         <div className="rank" key={c.name}>
@@ -875,15 +889,16 @@ export default function OSVLive() {
                       ))}
                     </>
                   ) : (
-                    <p className="muted">The model was so sure that no single region changed its mind.</p>
+                    <p className="muted">The model was so sure that hiding any one part of the photo didn't change its guess.</p>
                   )}
 
                   {importance.continent_clues && (
                     <>
                       <div className="subheading">What gives {importance.continent} away</div>
                       <p className="muted">
-                        Hiding this clue makes the model this much less sure than hiding a random patch of
-                        the same size ({importance.continent_clues.photos} street-view photos).
+                        How much less sure the model gets when this clue is hidden, compared with hiding a
+                        random patch of the same size. Based on {importance.continent_clues.photos} street view
+                        photos from {importance.continent}.
                       </p>
                       {importance.continent_clues.clues.filter(c => c.effect > 0).slice(0, 3).map(c => (
                         <div className="rank" key={c.name} style={{ opacity: c.significant ? 1 : 0.45 }}>
@@ -891,7 +906,7 @@ export default function OSVLive() {
                           <div className="bar">
                             <i style={{ width: `${100 * c.effect / importance.continent_clues.clues[0].effect}%` }} />
                           </div>
-                          <b>−{Math.round(c.effect * 100)} pts</b>
+                          <b>{Math.round(c.effect * 100)} pts</b>
                         </div>
                       ))}
                     </>
@@ -907,7 +922,7 @@ export default function OSVLive() {
                   onClick={protect}
                 >
                   <ShieldCheck size={18} />
-                  Protect image (run privacy model)
+                  Protect the photo
                 </button>
               )}
 
@@ -915,8 +930,8 @@ export default function OSVLive() {
               {blur && !protectedResult && (
                 <>
                   <p className="osv-note">
-                    The privacy network has generated a new
-                    protected image. Test it with GeoViT.
+                    This is the protected photo. Test it to
+                    see what the model guesses now.
                   </p>
 
                   <button
@@ -925,7 +940,7 @@ export default function OSVLive() {
                     onClick={testProtected}
                   >
                     <Sparkles size={18} />
-                    Test protected image
+                    Test the protected photo
                   </button>
                 </>
               )}
@@ -947,7 +962,7 @@ export default function OSVLive() {
               {protectedResult && (
                 <div className="osv-results">
                   <h3>
-                    PROTECTED IMAGE · AI TEST RESULTS
+                    THE PROTECTED PHOTO
                   </h3>
 
                   <div>
@@ -960,7 +975,7 @@ export default function OSVLive() {
 
                   <div>
                     <small>
-                      AI PREDICTED AFTER PROTECTION
+                      AI GUESS AFTER BLURRING
                     </small>
 
                     <strong>
@@ -970,7 +985,7 @@ export default function OSVLive() {
                   </div>
 
                   <div>
-                    <small>PROTECTED AI ERROR</small>
+                    <small>AI ERROR AFTER BLURRING</small>
 
                     <strong>
                       {fmt(protectedDistance)}
@@ -1020,8 +1035,8 @@ export default function OSVLive() {
 
               <p className="osv-note">
                 {result
-                  ? 'Your location versus the live model prediction.'
-                  : 'Click the map to guess. The AI only starts when you lock your guess.'}
+                  ? "Here is your guess next to the model's."
+                  : 'Click the map to guess. The model only starts once you lock in.'}
               </p>
 
               <GuessMap
@@ -1039,7 +1054,7 @@ export default function OSVLive() {
                   disabled={!guess || !!busy}
                   onClick={reveal}
                 >
-                  Lock in my guess · Run GeoViT
+                  Lock in my guess
                   <ArrowRight size={18} />
                 </button>
               ) : (
@@ -1047,7 +1062,7 @@ export default function OSVLive() {
                   {/* ORIGINAL MODEL RESULTS */}
                   <div className="osv-results">
                     <h3>
-                      LIVE GEOLOCATION RESULTS
+                      RESULTS
                     </h3>
 
                     <div>
@@ -1055,7 +1070,7 @@ export default function OSVLive() {
 
                       <strong>
                         {result.truth?.country ||
-                          'No GPS label provided'}
+                          'Unknown'}
                       </strong>
                     </div>
 
@@ -1086,7 +1101,7 @@ export default function OSVLive() {
 
                   {/* TOP 3 */}
                   <h3 className="osv-subhead">
-                    Top 3 countries
+                    The model's top 3 countries
                   </h3>
 
                   {result.top3?.map((country, index) => (
@@ -1116,9 +1131,9 @@ export default function OSVLive() {
                   ))}
 
                   <p className="osv-note">
-                    GeoViT predicts countries, not precise
-                    GPS coordinates. The AI pin is a
-                    representative country point.
+                    The model guesses a country, not an
+                    exact spot, so the AI pin marks the
+                    middle of that country.
                   </p>
                 </>
               )}
@@ -1146,7 +1161,7 @@ export default function OSVLive() {
             onClick={() => open(null)}
           >
             <RotateCcw size={17} />
-            Next OSV image
+            Next photo
           </button>
         </main>
       )}

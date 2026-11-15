@@ -48,8 +48,8 @@ def export_heatmap(path, out):
     if h.ndim != 2:
         return False
     h = np.nan_to_num(h, nan=0, posinf=0, neginf=0)
-    # heatmaps.py moves its window in 16 px steps, so each 16x16 cell has one value.
-    # Interpolating between the cell centres draws a smooth map instead of blocks.
+    # heatmaps.py moves its window 16 px at a time, so each 16x16 cell has one value.
+    # Blending between the cell centres gives a smooth map instead of squares.
     cells = np.ascontiguousarray(h[8::16, 8::16])
     h = np.array(Image.fromarray(cells, 'F').resize((768, 768), Image.Resampling.BICUBIC))
     # Strongest visible areas, not raw probability. The input heatmap is centred crop.
@@ -120,7 +120,7 @@ def main():
     p.add_argument('--limit',type=int,default=20,help='0 exports all 237 images')
     p.add_argument('--out',type=Path,default=DEMO/'gallery')
     p.add_argument('--clue-masks',type=Path,default=None,help='Optional folder of 0..9 segmentation mask PNGs')
-    p.add_argument('--continents',type=Path,default=None,help='Test-set CSV with name + continent columns')
+    p.add_argument('--continents',type=Path,default=None,help='Test set CSV with name and continent columns')
     p.add_argument('--continent-clues',type=Path,default=None,help='JSON from segmenter/continent_clues.py')
     a=p.parse_args()
     continent_by_stem={r['name']:r['continent'] for r in read_csv(a.continents)} if a.continents else {}

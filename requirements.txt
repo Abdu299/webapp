@@ -21,6 +21,7 @@ peft
 
 # Privacy and segmentation
 torchmetrics
+scikit-image
 lightning>=2.2,<3.0
 geoclip==1.2.3
 reverse_geocoder
